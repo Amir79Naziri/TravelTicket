@@ -1,4 +1,4 @@
-package sample;
+package sample.login;
 
 public class PhoneLoginController {
 }
