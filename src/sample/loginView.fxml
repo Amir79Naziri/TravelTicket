@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PhoneLoginController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #673AB7;" BorderPane.alignment="CENTER" />
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #333333;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTextField focusColor="#673ab7" layoutX="166.0" layoutY="284.0" prefHeight="31.0" prefWidth="230.0" promptText="phone number" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField focusColor="#673ab7" layoutX="107.0" layoutY="345.0" prefHeight="31.0" prefWidth="290.0" promptText="password" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXButton layoutX="227.0" layoutY="496.0" />
+            <JFXButton layoutX="189.0" layoutY="427.0" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #673AB7;" text="Login" textFill="#acacac" />
+            <Hyperlink layoutX="93.0" layoutY="536.0" text="Forgot Your Password ?" textFill="#7447c7" />
+            <Line endX="3.0" endY="30.20001220703125" layoutX="249.0" layoutY="529.0" startX="3.0" startY="7.0" stroke="#676767" />
+            <Hyperlink layoutX="279.0" layoutY="536.0" text="Enter with Email" textFill="#7447c7" />
+            <Label layoutX="265.0" layoutY="178.0" text="Label" />
+            <FontAwesomeIconView fill="#673ab7" glyphName="USERS" layoutX="216.0" layoutY="118.0" size="60" />
+            <FontAwesomeIconView fill="#673ab7" glyphName="KEY" layoutX="77.0" layoutY="368.0" size="15" />
+            <FontAwesomeIconView fill="#673ab7" glyphName="PHONE" layoutX="75.0" layoutY="308.0" size="15" />
+            <JFXComboBox focusColor="#673ab7" layoutX="107.0" layoutY="287.0" minWidth="-Infinity" prefHeight="28.0" prefWidth="56.0" promptText="+98" unFocusColor="#676767" />
+            <Label layoutX="186.0" layoutY="139.0" text="User Login" textFill="#673ab7">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
