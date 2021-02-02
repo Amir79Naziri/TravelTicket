@@ -11,6 +11,8 @@ import java.util.ResourceBundle;
 public class TicketController  implements Initializable
 {
 
+    private static int temp = 0;
+
     @FXML
     private Label cost;
 
@@ -18,7 +20,8 @@ public class TicketController  implements Initializable
     public void initialize(URL location, ResourceBundle resources)
     {
         Random random = new Random();
-        cost.setText( Integer.toString( random.nextInt(2000) ) + '$' );
+        temp++;
+        cost.setText( Integer.toString(100 + temp)+ "$" );
 
     }
 }
