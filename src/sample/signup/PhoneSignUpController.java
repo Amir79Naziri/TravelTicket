@@ -59,16 +59,16 @@ public class PhoneSignUpController extends Controller{
 
     @FXML
     protected void keyHandler(KeyEvent event) {
-        if (event.getSource () == phoneNumber)
-        {
-            for (char c : phoneNumber.getText ().toCharArray ())
-                if (c >= '9' || c <= '0')
-                {
-                    //TODO : warn user
-                    System.out.println ("invalid phone number");
-                    break;
-                }
-        }
+//        if (event.getSource () == phoneNumber)
+//        {
+//            for (char c : phoneNumber.getText ().toCharArray ())
+//                if (c >= '9' || c <= '0')
+//                {
+//                    //TODO : warn user
+//                    System.out.println ("invalid phone number");
+//                    break;
+//                }
+//        }
     }
 
 }

@@ -33,7 +33,7 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #2A2E37;" BorderPane.alignment="CENTER">
             <children>
-                <JFXPasswordField fx:id="password" focusColor="#673ab7" layoutX="107.0" layoutY="306.0" onKeyTyped="#keyHandler" prefHeight="31.0" prefWidth="290.0" promptText="password" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
+                <JFXPasswordField fx:id="password" focusColor="#673ab7" layoutX="107.0" layoutY="306.0" prefHeight="31.0" prefWidth="290.0" promptText="password" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -47,7 +47,7 @@
                         <Font name="System Bold" size="26.0" />
                     </font>
                 </Label>
-                <JFXPasswordField fx:id="confirmPassword" focusColor="#673ab7" layoutX="109.0" layoutY="369.0" onKeyTyped="#keyHandler" prefHeight="31.0" prefWidth="290.0" promptText="confirm password" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
+                <JFXPasswordField fx:id="confirmPassword" focusColor="#673ab7" layoutX="109.0" layoutY="369.0" prefHeight="31.0" prefWidth="290.0" promptText="confirm password" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
