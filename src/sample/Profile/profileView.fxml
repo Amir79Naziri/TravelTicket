@@ -8,11 +8,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <!--        xmlns="http://javafx.com/javafx"-->
 <!--        xmlns:fx="http://javafx.com/fxml"-->
@@ -40,7 +46,67 @@
                     <tabs>
                         <Tab text="Wallet">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#282c35" height="250.0" layoutX="52.0" layoutY="58.0" stroke="BLACK" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" width="400.0">
+                                 <effect>
+                                    <InnerShadow blurType="GAUSSIAN" choke="0.18" height="100.0" radius="25.75" width="5.0">
+                                       <color>
+                                          <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </Rectangle>
+                              <Label layoutX="98.0" layoutY="225.0" text="Balance" textFill="#b2b2b2">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="93.0" layoutY="245.0" text="Available" textFill="#b2b2b2">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="361.0" layoutY="224.0" text="540.00" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="361.0" layoutY="251.0" text="540.00" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIconView glyphName="DOLLAR" layoutX="349.0" layoutY="241.0" />
+                              <FontAwesomeIconView glyphName="DOLLAR" layoutX="349.0" layoutY="268.0" />
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="152.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@pictures/Logo.png" />
+                                 </image>
+                                 <effect>
+                                    <DropShadow height="28.15" radius="16.552500000000002" spread="0.09" width="40.06">
+                                       <color>
+                                          <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </ImageView>
+                              <Label layoutX="192.0" layoutY="199.0" text="XXXX XXXX XXXX 1234" textFill="#b2b2b2" />
+                              <Label layoutX="532.0" layoutY="40.0" text="TRANSACTIONS" textFill="#b2b2b2" />
+                              <Line endX="500.0" endY="450.0" startX="500.0" startY="40.0" stroke="#b2b2b2" />
+                              <JFXButton layoutX="62.0" layoutY="405.0" text="Payment">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="TAGS" />
+                                 </graphic>
+                              </JFXButton>
+                              <JFXTextField layoutX="265.0" layoutY="405.0" promptText="0.00" style="-fx-pref-width: 120;" />
+                              <Line endX="50.0" endY="360.0" startX="10.0" startY="360.0" stroke="#b2b2b2" />
+                              <Label layoutX="55.0" layoutY="352.0" text="Charge Account" textFill="#b2b2b2" />
+                              <Line endX="450.0" endY="360.0" startX="145.0" startY="360.0" stroke="#b2b2b2" />
+                              <Label layoutX="265.0" layoutY="387.0" text="Amount" textFill="#b2b2b2" />
+                              <Label layoutX="532.0" layoutY="79.0" text="You have not made a transaction yet" textFill="#b2b2b2" />
+                              <FontAwesomeIconView glyphName="DOLLAR" layoutX="246.0" layoutY="428.0" size="20" />
+                           </children></AnchorPane>
                             </content>
                             <graphic>
                                 <Label>
@@ -90,7 +156,7 @@
                                         <ImageView fitHeight="97.0" fitWidth="121.0" layoutX="111.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
                                         <JFXButton layoutX="553.0" layoutY="43.0" text="Upload Avatar" />
                                         <JFXButton layoutX="543.0" layoutY="94.0" text="Change Password" />
-                                        <FontAwesomeIconView glyphName="USER" layoutX="155.0" layoutY="90.0" size="45" />
+                                        <FontAwesomeIconView glyphName="USER_CIRCLE" layoutX="165.0" layoutY="96.0" size="60" />
                                         <JFXTextField layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
                                     </children>
                                 </AnchorPane>
