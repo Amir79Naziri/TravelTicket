@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Bank.BankPageController">
+   <children>
+      <AnchorPane layoutX="590.0" layoutY="100.0" prefHeight="500.0" prefWidth="210.0" style="-fx-background-color: RGB(164,164,164);">
+         <children>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="128.0" style="-fx-border-color: white; -fx-border-radius: 6px;" text="Receiver Info" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="171.0" layoutX="23.0" layoutY="70.0">
+               <image>
+                  <Image url="@Pictures/LogoBank.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="15.0" layoutY="369.0" prefHeight="51.0" prefWidth="186.0" text="Cost :   10$" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <Label layoutX="7.0" layoutY="256.0" prefHeight="60.0" prefWidth="202.0" text=" Receiver Name: Travel Ticket">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="500.0" fitWidth="590.0" layoutX="-1.0" layoutY="102.0">
+         <image>
+            <Image url="@Pictures/BankBack.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="-1.0" layoutY="100.0" prefHeight="500.0" prefWidth="590.0">
+         <children>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="128.0" style="-fx-border-color: White; -fx-border-radius: 6px;" text="Card Info" textAlignment="CENTER">
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="80.0" prefHeight="35.0" prefWidth="122.0" text="Card Number" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <tooltip>
+                  <Tooltip autoHide="true" text="Enter the 16 digit number on the card" />
+               </tooltip>
+            </Label>
+            <Label layoutX="35.0" layoutY="220.0" prefHeight="35.0" prefWidth="100.0" text="Expire Date" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="290.0" prefHeight="35.0" prefWidth="178.0" text="Secondary password" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="360.0" prefHeight="35.0" prefWidth="100.0" text="Email" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="150.0" prefHeight="35.0" prefWidth="100.0" text="CVV2" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="97.0" layoutY="425.0" prefHeight="46.0" prefWidth="235.0" style="-fx-background-color: RGB(69,220,92); -fx-background-radius: 25px;" text="Pay" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="368.0" layoutY="425.0" prefHeight="46.0" prefWidth="136.0" style="-fx-background-color: RGB(253,215,128); -fx-background-radius: 25px;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField alignment="CENTER" layoutX="220.0" layoutY="80.0" prefHeight="26.0" prefWidth="49.0" promptText="6104">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField alignment="CENTER" layoutX="280.0" layoutY="80.0" prefHeight="26.0" prefWidth="49.0" promptText="3374">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField alignment="CENTER" layoutX="340.0" layoutY="80.0" prefHeight="26.0" prefWidth="49.0" promptText="5456">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField alignment="CENTER" layoutX="400.0" layoutY="80.0" prefHeight="26.0" prefWidth="49.0" promptText="2842">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField layoutX="220.0" layoutY="150.0" promptText="cvv2" />
+            <JFXDatePicker defaultColor="#333333" layoutX="220.0" layoutY="220.0" prefHeight="28.0" prefWidth="150.0" />
+            <JFXPasswordField layoutX="220.0" layoutY="290.0" promptText="secondary password" />
+            <JFXTextField layoutX="220.0" layoutY="345.0" prefHeight="46.0" prefWidth="235.0" promptText="abcde@gmail.com">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </JFXTextField>
+            <Line endX="510.99993896484375" endY="-37.00000762939453" layoutX="288.0" layoutY="37.0" startX="-288.0" startY="-37.00000762939453" stroke="WHITE" strokeWidth="5.0" />
+            <Line endX="63.20001220703125" endY="-213.0" layoutX="526.0" layoutY="213.0" startX="63.20001220703125" startY="283.79998779296875" stroke="WHITE" strokeWidth="5.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: RGB(0,106,182);" />
+      <ImageView fitHeight="88.0" fitWidth="247.0" layoutY="5.0">
+         <image>
+            <Image url="@Pictures/paypal.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
