@@ -29,33 +29,35 @@ public class Controller implements Initializable
     protected Label passwordMissMatchWarnLabel;
 
     @FXML
-    protected void actionHandler(ActionEvent event) throws Exception {
-        if (event.getSource () == signUpButton)
+    protected Label connectionLostWarnLabel;
+
+    protected boolean isPasswordValid()
+    {
+        boolean PasswordComplexity = true, passwordMatch = true;
+        if (!checkPasswordComplexity (password.getText ()))
         {
-            boolean PasswordComplexity = true, passwordMatch = true;
-            if (!checkPasswordComplexity (password.getStyle ()))
-            {
-                // TODO : set passwordComplexityWarnLabel red
-                System.out.println ("passwordComplexity error");
-                PasswordComplexity = false;
-            }
-
-            if (!password.getText ().equals (confirmPassword.getText ()))
-            {
-                // TODO : set passwordMissMatchWarnLabel red
-                System.out.println ("passwordMissMatch error");
-                passwordMatch = false;
-            }
-            if (passwordMatch && PasswordComplexity)
-            {
-                // TODO : sign up
-                System.out.println ("sign up");
-            }
+            if (!passwordComplexityWarnLabel.isVisible ())
+                passwordComplexityWarnLabel.setVisible (true);
+            PasswordComplexity = false;
         }
+        else {
+            if (passwordComplexityWarnLabel.isVisible ())
+                passwordComplexityWarnLabel.setVisible (false);
+        }
+
+        if (!password.getText ().equals (confirmPassword.getText ()))
+        {
+            if (!passwordMissMatchWarnLabel.isVisible ())
+                passwordMissMatchWarnLabel.setVisible (true);
+            passwordMatch = false;
+        }
+        else
+        {
+            if (passwordMissMatchWarnLabel.isVisible ())
+                passwordMissMatchWarnLabel.setVisible (false);
+        }
+        return PasswordComplexity && passwordMatch;
     }
-
-
-
 
     private boolean checkPasswordComplexity(String temp)
     {
@@ -78,7 +80,6 @@ public class Controller implements Initializable
         return false;
     }
 
-
     private boolean containsLetter(String temp)
     {
         char[] chars = temp.toCharArray();
@@ -96,5 +97,6 @@ public class Controller implements Initializable
     public void initialize (URL location, ResourceBundle resources) {
         passwordMissMatchWarnLabel.setVisible (false);
         passwordComplexityWarnLabel.setVisible (false);
+        connectionLostWarnLabel.setVisible (false);
     }
 }

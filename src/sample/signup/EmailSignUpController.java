@@ -7,7 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 public class EmailSignUpController extends Controller{
@@ -21,14 +25,35 @@ public class EmailSignUpController extends Controller{
     @FXML
     private Hyperlink signUpWithPhoneNumberLink;
 
-
-
+    @FXML
+    private Label invalidEmailWarnLabel;
 
     @FXML
-    protected
-    void actionHandler(ActionEvent event) throws Exception{
-        super.actionHandler (event);
-        if (event.getSource () == backToLoginLink)
+    protected void actionHandler(ActionEvent event) throws Exception{
+        if (event.getSource () == signUpButton)
+        {
+            boolean validPassword = super.isPasswordValid (), validEmail = true;
+
+
+            if (email.getText ().length () == 0)
+            {
+                if (!invalidEmailWarnLabel.isVisible ())
+                    invalidEmailWarnLabel.setVisible (true);
+
+                validEmail = false;
+            }
+            else
+            {
+                if (invalidEmailWarnLabel.isVisible ())
+                    invalidEmailWarnLabel.setVisible (false);
+            }
+            if (validPassword && validEmail)
+            {
+                // TODO : sign up
+                System.out.println ("sign up");
+            }
+        }
+        else if (event.getSource () == backToLoginLink)
         {
             Stage stage;
             Parent root;
@@ -54,4 +79,9 @@ public class EmailSignUpController extends Controller{
         }
     }
 
+    @Override
+    public void initialize (URL location, ResourceBundle resources) {
+        super.initialize (location, resources);
+        invalidEmailWarnLabel.setVisible (false);
+    }
 }
