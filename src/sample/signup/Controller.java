@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 
 
@@ -17,6 +18,12 @@ public class Controller
 
     @FXML
     protected JFXButton signUpButton;
+
+    @FXML
+    private Label passwordComplexityWarnLabel;
+
+    @FXML
+    private Label passwordMissMatchWarnLabel;
 
     @FXML
     protected void actionHandler(ActionEvent event) throws Exception {

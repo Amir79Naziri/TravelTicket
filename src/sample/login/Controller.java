@@ -4,7 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+
 
 public class Controller
 {
@@ -14,6 +15,8 @@ public class Controller
     @FXML
     protected JFXButton loginButton;
 
+    @FXML
+    private Label CouldNotFindYourAccountWarnLabel;
 
 
 

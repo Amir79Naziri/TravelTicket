@@ -1,7 +1,6 @@
 package sample.signup;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
+
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -24,7 +24,8 @@ public class PhoneSignUpController extends Controller{
     @FXML
     private Hyperlink signUpWithEmailLink;
 
-
+    @FXML
+    private Label invalidPhoneNumberWarnLabel;
 
     @FXML
     protected void actionHandler(ActionEvent event) throws Exception {

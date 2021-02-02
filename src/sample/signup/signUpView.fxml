@@ -67,6 +67,9 @@
             <Hyperlink fx:id="backToLoginLink" layoutX="277.0" layoutY="536.0" onAction="#actionHandler" text="Back To Login" textFill="#7447c7" />
             <Line endX="3.0" endY="30.20001220703125" layoutX="249.0" layoutY="529.0" startX="3.0" startY="7.0" stroke="#676767" />
             <Hyperlink fx:id="signUpWithEmailLink" layoutX="120.0" layoutY="536.0" onAction="#actionHandler" text="Sign Up with Email" textFill="#7447c7" />
+            <Label fx:id="invalidPhoneNumberWarnLabel" layoutX="295.0" layoutY="282.0" prefHeight="18.0" prefWidth="124.0" text="Invalid phone Number" textFill="#cccfd5" />
+            <Label fx:id="passwordComplexityWarnLabel" layoutX="112.0" layoutY="344.0" text="Use 8 or more characters with a mix of letters &amp; numbers " textFill="#cfcfcf" />
+            <Label fx:id="passwordMissMatchWarnLabel" layoutX="283.0" layoutY="407.0" text=" passwords didn’t match" textFill="#d7d7d7" />
             </children>
         </AnchorPane>
     </center>

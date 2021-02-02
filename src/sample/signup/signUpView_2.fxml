@@ -62,6 +62,8 @@
                </font>
             </JFXTextField>
             <FontAwesomeIconView fill="#673ab7" glyphName="ENVELOPE" layoutX="74.0" layoutY="266.0" size="15" />
+            <Label fx:id="passwordComplexityWarnLabel" layoutX="112.0" layoutY="344.0" text="Use 8 or more characters with a mix of letters &amp; numbers " textFill="#cfcfcf" />
+            <Label fx:id="passwordMissMatchWarnLabel" layoutX="283.0" layoutY="407.0" text=" passwords didn’t match" textFill="#d7d7d7" />
             </children>
         </AnchorPane>
     </center>

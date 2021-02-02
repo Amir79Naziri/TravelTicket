@@ -61,7 +61,8 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXTextField>
-            <Label fx:id="invalidPhoneNumberWarnLabel" layoutX="274.0" layoutY="326.0" prefHeight="18.0" prefWidth="124.0" text="Invalid phone Number" textFill="#2a2e37" />
+            <Label fx:id="invalidPhoneNumberWarnLabel" layoutX="274.0" layoutY="324.0" prefHeight="18.0" prefWidth="124.0" text="Invalid phone Number" textFill="#d7d7d7" />
+            <Label fx:id="CouldNotFindYourAccountWarnLabel" layoutX="180.0" layoutY="395.0" text="Couldn't Find Your Account" textFill="#d5d4d4" />
          </children>
       </AnchorPane>
    </center>
