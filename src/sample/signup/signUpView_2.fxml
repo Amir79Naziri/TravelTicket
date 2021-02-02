@@ -39,7 +39,6 @@
                     </font>
                 </JFXPasswordField>
                 <JFXButton fx:id="signUpButton" layoutX="188.0" layoutY="450.0" onAction="#actionHandler" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Sign Up" textFill="#acacac" />
-                <Label layoutX="265.0" layoutY="178.0" text="Label" />
                 <FontAwesomeIconView fill="#673ab7" glyphName="ID_CARD" layoutX="216.0" layoutY="118.0" size="60" />
                 <FontAwesomeIconView fill="#673ab7" glyphName="KEY" layoutX="77.0" layoutY="329.0" size="15" />
                 <Label layoutX="170.0" layoutY="139.0" text="User Sign Up" textFill="#673ab7">
@@ -62,8 +61,8 @@
                </font>
             </JFXTextField>
             <FontAwesomeIconView fill="#673ab7" glyphName="ENVELOPE" layoutX="74.0" layoutY="266.0" size="15" />
-            <Label fx:id="passwordComplexityWarnLabel" layoutX="112.0" layoutY="344.0" text="Use 8 or more characters with a mix of letters &amp; numbers " textFill="#cfcfcf" />
-            <Label fx:id="passwordMissMatchWarnLabel" layoutX="283.0" layoutY="407.0" text=" passwords didn’t match" textFill="#d7d7d7" />
+            <Label fx:id="passwordComplexityWarnLabel" layoutX="112.0" layoutY="344.0" text="Use 8 or more characters with a mix of letters &amp; numbers " textFill="#fd0f0f" />
+            <Label fx:id="passwordMissMatchWarnLabel" layoutX="283.0" layoutY="407.0" text=" passwords didn’t match" textFill="#fd0f0f" />
             </children>
         </AnchorPane>
     </center>

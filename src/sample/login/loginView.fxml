@@ -46,7 +46,6 @@
             <Hyperlink layoutX="93.0" layoutY="536.0" text="Forgot Your Password ?" textFill="#7447c7" />
             <Line endX="3.0" endY="30.20001220703125" layoutX="249.0" layoutY="529.0" startX="3.0" startY="7.0" stroke="#676767" />
             <Hyperlink fx:id="enterWithEmailLink" layoutX="279.0" layoutY="536.0" onAction="#actionHandler" text="Enter with Email" textFill="#7447c7" />
-            <Label layoutX="265.0" layoutY="178.0" text="Label" />
             <FontAwesomeIconView fill="#673ab7" glyphName="USER_CIRCLE" layoutX="216.0" layoutY="118.0" size="60" />
             <FontAwesomeIconView fill="#673ab7" glyphName="KEY" layoutX="77.0" layoutY="368.0" size="15" />
             <FontAwesomeIconView fill="#673ab7" glyphName="PHONE" layoutX="75.0" layoutY="306.0" size="15" />
@@ -61,8 +60,8 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXTextField>
-            <Label fx:id="invalidPhoneNumberWarnLabel" layoutX="274.0" layoutY="324.0" prefHeight="18.0" prefWidth="124.0" text="Invalid phone Number" textFill="#d7d7d7" />
-            <Label fx:id="CouldNotFindYourAccountWarnLabel" layoutX="180.0" layoutY="395.0" text="Couldn't Find Your Account" textFill="#d5d4d4" />
+            <Label fx:id="invalidPhoneNumberWarnLabel" layoutX="274.0" layoutY="324.0" prefHeight="18.0" prefWidth="124.0" text="Invalid phone Number" textFill="#fd0f0f" />
+            <Label fx:id="couldNotFindYourAccountWarnLabel" layoutX="180.0" layoutY="395.0" text="Couldn't Find Your Account" textFill="#fd0f0f" />
          </children>
       </AnchorPane>
    </center>

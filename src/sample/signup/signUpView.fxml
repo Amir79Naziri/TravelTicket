@@ -44,7 +44,6 @@
                     </font>
                 </JFXPasswordField>
                 <JFXButton fx:id="signUpButton" layoutX="188.0" layoutY="450.0" onAction="#actionHandler" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Sign Up" textFill="#acacac" />
-                <Label layoutX="265.0" layoutY="178.0" text="Label" />
                 <FontAwesomeIconView fill="#673ab7" glyphName="ID_CARD" layoutX="216.0" layoutY="118.0" size="60" />
                 <FontAwesomeIconView fill="#673ab7" glyphName="KEY" layoutX="77.0" layoutY="329.0" size="15" />
                 <FontAwesomeIconView fill="#673ab7" glyphName="PHONE" layoutX="75.0" layoutY="266.0" size="15" />
@@ -67,9 +66,9 @@
             <Hyperlink fx:id="backToLoginLink" layoutX="277.0" layoutY="536.0" onAction="#actionHandler" text="Back To Login" textFill="#7447c7" />
             <Line endX="3.0" endY="30.20001220703125" layoutX="249.0" layoutY="529.0" startX="3.0" startY="7.0" stroke="#676767" />
             <Hyperlink fx:id="signUpWithEmailLink" layoutX="120.0" layoutY="536.0" onAction="#actionHandler" text="Sign Up with Email" textFill="#7447c7" />
-            <Label fx:id="invalidPhoneNumberWarnLabel" layoutX="295.0" layoutY="282.0" prefHeight="18.0" prefWidth="124.0" text="Invalid phone Number" textFill="#cccfd5" />
-            <Label fx:id="passwordComplexityWarnLabel" layoutX="112.0" layoutY="344.0" text="Use 8 or more characters with a mix of letters &amp; numbers " textFill="#cfcfcf" />
-            <Label fx:id="passwordMissMatchWarnLabel" layoutX="283.0" layoutY="407.0" text=" passwords didn’t match" textFill="#d7d7d7" />
+            <Label fx:id="invalidPhoneNumberWarnLabel" layoutX="295.0" layoutY="282.0" prefHeight="18.0" prefWidth="124.0" text="Invalid phone Number" textFill="#fd0f0f" />
+            <Label fx:id="passwordComplexityWarnLabel" layoutX="112.0" layoutY="344.0" text="Use 8 or more characters with a mix of letters &amp; numbers " textFill="#fd0f0f" />
+            <Label fx:id="passwordMissMatchWarnLabel" layoutX="283.0" layoutY="407.0" text=" passwords didn’t match" textFill="#fd0f0f" />
             </children>
         </AnchorPane>
     </center>

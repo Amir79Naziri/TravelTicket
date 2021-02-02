@@ -4,10 +4,14 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller
+
+public class Controller implements Initializable
 {
     @FXML
     protected JFXPasswordField password;
@@ -16,7 +20,7 @@ public class Controller
     protected JFXButton loginButton;
 
     @FXML
-    private Label CouldNotFindYourAccountWarnLabel;
+    protected Label couldNotFindYourAccountWarnLabel;
 
 
 
@@ -27,5 +31,10 @@ public class Controller
             System.out.println ("log in");
         }
 
+    }
+
+    @Override
+    public void initialize (URL location, ResourceBundle resources) {
+        couldNotFindYourAccountWarnLabel.setVisible (false);
     }
 }

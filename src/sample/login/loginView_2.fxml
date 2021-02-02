@@ -55,7 +55,7 @@
                     </font>
                 </Label>
             <Hyperlink fx:id="signUpLink" layoutX="228.0" layoutY="472.0" onAction="#actionHandler" text="Sign Up" textFill="#7447c7" />
-            <Label fx:id="CouldNotFindYourAccountWarnLabel" layoutX="180.0" layoutY="395.0" text="Couldn't Find Your Account" textFill="#d5d4d4" />
+            <Label fx:id="couldNotFindYourAccountWarnLabel" layoutX="180.0" layoutY="395.0" text="Couldn't Find Your Account" textFill="#fd0f0f" />
             </children>
         </AnchorPane>
     </center>

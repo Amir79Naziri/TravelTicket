@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
@@ -12,8 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PhoneLoginController extends Controller{
+
+public class PhoneLoginController extends Controller
+        implements Initializable {
 
     @FXML
     private JFXTextField phoneNumber;
@@ -71,4 +76,9 @@ public class PhoneLoginController extends Controller{
 //            }
     }
 
+    @Override
+    public void initialize (URL location, ResourceBundle resources) {
+        super.initialize (location, resources);
+        invalidPhoneNumberWarnLabel.setVisible (false);
+    }
 }

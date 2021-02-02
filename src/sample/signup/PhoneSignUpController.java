@@ -12,6 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 
 public class PhoneSignUpController extends Controller{
 
@@ -71,4 +74,9 @@ public class PhoneSignUpController extends Controller{
 //        }
     }
 
+    @Override
+    public void initialize (URL location, ResourceBundle resources) {
+        super.initialize (location, resources);
+        invalidPhoneNumberWarnLabel.setVisible (false);
+    }
 }

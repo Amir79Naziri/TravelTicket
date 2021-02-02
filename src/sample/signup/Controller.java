@@ -4,11 +4,14 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class Controller
+public class Controller implements Initializable
 {
     @FXML
     protected JFXPasswordField password;
@@ -20,10 +23,10 @@ public class Controller
     protected JFXButton signUpButton;
 
     @FXML
-    private Label passwordComplexityWarnLabel;
+    protected Label passwordComplexityWarnLabel;
 
     @FXML
-    private Label passwordMissMatchWarnLabel;
+    protected Label passwordMissMatchWarnLabel;
 
     @FXML
     protected void actionHandler(ActionEvent event) throws Exception {
@@ -87,5 +90,11 @@ public class Controller
             }
         }
         return false;
+    }
+
+    @Override
+    public void initialize (URL location, ResourceBundle resources) {
+        passwordMissMatchWarnLabel.setVisible (false);
+        passwordComplexityWarnLabel.setVisible (false);
     }
 }
