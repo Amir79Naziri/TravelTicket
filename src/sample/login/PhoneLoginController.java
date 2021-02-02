@@ -22,6 +22,9 @@ public class PhoneLoginController extends Controller{
     private Hyperlink enterWithEmailLink;
 
     @FXML
+    protected Hyperlink signUpLink;
+
+    @FXML
     private JFXTextField phoneNumberCode;
 
     @FXML
@@ -43,6 +46,10 @@ public class PhoneLoginController extends Controller{
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+        }
+        else if (event.getSource () == signUpLink){
+            // TODO : go to sign up scene
+            System.out.println ("go to sign UP");
         }
     }
 

@@ -42,7 +42,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </JFXPasswordField>
-                <JFXButton fx:id="login" layoutX="188.0" layoutY="425.0" onAction="#actionHandler" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Login" textFill="#acacac" />
+                <JFXButton fx:id="loginButton" layoutX="188.0" layoutY="425.0" onAction="#actionHandler" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Login" textFill="#acacac" />
                 <Hyperlink layoutX="93.0" layoutY="536.0" text="Forgot Your Password ?" textFill="#7447c7" />
                 <Line endX="3.0" endY="30.20001220703125" layoutX="249.0" layoutY="529.0" startX="3.0" startY="7.0" stroke="#676767" />
                 <Hyperlink fx:id="enterWithPhoneNumberLink" layoutX="279.0" layoutY="536.0" onAction="#actionHandler" text="Enter with Phone Number" textFill="#7447c7" />

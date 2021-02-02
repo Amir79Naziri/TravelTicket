@@ -14,8 +14,7 @@ public class Controller
     @FXML
     protected JFXButton loginButton;
 
-    @FXML
-    protected Hyperlink signUpLink;
+
 
 
     protected void actionHandler(ActionEvent event) throws Exception {
@@ -24,9 +23,6 @@ public class Controller
             // TODO : login here
             System.out.println ("log in");
         }
-        else if (event.getSource () == signUpLink){
-            // TODO : go to sign up scene
-            System.out.println ("go to sign UP");
-        }
+
     }
 }
