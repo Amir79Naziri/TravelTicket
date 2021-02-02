@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="165.0" prefWidth="536.0" style="-fx-background-color: #B2B2B2;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Tickets.TicketController">
+   <children>
+      <Line endX="5.199981689453125" endY="15.5" layoutX="480.0" layoutY="77.0" startX="-32.0" startY="15.500015258789062" stroke="#c5a030" />
+      <Label alignment="CENTER" layoutX="382.0" layoutY="38.0" prefHeight="35.0" prefWidth="78.0" text="2021/2/1" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="289.0" layoutY="38.0" prefHeight="35.0" prefWidth="68.0" text="11:30 PM" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Line endX="-401.0" endY="125.00001525878906" layoutX="489.0" layoutY="22.0" startX="-401.0" startY="-4.200000762939453" stroke="#c5a030" />
+      <Label fx:id="cost" alignment="CENTER" layoutX="6.0" layoutY="13.0" prefHeight="50.0" prefWidth="78.0" text="600$" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="376.0" layoutY="104.0" prefHeight="35.0" prefWidth="90.0" text="2021/2/2" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="271.0" layoutY="108.0" prefHeight="27.0" prefWidth="78.0" text="01:30 AM" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="189.0" layoutY="36.0" prefHeight="35.0" prefWidth="78.0" text="Tehran" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="180.0" layoutY="103.0" prefHeight="35.0" prefWidth="96.0" text="Istanbul" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="66.0" fitWidth="104.0" layoutX="81.0" layoutY="61.0">
+         <image>
+            <Image url="@Pictures/turkish-airlines-logos-png-1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="486.0" layoutY="32.0" opacity="0.3">
+         <image>
+            <Image url="@Pictures/departures.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="486.0" layoutY="97.0" opacity="0.3">
+         <image>
+            <Image url="@Pictures/landing.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="401.0" layoutY="75.0">
+         <image>
+            <Image url="@Pictures/iconfinder_calendar-70px_510869.png" />
+         </image>
+      </ImageView>
+      <Line endX="57.000030517578125" endY="16.9000244140625" layoutX="341.0" layoutY="76.0" startX="-9.600006103515625" startY="16.900009155273438" stroke="#c5a030" />
+      <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="300.0" layoutY="79.0">
+         <image>
+            <Image url="@Pictures/clock.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="213.0" layoutY="79.0">
+         <image>
+            <Image url="@Pictures/loc.png" />
+         </image>
+      </ImageView>
+      <Line endX="41.79998779296875" endY="16.900009155273438" layoutX="255.0" layoutY="76.0" startX="-9.600006103515625" startY="16.900009155273438" stroke="#c5a030" />
+      <Line endX="-11.4000244140625" endY="16.9000244140625" layoutX="224.0" layoutY="76.0" startX="-47.4000244140625" startY="16.9000244140625" stroke="#c5a030" />
+      <JFXButton alignment="TOP_CENTER" buttonType="RAISED" layoutX="8.0" layoutY="74.0" prefHeight="66.0" prefWidth="68.0" style="-fx-background-color: #C5A030; -fx-background-radius: 10px;" text="Purchase">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="35.0" fitWidth="46.0" layoutX="15.0" layoutY="99.0">
+         <image>
+            <Image url="@Pictures/Purchase.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
