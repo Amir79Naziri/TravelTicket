@@ -1,5 +1,6 @@
 package sample.Tickets;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -33,6 +34,9 @@ public class TicketsPageController implements Initializable
     private final Pane pane3 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
     private final Pane pane4 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
     private final Pane pane5 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
+    private final Pane pane6 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
+    private final Pane pane7 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
+    private final Pane pane8 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
 
     public TicketsPageController() throws IOException {
     }
@@ -45,7 +49,7 @@ public class TicketsPageController implements Initializable
         timeOrder.setItems(choices);
 
         tickets = FXCollections.observableArrayList();
-        tickets.addAll(pane1, pane2, pane3, pane4, pane5);
+        tickets.addAll(pane1, pane2, pane3, pane4, pane5, pane6, pane7, pane8);
         list.setItems(tickets);
     }
 }

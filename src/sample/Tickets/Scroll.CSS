@@ -1,16 +1,13 @@
-.scroll-pane {
-    -fx-background-color:   #2A2E37 ;
+.jfx-list-cell
+{
+    -fx-background-color:  #2A2E37;
+    -fx-background-insets: 0.0;
 }
 
-.scroll-bar:horizontal, .scroll-bar:vertical{
-    -fx-background-color:transparent;
-    -fx-pref-width: 16.5;
-    -fx-padding: 5;
-}
-
-.increment-button, .decrement-button {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color:  -fx-deepPurple;
+    -fx-background-radius: 1em;
 }
 
 .scroll-bar:horizontal .track,
@@ -20,25 +17,17 @@
     -fx-background-radius: 0em;
 }
 
-.scroll-bar:horizontal .thumb,
-.scroll-bar:vertical .thumb {
-    -fx-background-color:  #673AB7;
-    -fx-background-radius: 1em;
+.scroll-pane {
+    -fx-background-color:   #2A2E37 ;
 }
 
-.jfx-list-cell
-{
-    -fx-background-color:  #2A2E37;
-    -fx-background-insets: 0.0;
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-pref-width: 9;
+    -fx-background-color:transparent;
 }
 
-
-.jfx-list-cell:selected
-{
-    -fx-background-color: #c5a030;
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }
 
-.jfx-list-cell:hover
-{
-    -fx-background-color:  #673AB7;
-}
