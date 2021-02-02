@@ -4,6 +4,8 @@
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
     -fx-background-color:transparent;
+    -fx-pref-width: 16.5;
+    -fx-padding: 5;
 }
 
 .increment-button, .decrement-button {
