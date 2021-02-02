@@ -1,0 +1,109 @@
+{
+    -fx-primary : #2A2E37;
+    -fx-secondary : #FFFF8D;
+    -fx-primarytext : #B2B2B2;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+    -fx-color-1:#1976D2;
+    -fx-deepPurple: #673AB7;
+    -fx-lightGray: #B2B2B2;
+    -fx-gold: #C5A030;
+    -fx-violetBlue: #2A2E37;
+}
+
+.root{
+    -fx-background-color: -fx-primary;
+}
+
+.glyph-icon
+{
+    -fx-fill: -fx-primarytext;
+}
+
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-deepPurple;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 10pt;
+}
+
+.button:hover, .button:focused{
+    -fx-border-color: -fx-deepPurple;
+    -fx-background-color: -fx-deepPurple;
+    -fx-text-fill: -fx-primary;
+}
+
+.text-field
+{
+    -fx-pref-width: 250;
+    -fx-pref-height: 30;
+    -fx-text-fill: white;
+    -fx-font-size : 11pt;
+    -jfx-focus-color: -fx-deepPurple;
+    -fx-text-fill: derive(white, 20%);
+}
+
+/*Login Screen Specific*/
+
+
+.wrong-credentials
+{
+    -jfx-unfocus-color: #ef5350;
+    -jfx-focus-color: #ef5350;
+}
+
+
+
+
+
+
+.tab {
+    -fx-pref-width: 260;
+    -fx-pref-height: 40;
+    -fx-background-color:  #673AB7;
+}
+
+.tab:selected{
+    -fx-border-color: -fx-primary;
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: black;
+}
+
+.tab-header-background {
+    -fx-background-color:  -fx-primary;
+}
+
+.tab-label{
+    -fx-text-fill: white;
+    -fx-font-size: 10pt;
+}
+
+.tab-main{
+    -fx-pref-height : 60;
+    -fx-max-height : 200;
+}
+
+.settings-tab{
+    -fx-background-color: derive(-fx-primary, 10%);
+    -fx-padding: 50px 20px 5px 20px;
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-pref-height: 0;
+    -fx-background-color: #673AB7;
+}
+
+.settings-tab:selected{
+    -fx-background-color: -fx-secondary;
+    -fx-pref-width: 0;
+}
+
+.settings-tab:selected .tab-label{
+    -fx-text-fill: -fx-primary;
+}
+
+.settings-tab .tab-header-background{
+    -fx-background-color: derive(-fx-primary, -50%);
+}

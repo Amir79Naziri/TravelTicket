@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+
+<!--        xmlns="http://javafx.com/javafx"-->
+<!--        xmlns:fx="http://javafx.com/fxml"-->
+<!--        fx:controller="sample.Profile.ProfileView"-->
+<!--        prefHeight="400.0" prefWidth="600.0">-->
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@profileTheme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <top>
+                <AnchorPane prefHeight="61.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Line endX="200.0" endY="30.0" startY="30.0" stroke="#c5a030" />
+                        <Line endX="800.0" endY="30.0" startX="610.0" startY="30.0" stroke="#c5a030" />
+                        <JFXButton layoutX="219.0" layoutY="13.0" prefHeight="32.0" prefWidth="85.0" style="-fx-background-radius: 0px; -fx-border-radius: 0px;" />
+                        <FontAwesomeIconView glyphName="HOME" layoutX="250.0" layoutY="37.0" size="25" />
+                        <JFXButton layoutX="492.0" layoutY="15.0" prefHeight="32.0" prefWidth="85.0" style="-fx-background-radius: 0px; -fx-border-radius: 0px;" />
+                        <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="523.0" layoutY="39.0" size="25" />
+                        <Line endX="460.0" endY="30.0" startX="330.0" startY="30.0" stroke="#c5a030" />
+                    </children>
+                </AnchorPane>
+            </top>
+            <center>
+                <JFXTabPane BorderPane.alignment="CENTER">
+                    <tabs>
+                        <Tab text="Wallet">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            </content>
+                            <graphic>
+                                <Label>
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="CREDIT_CARD" size="20" />
+                                    </graphic>
+                                </Label>
+                            </graphic>
+                        </Tab>
+                        <Tab text="Travel History">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            </content>
+                            <graphic>
+                                <Label>
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="LIST_OL" size="20" />
+                                    </graphic>
+                                </Label>
+                            </graphic>
+                        </Tab>
+                        <Tab style="-fx-pref-width: 264;" text="Account">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <JFXTextField layoutX="110.0" layoutY="191.0" />
+                                        <JFXTextField layoutX="110.0" layoutY="279.0" />
+                                        <Label layoutX="110.0" layoutY="173.0" text="First Name" textFill="#b2b2b2" />
+                                        <Label layoutX="111.0" layoutY="261.0" text="Last Name" textFill="#b2b2b2" />
+                                        <JFXTextField layoutX="110.0" layoutY="360.0" />
+                                        <Label layoutX="110.0" layoutY="343.0" text="Social Security Number" textFill="#b2b2b2" />
+                                        <JFXTextField layoutX="442.0" layoutY="191.0" />
+                                        <JFXTextField editable="false" layoutX="442.0" layoutY="279.0" style="-fx-pref-width: 25; -fx-text-fill: #B2B2B2;" text="+98" />
+                                        <Label layoutX="442.0" layoutY="173.0" text="Email" textFill="#b2b2b2" />
+                                        <Label layoutX="442.0" layoutY="263.0" text="Phone Number" textFill="#b2b2b2" />
+                                        <JFXTextField layoutX="442.0" layoutY="360.0" />
+                                        <Label layoutX="442.0" layoutY="343.0" text="Bank Account Number" textFill="#b2b2b2" />
+                                        <Line endX="400.0" endY="430.0" startX="400.0" startY="140.0" stroke="#4d4d4d" />
+                                        <JFXButton layoutX="358.0" layoutY="435.0" prefWidth="80.0" text="Edit" />
+                                        <JFXCheckBox checkedColor="#333333" layoutX="692.0" layoutY="197.0" selected="true" />
+                                        <JFXCheckBox checkedColor="#333333" layoutX="692.0" layoutY="285.0" selected="true" />
+                                        <Line endX="380.0" endY="140.0" startX="10.0" startY="140.0" stroke="#4d4d4d" />
+                                        <Line endX="430.0" endY="430.0" startX="370.0" startY="430.0" stroke="#4d4d4d" />
+                                        <Line endX="10.0" endY="170.0" startX="10.0" startY="110.0" stroke="#4d4d4d" />
+                                        <Line endX="790.0" endY="140.0" startX="420.0" startY="140.0" stroke="#4d4d4d" />
+                                        <Line endX="790.0" endY="170.0" startX="790.0" startY="110.0" stroke="#4d4d4d" />
+                                        <ImageView fitHeight="97.0" fitWidth="121.0" layoutX="111.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+                                        <JFXButton layoutX="553.0" layoutY="43.0" text="Upload Avatar" />
+                                        <JFXButton layoutX="543.0" layoutY="94.0" text="Change Password" />
+                                        <FontAwesomeIconView glyphName="USER" layoutX="155.0" layoutY="90.0" size="45" />
+                                        <JFXTextField layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                            <graphic>
+                                <Label>
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="USER" size="20" />
+                                    </graphic>
+                                </Label>
+                            </graphic>
+                        </Tab>
+                    </tabs>
+                    <BorderPane.margin>
+                        <Insets left="6.0" />
+                    </BorderPane.margin>
+                </JFXTabPane>
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>
