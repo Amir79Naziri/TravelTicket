@@ -23,3 +23,20 @@
     -fx-background-color:  #673AB7;
     -fx-background-radius: 1em;
 }
+
+.jfx-list-cell
+{
+    -fx-background-color:  #2A2E37;
+    -fx-background-insets: 0.0;
+}
+
+
+.jfx-list-cell:selected
+{
+    -fx-background-color: #c5a030;
+}
+
+.jfx-list-cell:hover
+{
+    -fx-background-color:  #673AB7;
+}

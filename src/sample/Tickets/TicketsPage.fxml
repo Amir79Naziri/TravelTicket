@@ -4,12 +4,12 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -158,7 +158,6 @@
                </children>
             </GridPane>
          </content></ScrollPane>
-      <ListView fx:id="list" layoutX="10.0" layoutY="137.0" prefHeight="453.0" prefWidth="610.0" style="-fx-background-color: #2A2E37;" />
       <JFXDatePicker defaultColor="#333333" layoutX="10.0" layoutY="97.0" promptText="          Flight Date" style="-fx-background-color: #673ab7;" stylesheets="@../../../help.css" />
       <JFXBadge layoutX="137.0" layoutY="68.0" />
       <JFXTimePicker defaultColor="#333333" layoutX="190.0" layoutY="97.0" promptText="          Flight Time" style="-fx-background-color: #673AB7;" />
@@ -200,6 +199,7 @@
             <Image url="@Pictures/AirplaneReal.png" />
          </image>
       </ImageView>
+      <JFXListView fx:id="list" depth="1" layoutX="9.0" layoutY="140.0" prefHeight="438.0" prefWidth="610.0" style="-fx-background-color: #2A2E37;" />
    </children>
    <stylesheets>
       <URL value="@../../../help.css" />
