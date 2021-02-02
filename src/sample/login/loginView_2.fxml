@@ -17,7 +17,7 @@
     <left>
         <AnchorPane prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #673AB7;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="18.0" layoutY="300.0" text="Easy Travel with TravelTicket" textFill="#333333">
+            <Label layoutX="18.0" layoutY="300.0" text="Easy Travel with TravelTicket" textFill="#2a2e37">
                <font>
                   <Font name="Eras Medium ITC" size="21.0" />
                </font>
@@ -30,24 +30,23 @@
          </children></AnchorPane>
     </left>
     <center>
-        <AnchorPane prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #333333;" BorderPane.alignment="CENTER">
+        <AnchorPane onDragDetected="#actionHandler" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #2A2E37;" BorderPane.alignment="CENTER">
             <children>
-                <JFXTextField focusColor="#673ab7" layoutX="107.0" layoutY="284.0" prefHeight="31.0" prefWidth="290.0" promptText="email" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
+                <JFXTextField fx:id="email" focusColor="#673ab7" layoutX="107.0" layoutY="284.0" prefHeight="31.0" prefWidth="290.0" promptText="email" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </JFXTextField>
-                <JFXPasswordField focusColor="#673ab7" layoutX="107.0" layoutY="345.0" prefHeight="31.0" prefWidth="290.0" promptText="password" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
+                <JFXPasswordField fx:id="password" focusColor="#673ab7" layoutX="107.0" layoutY="345.0" prefHeight="31.0" prefWidth="290.0" promptText="password" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </JFXPasswordField>
-                <JFXButton layoutX="188.0" layoutY="425.0" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #673AB7;" text="Login" textFill="#acacac" />
+                <JFXButton fx:id="login" layoutX="188.0" layoutY="425.0" onAction="#actionHandler" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Login" textFill="#acacac" />
                 <Hyperlink layoutX="93.0" layoutY="536.0" text="Forgot Your Password ?" textFill="#7447c7" />
                 <Line endX="3.0" endY="30.20001220703125" layoutX="249.0" layoutY="529.0" startX="3.0" startY="7.0" stroke="#676767" />
-                <Hyperlink layoutX="279.0" layoutY="536.0" text="Enter with Phone Number" textFill="#7447c7" />
-                <Label layoutX="265.0" layoutY="178.0" text="Label" />
-                <FontAwesomeIconView fill="#673ab7" glyphName="USERS" layoutX="216.0" layoutY="118.0" size="60" />
+                <Hyperlink fx:id="enterWithPhoneNumberLink" layoutX="279.0" layoutY="536.0" onAction="#actionHandler" text="Enter with Phone Number" textFill="#7447c7" />
+                <FontAwesomeIconView fill="#673ab7" glyphName="USER_CIRCLE" layoutX="216.0" layoutY="118.0" size="60" />
                 <FontAwesomeIconView fill="#673ab7" glyphName="KEY" layoutX="77.0" layoutY="368.0" size="15" />
                 <FontAwesomeIconView fill="#673ab7" glyphName="ENVELOPE" layoutX="75.0" layoutY="306.0" size="15" />
                 <Label layoutX="186.0" layoutY="139.0" text="User Login" textFill="#673ab7">
@@ -55,7 +54,7 @@
                         <Font name="System Bold" size="26.0" />
                     </font>
                 </Label>
-            <Hyperlink layoutX="228.0" layoutY="472.0" text="Sign Up" textFill="#7447c7" />
+            <Hyperlink fx:id="signUpLink" layoutX="228.0" layoutY="472.0" onAction="#actionHandler" text="Sign Up" textFill="#7447c7" />
             </children>
         </AnchorPane>
     </center>

@@ -18,7 +18,7 @@
         <AnchorPane prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #673AB7;" BorderPane.alignment="CENTER">
             <children>
 
-                <Label layoutX="18.0" layoutY="300.0" text="Easy Travel with TravelTicket" textFill="#333333">
+                <Label layoutX="18.0" layoutY="300.0" text="Easy Travel with TravelTicket" textFill="#2a2e37">
                     <font>
                         <Font name="Eras Medium ITC" size="21.0" />
                     </font>
@@ -31,17 +31,16 @@
             </children></AnchorPane>
     </left>
     <center>
-        <AnchorPane prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #333333;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #2A2E37;" BorderPane.alignment="CENTER">
             <children>
                 <JFXPasswordField focusColor="#673ab7" layoutX="107.0" layoutY="306.0" prefHeight="31.0" prefWidth="290.0" promptText="password" style="-fx-text-inner-color: #acacac;" unFocusColor="#676767">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </JFXPasswordField>
-                <JFXButton layoutX="227.0" layoutY="496.0" />
-                <JFXButton layoutX="188.0" layoutY="450.0" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #673AB7;" text="Sign Up" textFill="#acacac" />
+                <JFXButton layoutX="188.0" layoutY="450.0" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Sign Up" textFill="#acacac" />
                 <Label layoutX="265.0" layoutY="178.0" text="Label" />
-                <FontAwesomeIconView fill="#673ab7" glyphName="USERS" layoutX="216.0" layoutY="118.0" size="60" />
+                <FontAwesomeIconView fill="#673ab7" glyphName="ID_CARD" layoutX="216.0" layoutY="118.0" size="60" />
                 <FontAwesomeIconView fill="#673ab7" glyphName="KEY" layoutX="77.0" layoutY="329.0" size="15" />
                 <Label layoutX="170.0" layoutY="139.0" text="User Sign Up" textFill="#673ab7">
                     <font>
