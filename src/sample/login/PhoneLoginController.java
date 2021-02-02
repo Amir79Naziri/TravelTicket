@@ -37,8 +37,31 @@ public class PhoneLoginController extends Controller
 
     @FXML
     protected void actionHandler(ActionEvent event) throws Exception{
-        super.actionHandler (event);
-        if (event.getSource () == enterWithEmailLink)
+        if (event.getSource () == loginButton)
+        {
+            boolean validPassword = super.isPasswordValid (), validPhone;
+
+
+            if (phoneNumber.getText ().length () != 10)
+            {
+                if (!invalidPhoneNumberWarnLabel.isVisible ())
+                    invalidPhoneNumberWarnLabel.setVisible (true);
+
+                validPhone = false;
+            }
+            else
+            {
+                validPhone = !invalidPhoneNumberWarnLabel.isVisible ();
+            }
+
+
+            if (validPhone && validPassword)
+            {
+                // TODO : login here
+                System.out.println ("log in");
+            }
+        }
+        else if (event.getSource () == enterWithEmailLink)
         {
 
             Stage stage;
@@ -67,13 +90,27 @@ public class PhoneLoginController extends Controller
 
     @FXML
     protected void keyHandler(KeyEvent event) {
-//        for (char c : phoneNumber.getText ().toCharArray ())
-//            if (c >= '9' || c <= '0')
-//            {
-//                //TODO : warn user
-//                System.out.println ("invalid phone number");
-//                break;
-//            }
+
+        if (phoneNumber.getText ().length () != 10 &&
+                phoneNumber.getText ().length () != 0)
+        {
+            if (!invalidPhoneNumberWarnLabel.isVisible ())
+                invalidPhoneNumberWarnLabel.setVisible (true);
+            return;
+        }
+        else
+        {
+            for (char c : phoneNumber.getText ().toCharArray ())
+                if (c > '9' || c < '0')
+                {
+                    if (!invalidPhoneNumberWarnLabel.isVisible ())
+                        invalidPhoneNumberWarnLabel.setVisible (true);
+                    return;
+                }
+        }
+        if (invalidPhoneNumberWarnLabel.isVisible ())
+            invalidPhoneNumberWarnLabel.setVisible (false);
+
     }
 
     @Override

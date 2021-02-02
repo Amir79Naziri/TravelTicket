@@ -7,7 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class EmailLoginController extends Controller
 {
@@ -21,9 +24,34 @@ public class EmailLoginController extends Controller
     private Hyperlink enterWithPhoneNumberLink;
 
     @FXML
+    private Label invalidEmailWarnLabel;
+
+    @FXML
     protected void actionHandler(ActionEvent event) throws Exception{
-        super.actionHandler (event);
-        if (event.getSource () == enterWithPhoneNumberLink)
+        if (event.getSource () == loginButton)
+        {
+            boolean validPassword = super.isPasswordValid (), validEmail = true;
+
+            if (email.getText ().length () == 0)
+            {
+                if (!invalidEmailWarnLabel.isVisible ())
+                    invalidEmailWarnLabel.setVisible (true);
+
+                validEmail = false;
+            }
+            else
+            {
+                if (invalidEmailWarnLabel.isVisible ())
+                    invalidEmailWarnLabel.setVisible (false);
+            }
+
+            if (validEmail && validPassword)
+            {
+                // TODO : login here
+                System.out.println ("log in");
+            }
+        }
+        else if (event.getSource () == enterWithPhoneNumberLink)
         {
 
             Stage stage;
@@ -48,5 +76,11 @@ public class EmailLoginController extends Controller
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    @Override
+    public void initialize (URL location, ResourceBundle resources) {
+        super.initialize (location, resources);
+        invalidEmailWarnLabel.setVisible (false);
     }
 }

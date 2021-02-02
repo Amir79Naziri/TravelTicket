@@ -24,7 +24,7 @@
             </Label>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="133.0">
                <image>
-                  <Image url="@logos/logo_2.png" />
+                  <Image url="@pictures/logo_2.png" />
                </image>
             </ImageView>
          </children></AnchorPane>
@@ -55,7 +55,25 @@
                     </font>
                 </Label>
             <Hyperlink fx:id="signUpLink" layoutX="228.0" layoutY="472.0" onAction="#actionHandler" text="Sign Up" textFill="#7447c7" />
-            <Label fx:id="couldNotFindYourAccountWarnLabel" layoutX="180.0" layoutY="395.0" text="Couldn't Find Your Account" textFill="#fd0f0f" />
+            <Label fx:id="couldNotFindYourAccountWarnLabel" layoutX="169.0" layoutY="212.0" text="couldn't find your account" textFill="#fd0f0f">
+               <graphic>
+                  <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+               </graphic></Label>
+            <Label fx:id="invalidEmailWarnLabel" layoutX="280.0" layoutY="326.0" prefHeight="18.0" prefWidth="138.0" text="invalid email" textFill="#fd0f0f">
+               <graphic>
+                  <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+               </graphic>
+            </Label>
+            <Label fx:id="invalidPasswordWarnLabel" layoutX="279.0" layoutY="386.0" prefHeight="18.0" prefWidth="138.0" text="invalid password" textFill="#fd0f0f">
+               <graphic>
+                  <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+               </graphic>
+            </Label>
+            <Label fx:id="connectionLostWarnLabel" layoutX="172.0" layoutY="180.0" prefHeight="18.0" prefWidth="158.0" text="conncection lost , try again" textFill="#fd0f0f">
+               <graphic>
+                  <FontAwesomeIconView fill="#fd0f0f" glyphName="FEED" />
+               </graphic>
+            </Label>
             </children>
         </AnchorPane>
     </center>
