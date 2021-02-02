@@ -22,7 +22,7 @@ public class PhoneLoginController extends Controller{
     private Hyperlink enterWithEmailLink;
 
     @FXML
-    protected Hyperlink signUpLink;
+    private Hyperlink signUpLink;
 
     @FXML
     private JFXTextField phoneNumberCode;
@@ -35,8 +35,7 @@ public class PhoneLoginController extends Controller{
         super.actionHandler (event);
         if (event.getSource () == enterWithEmailLink)
         {
-            // TODO : go to enter with email scene
-            System.out.println ("go to enter with email");
+
             Stage stage;
             Parent root;
 
@@ -48,29 +47,28 @@ public class PhoneLoginController extends Controller{
             stage.show();
         }
         else if (event.getSource () == signUpLink){
-            // TODO : go to sign up scene
-            System.out.println ("go to sign UP");
+
+            Stage stage;
+            Parent root;
+
+            stage = (Stage) signUpLink.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("/sample/signup/signUpView.fxml"));
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
     }
 
     @FXML
     protected void keyHandler(KeyEvent event) {
-        if (phoneNumber.getText ().length () != 10)
-        {
-            //TODO : warn user
-            System.out.println ("invalid phone number");
-
-        }
-        else
-        {
-            for (char c : phoneNumber.getText ().toCharArray ())
-                if (c >= '9' || c <= '0')
-                {
-                    //TODO : warn user
-                    System.out.println ("invalid phone number");
-                    break;
-                }
-        }
+        for (char c : phoneNumber.getText ().toCharArray ())
+            if (c >= '9' || c <= '0')
+            {
+                //TODO : warn user
+                System.out.println ("invalid phone number");
+                break;
+            }
     }
 
 }

@@ -15,7 +15,7 @@ public class EmailLoginController extends Controller
     private JFXTextField email;
 
     @FXML
-    protected Hyperlink signUpLink;
+    private Hyperlink signUpLink;
 
     @FXML
     private Hyperlink enterWithPhoneNumberLink;
@@ -25,8 +25,7 @@ public class EmailLoginController extends Controller
         super.actionHandler (event);
         if (event.getSource () == enterWithPhoneNumberLink)
         {
-            // TODO : go to enter with phone number scene
-            System.out.println ("go to enter with email");
+
             Stage stage;
             Parent root;
 
@@ -38,8 +37,16 @@ public class EmailLoginController extends Controller
             stage.show();
         }
         else if (event.getSource () == signUpLink){
-            // TODO : go to sign up scene
-            System.out.println ("go to sign UP");
+
+            Stage stage;
+            Parent root;
+
+            stage = (Stage) signUpLink.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("/sample/signup/signUpView_2.fxml"));
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
     }
 }
