@@ -80,7 +80,7 @@
       </ImageView>
       <Line endX="41.79998779296875" endY="16.900009155273438" layoutX="255.0" layoutY="76.0" startX="-9.600006103515625" startY="16.900009155273438" stroke="#c5a030" />
       <Line endX="-11.4000244140625" endY="16.9000244140625" layoutX="224.0" layoutY="76.0" startX="-47.4000244140625" startY="16.9000244140625" stroke="#c5a030" />
-      <JFXButton alignment="TOP_CENTER" buttonType="RAISED" layoutX="8.0" layoutY="74.0" prefHeight="66.0" prefWidth="68.0" style="-fx-background-color: #C5A030; -fx-background-radius: 10px;" text="Purchase">
+      <JFXButton fx:id="purchaseButton" alignment="TOP_CENTER" buttonType="RAISED" layoutX="8.0" layoutY="74.0" onMouseReleased="#purchase" prefHeight="66.0" prefWidth="68.0" style="-fx-background-color: #C5A030; -fx-background-radius: 10px;" text="Purchase">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
