@@ -47,7 +47,7 @@
       </ImageView>
       <JFXListView fx:id="list" depth="1" layoutX="10.0" layoutY="149.0" prefHeight="450.0" prefWidth="780.0" style="-fx-background-color: #2A2E37;" />
       <Label layoutX="520.0" layoutY="80.0" prefHeight="22.0" prefWidth="53.0" text="Airlines" textFill="WHITE" />
-      <ChoiceBox layoutX="517.0" layoutY="105.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;" />
+      <ChoiceBox fx:id="airlines" layoutX="520.0" layoutY="105.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;" />
    </children>
    <stylesheets>
       <URL value="@../../../help.css" />
