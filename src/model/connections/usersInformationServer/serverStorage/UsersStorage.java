@@ -21,21 +21,6 @@ public class UsersStorage
         users = new ArrayList<> ();
     }
 
-    /**
-     * sets Users
-     * @param users users
-     */
-    public synchronized void setUsers (ArrayList<User> users) {
-        this.users = users;
-    }
-
-    /**
-     * get Users
-     * @return users
-     */
-    public synchronized ArrayList<User> getUsers () {
-        return users;
-    }
 
     /**
      * add User
@@ -67,46 +52,25 @@ public class UsersStorage
         return false;
     }
 
-//    /**
-//     * get user
-//     * @param userName userName
-//     * @param password password
-//     * @return user
-//     */
-//    public User getUser (String userName, char[] password)
-//    {
-//        isIterate = true;
-//        User user1 = new User (userName,password,null);
-//        for (User user : users)
-//        {
-//            if (user.equals (user1))
-//            {
-//                isIterate = false;
-//                return user;
-//            }
-//        }
-//        isIterate = false;
-//        return null;
-//    }
-//
-//    /**
-//     * has username used
-//     * @param userName userName
-//     * @return result
-//     */
-//    public boolean hasUserNameUsed (String userName)
-//    {
-//        User user = new User (userName,new char[]{'.','.','.'},null);
-//        isIterate = true;
-//        for (User user1 : users)
-//        {
-//            if (user1.getUserName ().equals (user.getUserName ()))
-//            {
-//                isIterate = false;
-//                return true;
-//            }
-//        }
-//        isIterate = false;
-//        return false;
-//    }
+    /**
+     * get user
+     * @param field email or password
+     * @param password password
+     * @param type 1 means phone , 2 means email
+     * @return user
+     */
+    public synchronized User getUser (String field, String password, int type)
+    {
+        User user1 = new User (field,password,type);
+        for (User user : users)
+        {
+            if (user.equals (user1))
+            {
+                return user;
+            }
+        }
+        return null;
+    }
+
+
 }
