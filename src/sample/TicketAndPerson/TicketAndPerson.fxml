@@ -127,19 +127,19 @@
                   <MenuItem mnemonicParsing="false" text="Mashhad" />
                </items>
             </MenuButton>
-            <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="172.0" layoutY="30.0" opacity="0.3">
+            <ImageView fx:id="outPlane" fitHeight="96.0" fitWidth="96.0" layoutX="172.0" layoutY="30.0" opacity="0.3">
                <image>
                   <Image url="@Pictures/departures.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="88.0" fitWidth="96.0" layoutX="555.0" layoutY="34.0" opacity="0.3">
+            <ImageView fx:id="inPlane" fitHeight="88.0" fitWidth="96.0" layoutX="555.0" layoutY="34.0" opacity="0.3">
                <image>
                   <Image url="@Pictures/landing.png" />
                </image>
             </ImageView>
-            <Line endX="131.0" endY="-53.399993896484375" layoutX="269.0" layoutY="243.0" startX="131.0" startY="-198.1999969482422" stroke="#b2b2b2" />
-            <Line endX="510.5999755859375" layoutX="283.0" layoutY="30.0" startX="-233.39999389648438" stroke="#b2b2b2" />
-            <JFXCheckBox checkedColor="#c5a030" contentDisplay="RIGHT" layoutX="260.0" layoutY="1.0" prefHeight="10.0" prefWidth="57.0" text="Train" textFill="#b2b2b2">
+            <Line endX="131.0" endY="-33.399993896484375" layoutX="269.0" layoutY="243.0" startX="131.0" startY="-198.1999969482422" stroke="#b2b2b2" />
+            <Line endX="510.5999755859375" layoutX="283.0" layoutY="30.0" startX="-233.39999389648438" stroke="#c5a030" />
+            <JFXCheckBox fx:id="TrainCheckBox" checkedColor="#c5a030" contentDisplay="RIGHT" layoutX="260.0" layoutY="1.0" onAction="#trainCheckBoxHandler" prefHeight="10.0" prefWidth="57.0" text="Train" textFill="#b2b2b2">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="25.0">
                      <image>
@@ -148,7 +148,7 @@
                   </ImageView>
                </graphic>
             </JFXCheckBox>
-            <JFXCheckBox checkedColor="#c5a030" contentDisplay="RIGHT" layoutX="449.0" layoutY="1.0" prefHeight="18.0" prefWidth="96.0" text="Airplane" textFill="#b2b2b2">
+            <JFXCheckBox fx:id="AirplaneCheckBox" checkedColor="#c5a030" contentDisplay="RIGHT" layoutX="449.0" layoutY="1.0" onAction="#airplaneCheckBoxHandler" prefHeight="18.0" prefWidth="96.0" selected="true" text="Airplane" textFill="#b2b2b2">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="22.0">
                      <image>
@@ -158,7 +158,7 @@
                </graphic>
             </JFXCheckBox>
             <Line endX="510.5999755859375" layoutX="262.0" layoutY="220.0" startX="-233.39999389648438" stroke="#b2b2b2" />
-            <Line endX="132.0" endY="-152.8000030517578" layoutX="269.0" layoutY="172.0" startX="132.0" startY="-186.20001220703125" stroke="#b2b2b2" />
+            <Line endX="131.0" endY="-152.8000030517578" layoutX="269.0" layoutY="172.0" startX="131.0" startY="-186.20001220703125" stroke="#c5a030" />
             <ImageView fitHeight="244.0" fitWidth="315.0" layoutX="244.0" layoutY="284.0">
                <image>
                   <Image url="@Pictures/TextLogo.png" />
@@ -173,7 +173,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Pane layoutX="515.0" layoutY="44.0" prefHeight="88.0" prefWidth="135.0">
+            <Pane fx:id="inTrain" layoutX="515.0" layoutY="44.0" prefHeight="88.0" prefWidth="135.0" visible="false">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="13.0" layoutY="25.0" opacity="0.36">
                      <image>
@@ -187,7 +187,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="136.0" layoutY="34.0" prefHeight="88.0" prefWidth="166.0">
+            <Pane fx:id="outTrain" layoutX="112.0" layoutY="34.0" prefHeight="88.0" prefWidth="166.0" visible="false">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="118.0" layoutY="37.0" opacity="0.36">
                      <image>
