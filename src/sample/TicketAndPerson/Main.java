@@ -1,5 +1,6 @@
 package sample.TicketAndPerson;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("TicketAndPerson.fxml"));
-        primaryStage.setTitle("Ticket And Person");
+        primaryStage.setTitle("SearchPage");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }

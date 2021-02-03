@@ -17,7 +17,7 @@
       <AnchorPane layoutX="-16.0" layoutY="104.0" prefHeight="535.0" prefWidth="800.0" stylesheets="@cssForMenue.css">
          <children>
             <JFXDatePicker defaultColor="#c5a030" layoutX="260.0" layoutY="228.0" prefHeight="34.0" prefWidth="135.0" promptText="Date of trip" style="-fx-background-color: #673AB7;" />
-            <MenuButton alignment="CENTER" layoutX="151.0" layoutY="154.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #673AB7;" stylesheets="@../../../../../../IdeaProjects/untitled3/src/sample/cssForMenue.css" text="      Origin   " textFill="#b2b2b2">
+            <MenuButton alignment="CENTER" layoutX="151.0" layoutY="154.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #673AB7;" stylesheets="@cssForMenue.css" text="      Origin   " textFill="#b2b2b2">
                <items>
                   <MenuItem mnemonicParsing="false" text="Tehran" />
                   <MenuItem mnemonicParsing="false" text="Shiraz" />
@@ -34,13 +34,13 @@
                   </ImageView>
                </graphic>
             </MenuButton>
-            <MenuButton alignment="CENTER" layoutX="412.0" layoutY="228.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #673AB7;" stylesheets="@../../../../../../IdeaProjects/untitled3/src/sample/cssForMenue.css" text="Companies" textFill="#b2b2b2">
+            <MenuButton alignment="CENTER" layoutX="412.0" layoutY="228.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #673AB7;" stylesheets="@cssForMenue.css" text="Companies" textFill="#b2b2b2">
                <items>
                   <MenuItem mnemonicParsing="false" text="Chinese Airlines">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="65.0">
                            <image>
-                              <Image url="@../../../../../../IdeaProjects/untitled3/src/sample/Pictures/China.png" />
+                              <Image url="@Pictures/China.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -49,7 +49,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="67.0">
                            <image>
-                              <Image url="@../../../../../../IdeaProjects/untitled3/src/sample/Pictures/British.png" />
+                              <Image url="@Pictures/British.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -58,7 +58,7 @@
                      <graphic>
                         <ImageView fitHeight="56.0" fitWidth="47.0">
                            <image>
-                              <Image url="@../../../../../../IdeaProjects/untitled3/src/sample/Pictures/Bangladesh.png" />
+                              <Image url="@Pictures/Bangladesh.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -67,7 +67,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="69.0">
                            <image>
-                              <Image url="@../../../../../../IdeaProjects/untitled3/src/sample/Pictures/American.png" />
+                              <Image url="@Pictures/American.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -76,7 +76,7 @@
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="63.0">
                            <image>
-                              <Image url="@../../../../../../IdeaProjects/untitled3/src/sample/Pictures/Malysia.png" />
+                              <Image url="@Pictures/Malysia.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -85,7 +85,7 @@
                      <graphic>
                         <ImageView fitHeight="58.0" fitWidth="61.0">
                            <image>
-                              <Image url="@../../../../../../IdeaProjects/untitled3/src/sample/Pictures/southwest.png" />
+                              <Image url="@Pictures/southwest.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -94,7 +94,7 @@
                      <graphic>
                         <ImageView fitHeight="34.0" fitWidth="59.0">
                            <image>
-                              <Image url="@../../../../../../IdeaProjects/untitled3/src/sample/Pictures/Qatar.png" />
+                              <Image url="@Pictures/Qatar.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -103,14 +103,14 @@
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="47.0">
                            <image>
-                              <Image url="@../../../../../../IdeaProjects/untitled3/src/sample/Pictures/Pegasus.png" />
+                              <Image url="@Pictures/Pegasus.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </MenuItem>
                </items>
             </MenuButton>
-            <MenuButton alignment="CENTER" layoutX="535.0" layoutY="154.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #673AB7;" stylesheets="@../../../../../../IdeaProjects/untitled3/src/sample/cssForMenue.css" text="Destination" textFill="#b2b2b2">
+            <MenuButton alignment="CENTER" layoutX="535.0" layoutY="154.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #673AB7;" stylesheets="@cssForMenue.css" text="Destination" textFill="#b2b2b2">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="31.0" opacity="0.3">
                      <image>
@@ -139,7 +139,7 @@
             </ImageView>
             <Line endX="131.0" endY="-53.399993896484375" layoutX="269.0" layoutY="243.0" startX="131.0" startY="-198.1999969482422" stroke="#b2b2b2" />
             <Line endX="510.5999755859375" layoutX="283.0" layoutY="30.0" startX="-233.39999389648438" stroke="#b2b2b2" />
-            <JFXCheckBox fx:id="trainc" checkedColor="#c5a030" contentDisplay="RIGHT" layoutX="260.0" layoutY="1.0" onAction="#trainCheck" prefHeight="10.0" prefWidth="57.0" text="Train" textFill="#b2b2b2">
+            <JFXCheckBox checkedColor="#c5a030" contentDisplay="RIGHT" layoutX="260.0" layoutY="1.0" prefHeight="10.0" prefWidth="57.0" text="Train" textFill="#b2b2b2">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="25.0">
                      <image>
@@ -177,7 +177,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="13.0" layoutY="25.0" opacity="0.36">
                      <image>
-                        <Image url="@Pictures/—Pngtree—vector%20location%20icon_3781982.png" />
+                        <Image url="@Pictures/loc.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="96.0" fitWidth="106.0" layoutX="39.0" layoutY="2.0">
@@ -191,7 +191,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="118.0" layoutY="37.0" opacity="0.36">
                      <image>
-                        <Image url="@Pictures/—Pngtree—vector%20location%20icon_3781982.png" />
+                        <Image url="@Pictures/loc.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="96.0" fitWidth="106.0" layoutX="38.0" layoutY="14.0">
