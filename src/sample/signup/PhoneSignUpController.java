@@ -31,6 +31,9 @@ public class PhoneSignUpController extends Controller{
     private Label invalidPhoneNumberWarnLabel;
 
     @FXML
+    private Label phoneNumberExistsWarnLabel;
+
+    @FXML
     protected void actionHandler(ActionEvent event) throws Exception {
         if (event.getSource () == signUpButton)
         {
@@ -108,5 +111,6 @@ public class PhoneSignUpController extends Controller{
     public void initialize (URL location, ResourceBundle resources) {
         super.initialize (location, resources);
         invalidPhoneNumberWarnLabel.setVisible (false);
+        phoneNumberExistsWarnLabel.setVisible (false);
     }
 }

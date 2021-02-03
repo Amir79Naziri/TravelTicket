@@ -29,6 +29,9 @@ public class EmailSignUpController extends Controller{
     private Label invalidEmailWarnLabel;
 
     @FXML
+    private Label emailExistsWarnLabel;
+
+    @FXML
     protected void actionHandler(ActionEvent event) throws Exception{
         if (event.getSource () == signUpButton)
         {
@@ -83,5 +86,6 @@ public class EmailSignUpController extends Controller{
     public void initialize (URL location, ResourceBundle resources) {
         super.initialize (location, resources);
         invalidEmailWarnLabel.setVisible (false);
+        emailExistsWarnLabel.setVisible (false);
     }
 }

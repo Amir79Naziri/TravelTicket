@@ -83,6 +83,11 @@
                   <FontAwesomeIconView fill="#fd0f0f" glyphName="FEED" />
                </graphic>
             </Label>
+            <Label fx:id="phoneNumberExistsWarnLabel" layoutX="169.0" layoutY="212.0" text="phone number already exists" textFill="#fd0f0f">
+               <graphic>
+                  <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+               </graphic>
+            </Label>
             </children>
         </AnchorPane>
     </center>

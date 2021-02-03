@@ -81,6 +81,11 @@
                   <FontAwesomeIconView fill="#fd0f0f" glyphName="FEED" />
                </graphic>
             </Label>
+            <Label fx:id="emailExistsWarnLabel" layoutX="191.0" layoutY="212.0" text="email already exists" textFill="#fd0f0f">
+               <graphic>
+                  <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+               </graphic>
+            </Label>
             </children>
         </AnchorPane>
     </center>
