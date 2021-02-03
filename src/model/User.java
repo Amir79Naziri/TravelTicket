@@ -24,12 +24,12 @@ public class User implements Serializable
         this.lastName = "";
         if (type == 1)
         {
-            this.phoneNumber = field;
+            this.phoneNumber = Objects.requireNonNull (field, "");
             this.email = "";
         }
         else
         {
-            this.email = field;
+            this.email = Objects.requireNonNull (field, "");
             this.phoneNumber = "";
         }
         this.socialSecurityNumber = "";
@@ -41,6 +41,10 @@ public class User implements Serializable
 
     public void setFirstName (String firstName) {
         this.firstName = Objects.requireNonNull (firstName, "");;
+    }
+
+    private void setTickets (ArrayList<Ticket> tickets) {
+        this.tickets = tickets;
     }
 
     public void setEmail (String email) {
@@ -72,11 +76,25 @@ public class User implements Serializable
         this.bankAccountNumber = Objects.requireNonNull (bankAccountNumber, "");
     }
 
-    public void setPassword (String newPassword, String oldPassword) {
+    public void changePassword (String newPassword, String oldPassword) {
         if (oldPassword != null && oldPassword.equals (this.password))
         {
             this.password = Objects.requireNonNullElse (newPassword, "");
         }
+    }
+
+    private void setPassword(String password)
+    {
+        this.password = Objects.requireNonNull (password, "");
+    }
+
+    private void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
+
+    public void createWallet (Wallet wallet) {
+        if (this.wallet == null)
+            this.wallet = wallet;
     }
 
     public void setSocialSecurityNumber (String socialSecurityNumber) {
@@ -84,7 +102,7 @@ public class User implements Serializable
     }
 
     public ArrayList<Ticket> getTickets () {
-        return tickets;
+        return new ArrayList<> (tickets);
     }
 
     public String getEmail () {
@@ -111,8 +129,48 @@ public class User implements Serializable
         return socialSecurityNumber;
     }
 
-    public void createWallet (Wallet wallet) {
-        if (this.wallet == null)
-            this.wallet = wallet;
+    private Wallet getWallet()
+    {
+        return wallet;
+    }
+
+    private String getPassword()
+    {
+        return password;
+    }
+
+    public void update(User user)
+    {
+        if (user == null)
+            return;
+
+        this.setFirstName (user.getFirstName ());
+        this.setLastName (user.getLastName ());
+        this.setBankAccountNumber (user.getBankAccountNumber ());
+        this.setEmail (user.getEmail ());
+        this.setWallet (user.getWallet ());
+        this.setPhoneNumber (user.getPhoneNumber ());
+        this.setPassword (user.getPassword ());
+        this.setSocialSecurityNumber (user.getSocialSecurityNumber ());
+        this.setTickets (user.getTickets ());
+    }
+
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return (Objects.equals (getEmail (), user.getEmail ()) ||
+                Objects.equals (getPhoneNumber (), user.getPhoneNumber ())) &&
+                Objects.equals (password, user.password);
+    }
+
+    @Override
+    public int hashCode () {
+        if (phoneNumber.equals (""))
+            return Objects.hash (getEmail (), password);
+        else
+            return Objects.hash (getPhoneNumber (), password);
+
     }
 }

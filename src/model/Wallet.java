@@ -2,5 +2,6 @@ package model;
 
 import java.io.Serializable;
 
-public class Wallet implements Serializable {
+public class Wallet
+        implements Serializable {
 }
