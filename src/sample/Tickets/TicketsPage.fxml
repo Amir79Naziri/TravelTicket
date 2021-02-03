@@ -25,12 +25,12 @@
             <Image url="@Pictures/TextLogo.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="173.0" layoutY="15.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Profile" textFill="WHITE">
+      <JFXButton fx:id="ProfileButton" buttonType="RAISED" layoutX="173.0" layoutY="15.0" onAction="#GoProfile" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Profile" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="407.0" layoutY="15.0" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="HOME" textFill="WHITE">
+      <JFXButton fx:id="HomeButton" buttonType="RAISED" layoutX="407.0" layoutY="15.0" onAction="#GoHome" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="HOME" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
