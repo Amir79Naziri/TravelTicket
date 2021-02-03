@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -18,16 +19,18 @@ import java.util.ResourceBundle;
 public class TicketsPageController implements Initializable
 {
 
-    private ObservableList<Pane> tickets;
-
-    private ObservableList<String> choices;
 
     @FXML
     private ListView<Pane> list;
+    private ObservableList<Pane> tickets;
 
+    @FXML
+    private ChoiceBox<String> airlines;
+    private ObservableList<String> airlinesList;
 
     @FXML
     private ChoiceBox<String> timeOrder;
+    private ObservableList<String> choices;
 
     private final Pane pane1 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
     private final Pane pane2 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
@@ -51,5 +54,12 @@ public class TicketsPageController implements Initializable
         tickets = FXCollections.observableArrayList();
         tickets.addAll(pane1, pane2, pane3, pane4, pane5, pane6, pane7, pane8);
         list.setItems(tickets);
+
+        airlinesList = FXCollections.observableArrayList();
+        airlinesList.addAll("American Airline", "Chinese Airlines",
+                "Turkish Airline", "Iran Airlines",
+                    "Lufthansa Airline", "British Airlines");
+        airlines.setItems(airlinesList);
+
     }
 }
