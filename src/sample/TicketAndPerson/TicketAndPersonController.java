@@ -1,71 +1,71 @@
 package sample.TicketAndPerson;
 
-import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 public class TicketAndPersonController {
+    @FXML
+    private JFXButton home;
+
 
 
     @FXML
-    private Pane inTrain;
+    void goToHomePage() throws IOException{
+
+        Stage stage;
+        Parent root;
+
+
+            stage = (Stage) home.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("sample.Search.Search.fxml"));
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+    @FXML
+    private JFXButton account;
 
     @FXML
-    private Pane outTrain;
+    private JFXButton payOnline;
 
     @FXML
-    private ImageView outPlane;
+    public void onlinePayment() throws IOException {
+        Stage stage;
+        Parent root;
 
-    @FXML
-    private ImageView inPlane;
+        stage = (Stage) payOnline.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("/sample/Bank/BankPage.fxml"));
 
-    @FXML
-    private JFXCheckBox TrainCheckBox;
-
-    @FXML
-    private JFXCheckBox AirplaneCheckBox;
-
-    @FXML
-    void trainCheckBoxHandler() {
-        if (TrainCheckBox.isSelected())
-            AirplaneCheckBox.setSelected(false);
-        inPlane.setVisible(false);
-        outPlane.setVisible(false);
-        inTrain.setVisible(true);
-        outTrain.setVisible(true);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
 
+
+
+
     @FXML
-    void airplaneCheckBoxHandler() {
-        if (AirplaneCheckBox.isSelected())
-            TrainCheckBox.setSelected(false);
-        inPlane.setVisible(true);
-        outPlane.setVisible(true);
-        inTrain.setVisible(false);
-        outTrain.setVisible(false);
+    public void goToAccountPage() throws IOException {
+        Stage stage;
+        Parent root;
+
+        stage = (Stage) home.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
-
-//    @FXML
-//    void blurairplane(ActionEvent event) {
-//        origintrain.setVisible(false);
-//        origintrain.setVisible(false);
-//        originairplain.setVisible(true);
-//        destairplane.setVisible(true);
-//    }
-
-//    @FXML
-//    void blurtrain(ActionEvent event) {
-//        originairplain.setVisible(false);
-//        destairplane.setVisible(false);
-//        origintrain.setVisible(true);
-//        origintrain.setVisible(true);
-//    }
-
-
-
-
-
 }
