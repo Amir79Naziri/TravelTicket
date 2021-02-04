@@ -25,7 +25,7 @@ public class TicketAndPersonController {
 
 
             stage = (Stage) home.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("sample.Search.Search.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/sample/Search/Search.fxml"));
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

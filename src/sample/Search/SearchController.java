@@ -2,20 +2,30 @@ package sample.Search;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class SearchController {
+public class SearchController implements Initializable {
 
 
     @FXML
@@ -41,8 +51,14 @@ public class SearchController {
 
     @FXML
     private JFXButton home;
+
     @FXML
-    private JFXButton account;
+    private ChoiceBox<String> Origin;
+    private ObservableList<String> OriginList;
+
+    @FXML
+    private ChoiceBox<String> Destination;
+    private ObservableList<String> DestinationList;
 
 
     @FXML
@@ -64,8 +80,6 @@ public class SearchController {
         outPlane.setVisible(true);
         inTrain.setVisible(false);
         outTrain.setVisible(false);
-
-
     }
     @FXML
         void searchButtonHandler()throws IOException{
@@ -110,6 +124,23 @@ public class SearchController {
 
 
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        OriginList = FXCollections.observableArrayList();
+        OriginList.addAll("Tehran", "Shiraz",
+                "Mashhad", "Isfahan",
+                "Kish");
+        Origin.setItems(OriginList);
+
+        DestinationList = FXCollections.observableArrayList();
+        DestinationList.addAll("Tehran", "Shiraz",
+                "Mashhad", "Isfahan",
+                "Kish");
+        Destination.setItems(DestinationList);
+
+    }
 
 
 

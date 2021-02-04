@@ -15,11 +15,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Tickets.TicketsPageController">
    <children>
-      <JFXDatePicker defaultColor="#333333" layoutX="10.0" layoutY="105.0" prefHeight="10.0" prefWidth="150.0" promptText="          Flight Date" style="-fx-background-color: #673ab7;" stylesheets="@../../../help.css" />
+      <JFXDatePicker defaultColor="#333333" layoutX="10.0" layoutY="105.0" prefHeight="10.0" prefWidth="150.0" promptText="          Flight Date" style="-fx-background-color: #673ab7;" />
       <JFXBadge layoutX="137.0" layoutY="68.0" />
       <JFXTimePicker defaultColor="#333333" layoutX="180.0" layoutY="105.0" prefHeight="10.0" prefWidth="150.0" promptText="          Flight Time" style="-fx-background-color: #673AB7;" />
       <ChoiceBox fx:id="timeOrder" layoutX="350.0" layoutY="105.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;" />
-      <Label layoutX="350.0" layoutY="82.0" prefHeight="22.0" prefWidth="53.0" text="Order" textFill="WHITE" />
+      <Label layoutX="350.0" layoutY="80.0" prefHeight="22.0" prefWidth="53.0" text="Order" textFill="WHITE" />
       <ImageView fitHeight="76.0" fitWidth="99.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Pictures/TextLogo.png" />
@@ -50,7 +50,7 @@
       <ChoiceBox fx:id="airlines" layoutX="520.0" layoutY="105.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;" />
    </children>
    <stylesheets>
-      <URL value="@../../../help.css" />
+
       <URL value="@Scroll.CSS" />
    </stylesheets>
 </AnchorPane>

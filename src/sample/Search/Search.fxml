@@ -3,9 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,117 +15,7 @@
    <children>
       <AnchorPane layoutX="-16.0" layoutY="104.0" prefHeight="535.0" prefWidth="800.0" stylesheets="@cssForMenue.css">
          <children>
-            <JFXDatePicker defaultColor="#c5a030" layoutX="233.0" layoutY="228.0" prefHeight="34.0" prefWidth="135.0" promptText="Date of trip" style="-fx-background-color: #673AB7;" />
-            <MenuButton alignment="CENTER" layoutX="151.0" layoutY="154.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #673AB7;" stylesheets="@cssForMenue.css" text="      Origin   " textFill="#b2b2b2">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Tehran" />
-                  <MenuItem mnemonicParsing="false" text="Shiraz" />
-                  <MenuItem mnemonicParsing="false" text="Isfahan" />
-                  <MenuItem mnemonicParsing="false" text="Yazd" />
-                  <MenuItem mnemonicParsing="false" text="Kish" />
-                  <MenuItem mnemonicParsing="false" text="Mashhad" />
-               </items>
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="30.0" opacity="0.3">
-                     <image>
-                        <Image url="@Pictures/departures.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </MenuButton>
-            <MenuButton alignment="CENTER" layoutX="435.0" layoutY="228.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #673AB7;" stylesheets="@cssForMenue.css" text="Companies" textFill="#b2b2b2">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Chinese Airlines">
-                     <graphic>
-                        <ImageView fitHeight="26.0" fitWidth="65.0">
-                           <image>
-                              <Image url="@Pictures/China.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="British Airlines">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="67.0">
-                           <image>
-                              <Image url="@Pictures/British.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Banglaedsh AirWays">
-                     <graphic>
-                        <ImageView fitHeight="56.0" fitWidth="47.0">
-                           <image>
-                              <Image url="@Pictures/Bangladesh.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="American AirWays">
-                     <graphic>
-                        <ImageView fitHeight="26.0" fitWidth="69.0">
-                           <image>
-                              <Image url="@Pictures/American.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Malaysiya AirWays">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="63.0">
-                           <image>
-                              <Image url="@Pictures/Malysia.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Soutwest Airlines">
-                     <graphic>
-                        <ImageView fitHeight="58.0" fitWidth="61.0">
-                           <image>
-                              <Image url="@Pictures/southwest.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Qatar Airlines">
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="59.0">
-                           <image>
-                              <Image url="@Pictures/Qatar.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Pegasus Airlines">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="47.0">
-                           <image>
-                              <Image url="@Pictures/Pegasus.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-               </items>
-            </MenuButton>
-            <MenuButton alignment="CENTER" layoutX="535.0" layoutY="154.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #673AB7;" stylesheets="@cssForMenue.css" text="Destination" textFill="#b2b2b2">
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="31.0" opacity="0.3">
-                     <image>
-                        <Image url="@Pictures/landing.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Tehran" />
-                  <MenuItem mnemonicParsing="false" text="Shiraz" />
-                  <MenuItem mnemonicParsing="false" text="Isfahan" />
-                  <MenuItem mnemonicParsing="false" text="Yazd" />
-                  <MenuItem mnemonicParsing="false" text="Kish" />
-                  <MenuItem mnemonicParsing="false" text="Mashhad" />
-               </items>
-            </MenuButton>
+            <JFXDatePicker defaultColor="#c5a030" layoutX="306.0" layoutY="233.0" prefHeight="34.0" prefWidth="190.0" promptText="Date of trip" style="-fx-background-color: #673AB7;" />
             <ImageView fx:id="outPlane" fitHeight="96.0" fitWidth="96.0" layoutX="172.0" layoutY="30.0" opacity="0.3">
                <image>
                   <Image url="@Pictures/departures.png" />
@@ -201,6 +90,12 @@
                   </ImageView>
                </children>
             </Pane>
+            <Pane layoutX="28.0" layoutY="88.0" prefHeight="34.0" prefWidth="106.0" />
+            <Pane layoutX="106.0" layoutY="340.0" prefHeight="34.0" prefWidth="106.0" />
+            <ChoiceBox fx:id="Origin" layoutX="145.0" layoutY="164.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;" />
+            <ChoiceBox fx:id="Destination" layoutX="515.0" layoutY="164.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;" />
+            <Label fx:id="OriginLABEL" layoutX="188.0" layoutY="146.0" text="      Origin   " textFill="WHITE" />
+            <Label fx:id="DestinationLABEL" layoutX="560.0" layoutY="146.0" text="Destination" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Label />

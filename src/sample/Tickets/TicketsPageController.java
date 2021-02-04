@@ -84,7 +84,7 @@ public class TicketsPageController implements Initializable
 
 
         try {
-            rootHome = FXMLLoader.load(TicketsPageController.class.getResource("/sample/Search/SearchPage.fxml"));
+            rootHome = FXMLLoader.load(TicketsPageController.class.getResource("/sample/Search/Search.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
