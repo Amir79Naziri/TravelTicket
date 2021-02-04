@@ -2,6 +2,10 @@ package sample.Tickets;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,13 +16,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class TicketsPageController implements Initializable
 {
@@ -41,8 +49,11 @@ public class TicketsPageController implements Initializable
     private ChoiceBox<String> airlines;
     private ObservableList<String> airlinesList;
 
-    static Parent rootHome, rootProfile;
+    @FXML
+    private AnchorPane mainPage;
 
+
+    static Parent rootHome, rootProfile;
 
 
     private final Pane pane1 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
@@ -56,16 +67,27 @@ public class TicketsPageController implements Initializable
 
     public TicketsPageController() throws IOException
     {
+
     }
 
     @FXML
-    void GoHome(ActionEvent event) throws IOException
+    void GoHome(ActionEvent event) throws IOException, InterruptedException
     {
-        Stage stage;
-        stage = (Stage) HomeButton.getScene().getWindow();
-        Scene scene = new Scene(rootHome);
-        stage.setScene(scene);
-        stage.show();
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
+        mainPage.getChildren().add(load);
+        list.setOpacity(0.5);
+
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        pause.setOnFinished(f -> {
+            Stage stage;
+            stage = (Stage) HomeButton.getScene().getWindow();
+            Scene scene = new Scene(rootHome);
+            stage.setScene(scene);
+            stage.show();
+        });
+        pause.play();
+
     }
 
     @FXML
@@ -82,7 +104,6 @@ public class TicketsPageController implements Initializable
     public void initialize(URL location, ResourceBundle resources)
     {
 
-
         try {
             rootHome = FXMLLoader.load(TicketsPageController.class.getResource("/sample/Search/Search.fxml"));
         } catch (IOException e) {
@@ -93,7 +114,6 @@ public class TicketsPageController implements Initializable
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         choices = FXCollections.observableArrayList();
         choices.addAll("Time Ascending", "Time Descending");
