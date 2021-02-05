@@ -1,6 +1,7 @@
 package sample.signup;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.NullUser;
 import model.User;
 import model.connections.userInformationClient.Client;
@@ -18,6 +22,8 @@ import java.util.ResourceBundle;
 
 
 public class EmailSignUpController extends Controller{
+
+
 
     @FXML
     private JFXTextField email;
@@ -56,15 +62,32 @@ public class EmailSignUpController extends Controller{
             if (validPassword && validEmail)
             {
                 // TODO : sign up
+                AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
+                mainPane.getChildren().add(load);
                 Client client = connect ();
-                try {
-                    Thread.sleep (3000);
-                } catch (InterruptedException e)
-                {
-                    e.printStackTrace ();
-                }
-                System.out.println (serverResponse (client, emailExistsWarnLabel));
-//                System.out.println ("sign up");
+
+
+                PauseTransition pause = new PauseTransition(Duration.seconds(2));
+
+                pause.setOnFinished(f -> {
+                    User user = serverResponse (client, emailExistsWarnLabel);
+
+                    if (user != null) {
+                        System.out.println (user.getPhoneNumber () + user.getEmail ());
+                        // TODO : go to home page
+
+                        Stage stage;
+                        stage = (Stage) signUpButton.getScene ().getWindow ();
+                        Scene scene = new Scene (profileRoot);
+                        stage.setScene (scene);
+                        stage.show ();
+                    }
+                    else
+                    {
+                        mainPane.getChildren ().remove (load);
+                    }
+                });
+                pause.play();
             }
         }
         else if (event.getSource () == backToLoginLink)

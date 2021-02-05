@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+
+import model.User;
 import model.connections.userInformationClient.Client;
 
 import java.net.URL;
@@ -60,7 +62,8 @@ public class EmailLoginController extends Controller
 
             if (validEmail && validPassword)
             {
-                // TODO : login here
+
+
                 try {
                     profileRoot = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
                 } catch (IOException e) {
@@ -68,29 +71,34 @@ public class EmailLoginController extends Controller
                 }
                 AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
                 mainPane.getChildren().add(load);
+                Client client = connect ();
+
 
                 PauseTransition pause = new PauseTransition(Duration.seconds(2));
                 pause.setOnFinished(f -> {
-                    Stage stage;
-                    stage = (Stage) loginButton.getScene().getWindow();
-                    Scene scene = new Scene(profileRoot);
-                    stage.setScene(scene);
-                    stage.show();
+                    User user = serverResponse (client);
+
+                    if (user != null)
+                    {
+                        System.out.println (user.getPhoneNumber () + user.getEmail ());
+                        // TODO : go to home page
+
+                        Stage stage;
+                        stage = (Stage) loginButton.getScene().getWindow();
+                        Scene scene = new Scene(profileRoot);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    else
+                    {
+                        mainPane.getChildren ().remove (load);
+                    }
+
                 });
                 pause.play();
 
 
 
-                System.out.println ("log in");
-                Client client = connect ();
-                try {
-                    Thread.sleep (3000);
-                } catch (InterruptedException e)
-                {
-                    e.printStackTrace ();
-                }
-                System.out.println (serverResponse (client));
-//                System.out.println ("log in");
             }
         }
         else if (event.getSource () == enterWithPhoneNumberLink)
