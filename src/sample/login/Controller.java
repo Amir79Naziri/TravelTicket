@@ -37,7 +37,7 @@ public class Controller implements Initializable
         {
             if (!invalidPasswordWarnLabel.isVisible ())
                 invalidPasswordWarnLabel.setVisible (true);
-
+            password.setText ("");
             validPassword = false;
         }
         else

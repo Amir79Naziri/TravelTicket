@@ -51,7 +51,7 @@ public class EmailLoginController extends Controller
             {
                 if (!invalidEmailWarnLabel.isVisible ())
                     invalidEmailWarnLabel.setVisible (true);
-
+                password.setText ("");
                 validEmail = false;
             }
             else
@@ -81,7 +81,7 @@ public class EmailLoginController extends Controller
                     if (user != null)
                     {
                         System.out.println (user.getPhoneNumber () + user.getEmail ());
-                        // TODO : go to home page
+
 
                         Stage stage;
                         stage = (Stage) loginButton.getScene().getWindow();
@@ -92,6 +92,7 @@ public class EmailLoginController extends Controller
                     else
                     {
                         mainPane.getChildren ().remove (load);
+                        password.setText ("");
                     }
 
                 });
