@@ -122,6 +122,10 @@ public class SearchController implements Initializable {
 
     }
 
+    public void test(String string){
+        System.out.println(string);
+    }
+
 
 
 

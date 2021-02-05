@@ -35,14 +35,19 @@
                   </InnerShadow>
                </effect>
             </JFXSpinner>
-            <ImageView fitHeight="115.0" fitWidth="115.0" layoutX="193.0" layoutY="127.0">
+            <ImageView fitHeight="115.0" fitWidth="115.0" layoutX="193.0" layoutY="127.0" visible="false">
                <image>
                   <Image url="@Pictures/logo.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="115.0" fitWidth="130.0" layoutX="185.0" layoutY="127.0">
+               <image>
+                  <Image url="@../TicketAndPerson/Pictures/TextLogo.png" />
+               </image>
+            </ImageView>
          </children>
          <effect>
-            <InnerShadow choke="0.33" height="125.86" radius="59.45" width="113.94">
+            <InnerShadow choke="0.33" height="100.0" radius="49.5" width="100.0">
                <color>
                   <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
                </color>

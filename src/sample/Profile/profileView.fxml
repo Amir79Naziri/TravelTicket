@@ -28,7 +28,7 @@
 <!--        fx:controller="sample.Profile.ProfileView"-->
 <!--        prefHeight="400.0" prefWidth="600.0">-->
 
-<StackPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@profileTheme.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="sample.Profile.ProfileController">
+<StackPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@profileTheme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Profile.ProfileController">
     <children>
         <BorderPane prefHeight="200.0" prefWidth="200.0">
             <top>
@@ -154,20 +154,20 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <JFXTextField layoutX="110.0" layoutY="191.0" />
-                                        <JFXTextField layoutX="110.0" layoutY="279.0" />
+                                        <JFXTextField fx:id="nameField" editable="false" layoutX="110.0" layoutY="191.0" />
+                                        <JFXTextField fx:id="lastNameField" editable="false" layoutX="110.0" layoutY="279.0" />
                                         <Label layoutX="110.0" layoutY="173.0" text="First Name" textFill="#b2b2b2" />
                                         <Label layoutX="111.0" layoutY="261.0" text="Last Name" textFill="#b2b2b2" />
-                                        <JFXTextField layoutX="110.0" layoutY="360.0" />
+                                        <JFXTextField fx:id="securityNumberField" editable="false" layoutX="110.0" layoutY="360.0" />
                                         <Label layoutX="110.0" layoutY="343.0" text="Social Security Number" textFill="#b2b2b2" />
-                                        <JFXTextField layoutX="442.0" layoutY="191.0" />
+                                        <JFXTextField fx:id="emailField" editable="false" layoutX="442.0" layoutY="191.0" />
                                         <JFXTextField editable="false" layoutX="442.0" layoutY="279.0" style="-fx-pref-width: 25; -fx-text-fill: #B2B2B2;" text="+98" />
                                         <Label layoutX="442.0" layoutY="173.0" text="Email" textFill="#b2b2b2" />
                                         <Label layoutX="442.0" layoutY="263.0" text="Phone Number" textFill="#b2b2b2" />
-                                        <JFXTextField layoutX="442.0" layoutY="360.0" />
+                                        <JFXTextField fx:id="bankNumberField" editable="false" layoutX="442.0" layoutY="360.0" />
                                         <Label layoutX="442.0" layoutY="343.0" text="Bank Account Number" textFill="#b2b2b2" />
                                         <Line endX="400.0" endY="430.0" startX="400.0" startY="140.0" stroke="#4d4d4d" />
-                                        <JFXButton layoutX="358.0" layoutY="435.0" prefWidth="80.0" text="Edit" />
+                                        <JFXButton fx:id="editButton" layoutX="358.0" layoutY="435.0" onAction="#edit" prefWidth="80.0" text="Edit" />
                                         <JFXCheckBox checkedColor="#333333" layoutX="692.0" layoutY="197.0" selected="true" />
                                         <JFXCheckBox checkedColor="#333333" layoutX="692.0" layoutY="285.0" selected="true" />
                                         <Line endX="380.0" endY="140.0" startX="10.0" startY="140.0" stroke="#4d4d4d" />
@@ -180,12 +180,12 @@
                                  <effect>
                                     <Reflection bottomOpacity="0.53" />
                                  </effect></JFXButton>
-                                        <JFXButton layoutX="543.0" layoutY="94.0" text="Change Password" />
+                                        <JFXButton fx:id="changePassButton" layoutX="543.0" layoutY="94.0" onAction="#changePass" text="Change Password" />
                                         <FontAwesomeIconView glyphName="USER_CIRCLE" layoutX="165.0" layoutY="96.0" size="60">
                                  <effect>
                                     <Reflection fraction="0.51" topOpacity="0.39" />
                                  </effect></FontAwesomeIconView>
-                                        <JFXTextField layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
+                                        <JFXTextField fx:id="phoneNumberField" editable="false" layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
                                     </children>
                                 </AnchorPane>
                             </content>

@@ -1,6 +1,7 @@
 package sample.Profile;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,32 +17,94 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sample.Search.SearchController;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProfileController implements Initializable {
     private ObservableList<Pane> pastTickets;
     @FXML
     private ListView<Pane> ticketHistoryList;
     @FXML
-    private StackPane mainPane;
+    protected StackPane mainPane;
+    protected AnchorPane load;
     @FXML
     private JFXButton paymentButton;
     @FXML
     private JFXButton homeButton;
     @FXML
     private JFXButton logoutButton;
+    @FXML
+    private JFXTextField nameField;
 
-    static Parent homeRoot, loginRoot, bankRoot;
+    @FXML
+    private JFXTextField lastNameField;
+
+    @FXML
+    private JFXButton changePassButton;
+
+    @FXML
+    private JFXTextField securityNumberField;
+
+    @FXML
+    private JFXTextField emailField;
+
+    @FXML
+    private JFXTextField bankNumberField;
+
+    @FXML
+    private JFXButton editButton;
+
+    @FXML
+    private JFXTextField phoneNumberField;
+
+    static Parent homeRoot, loginRoot, bankRoot, changePassRoot;
 
     private final Pane pane1 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
     private final Pane pane2 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
     private final Pane pane3 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
 
     public ProfileController() throws IOException {
+    }
+
+    @FXML
+    void edit() {
+        if (editButton.getText().equals("Edit")) {
+            editButton.setText("Save");
+            nameField.setEditable(true);
+            lastNameField.setEditable(true);
+            securityNumberField.setEditable(true);
+            emailField.setEditable(true);
+            phoneNumberField.setEditable(true);
+            bankNumberField.setEditable(true);
+        }
+        else if (editButton.getText().equals("Save")) {
+            editButton.setText("Edit");
+            nameField.setEditable(false);
+            lastNameField.setEditable(false);
+            securityNumberField.setEditable(false);
+            emailField.setEditable(false);
+            phoneNumberField.setEditable(false);
+            bankNumberField.setEditable(false);
+            //TODO update the user
+        }
+    }
+
+    @FXML
+    void changePass() throws IOException {
+        load = FXMLLoader.load(getClass().getResource("/sample/Profile/changePassword.fxml"));
+        mainPane.getChildren().add(load);
+        try {
+            changePassRoot = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
@@ -73,8 +136,19 @@ public class ProfileController implements Initializable {
     void goToHome()throws IOException{
         Stage stage;
         stage = (Stage) homeButton.getScene().getWindow();
-        homeRoot = FXMLLoader.load(getClass().getResource("/sample/Search/Search.fxml"));
 
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/Search/Search.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        SearchController searchController = loader.getController();
+        searchController.test("Hello");
+
+        homeRoot = loader.getRoot();
         Scene scene = new Scene(homeRoot);
         stage.setScene(scene);
         stage.show();

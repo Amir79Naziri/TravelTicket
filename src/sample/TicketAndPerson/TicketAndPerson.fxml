@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -153,7 +154,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" layoutX="692.0" layoutY="222.0" prefHeight="42.0" prefWidth="104.0" text="Telephone  " textFill="#c5a030">
+                <Label alignment="CENTER" layoutX="692.0" layoutY="222.0" prefHeight="42.0" prefWidth="104.0" text="Phone Number" textFill="#c5a030">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -182,25 +183,26 @@
                 </AnchorPane>
             </children>
         </AnchorPane>
-        <Label text="Label" />
         <Line endX="430.199951171875" layoutX="261.0" layoutY="85.0" startX="-182.60000610351562" stroke="#c5a030" />
-        <JFXButton fx:id="home" layoutX="396.0" layoutY="34.0" onAction="#goToHomePage" prefHeight="40.0" prefWidth="282.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Home" textFill="#d7cdcd">
+        <JFXButton fx:id="home" layoutX="396.0" layoutY="34.0" onAction="#goToHomePage" prefHeight="40.0" prefWidth="282.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" textFill="#d7cdcd">
             <graphic>
-                <ImageView fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" visible="false">
                     <image>
                         <Image url="@Pictures/hme.png" />
                     </image>
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton fx:id="account" layoutX="94.0" layoutY="34.0" onAction="#goToAccountPage" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Account" textFill="#d7cdcd">
+        <JFXButton fx:id="account" layoutX="94.0" layoutY="34.0" onAction="#goToAccountPage" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" textFill="#d7cdcd">
             <graphic>
-                <ImageView fitHeight="32.0" fitWidth="32.0">
+                <ImageView fitHeight="32.0" fitWidth="32.0" visible="false">
                     <image>
                         <Image url="@Pictures/man-user.png" />
                     </image>
                 </ImageView>
             </graphic>
         </JFXButton>
+      <FontAwesomeIconView glyphName="USER" layoutX="225.0" layoutY="68.0" size="40" />
+      <FontAwesomeIconView glyphName="HOME" layoutX="523.0" layoutY="68.0" size="40" />
     </children>
 </AnchorPane>
