@@ -1,28 +1,25 @@
 package sample.Search;
-
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import model.User;
+import sample.Profile.ProfileController;
+import sample.Tickets.TicketsPageController;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class SearchController implements Initializable {
@@ -30,8 +27,11 @@ public class SearchController implements Initializable {
     private String destinationLocation;
     private String choosedDate;
     private String trainOrAirplane;
-    @FXML
-    private ArrayList<Object> inputAndOutputArray;
+    private User currentUser;
+
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+    }
 
     @FXML
     private Pane inTrain;
@@ -92,7 +92,7 @@ public class SearchController implements Initializable {
 
     @FXML
     void searchButtonHandler() throws IOException {
-        /*
+
         originLocation = Origin.getValue();
         destinationLocation = Destination.getValue();
         choosedDate = datePicker.getValue().toString();
@@ -101,67 +101,76 @@ public class SearchController implements Initializable {
         else
             trainOrAirplane = "airplain";
 
-        inputAndOutputArray.add(originLocation);
-        inputAndOutputArray.add(destinationLocation);
-        inputAndOutputArray.add(choosedDate);
-        inputAndOutputArray.add(trainOrAirplane);
-
-         */
-        //TODO :send inputAndOutputArray to tickets page
-
-
         Stage stage;
-        Parent root;
-
         stage = (Stage) searchButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("/sample/Tickets/TicketsPage.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/Tickets/TicketsPage.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+        }
 
+        TicketsPageController ticketsPageController = loader.getController();
+        ticketsPageController.setSearchDetails(originLocation,destinationLocation,choosedDate,trainOrAirplane,currentUser);
+
+        Parent root = loader.getRoot();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
 
     }
 
     @FXML
     void goToHome() throws IOException {
         Stage stage;
-        Parent root;
-
         stage = (Stage) home.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("/sample/Search/Search.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/Search/Search.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+        }
 
+        SearchController searchController=loader.getController();
+        searchController.setCurrentUser(currentUser);
+
+        Parent root = loader.getRoot();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
     @FXML
     void goToAccount() throws IOException {
         Stage stage;
-        Parent root;
-
         stage = (Stage) home.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/Profile/profileView.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+        }
 
+        ProfileController profileController=loader.getController();
+        //TODO
+        // profileController.setUser(currentUser);
+
+
+
+        Parent root = loader.getRoot();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
-    public void test(String string){
-        System.out.println(string);
-    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
-        //TODO: get inputAndOutputArray;
-        // inputAndOutputArray...
-
 
         OriginList = FXCollections.observableArrayList();
 
@@ -183,9 +192,7 @@ public class SearchController implements Initializable {
                 "Kish");
 
         //DestinationList add()  from list of tickets
-
         Destination.setItems(DestinationList);
-
     }
 
 

@@ -14,12 +14,34 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.User;
+import sample.Profile.ProfileController;
+import sample.Search.SearchController;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TicketsPageController implements Initializable
 {
+    private String originLocation;
+    private String destinationLocation;
+    private String choosedDate;
+    private String trainOrAirplane;
+    private User   currentUser;
+
+    public TicketsPageController() throws IOException {
+    }
+
+    public void setSearchDetails(String originLocation,String destinationLocation,String choosedDate,String trainOrAirplane,User currentUser){
+        this.originLocation=originLocation;
+        this.destinationLocation=destinationLocation;
+        this.choosedDate=choosedDate;
+        this.trainOrAirplane=trainOrAirplane;
+        this.currentUser=currentUser;
+    }
 
     @FXML
     private ChoiceBox<String> timeOrder;
@@ -55,27 +77,66 @@ public class TicketsPageController implements Initializable
     private final Pane pane7 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
     private final Pane pane8 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
 
-    public TicketsPageController() throws IOException
-    {
 
-    }
 
     @FXML
     void GoHome(ActionEvent event) throws IOException, InterruptedException
     {
+//        Stage stage;
+//        stage = (Stage) HomeButton.getScene().getWindow();
+//        Scene scene = new Scene(rootHome);
+//        stage.setScene(scene);
+//        stage.show();
+
         Stage stage;
         stage = (Stage) HomeButton.getScene().getWindow();
-        Scene scene = new Scene(rootHome);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/Search/Search.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        SearchController searchController=loader.getController();
+        searchController.setCurrentUser(currentUser);
+
+        Parent root = loader.getRoot();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+
     }
 
     @FXML
     void GoProfile(ActionEvent event)
     {
+//        Stage stage;
+//        stage = (Stage) HomeButton.getScene().getWindow();
+//        Scene scene = new Scene(rootProfile);
+//        stage.setScene(scene);
+//        stage.show();
+
+
         Stage stage;
         stage = (Stage) HomeButton.getScene().getWindow();
-        Scene scene = new Scene(rootProfile);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/Profile/profileView.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        ProfileController profileController=loader.getController();
+        //TODO
+        // profileController.setUser(currentUser);
+
+
+
+        Parent root = loader.getRoot();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

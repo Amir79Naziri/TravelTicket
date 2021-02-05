@@ -146,7 +146,7 @@ public class ProfileController implements Initializable {
         }
 
         SearchController searchController = loader.getController();
-        searchController.test("Hello");
+        //searchController.test("Hello");
 
         homeRoot = loader.getRoot();
         Scene scene = new Scene(homeRoot);
