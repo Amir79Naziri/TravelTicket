@@ -13,38 +13,38 @@
 
 <AnchorPane prefHeight="145.0" prefWidth="735.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Tickets.TicketController">
    <children>
-      <Label alignment="CENTER" layoutX="524.0" layoutY="12.0" prefHeight="30.0" prefWidth="75.0" text="2021/2/1" textFill="WHITE">
+      <Label fx:id="depDate" alignment="CENTER" layoutX="524.0" layoutY="12.0" prefHeight="30.0" prefWidth="75.0" text="2021/2/1" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="402.0" layoutY="12.0" prefHeight="30.0" prefWidth="75.0" text="11:30 PM" textFill="WHITE">
+      <Label fx:id="depTime" alignment="CENTER" layoutX="402.0" layoutY="12.0" prefHeight="30.0" prefWidth="75.0" text="11:30 PM" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <Line endX="-401.0" endY="110.0" layoutX="532.0" layoutY="10.0" startX="-401.0" startY="6.800018310546875" stroke="#c5a030" />
-      <Label fx:id="cost" alignment="CENTER" layoutX="25.0" layoutY="11.0" prefHeight="40.0" prefWidth="80.0" text="600$" textFill="WHITE">
+      <Label fx:id="price" alignment="CENTER" layoutX="25.0" layoutY="11.0" prefHeight="40.0" prefWidth="80.0" text="600$" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="524.0" layoutY="92.0" prefHeight="30.0" prefWidth="75.0" text="2021/2/2" textFill="WHITE">
+      <Label fx:id="arrDate" alignment="CENTER" layoutX="524.0" layoutY="92.0" prefHeight="30.0" prefWidth="75.0" text="2021/2/2" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="402.0" layoutY="92.0" prefHeight="30.0" prefWidth="75.0" text="01:30 AM" textFill="WHITE">
+      <Label fx:id="arrTime" alignment="CENTER" layoutX="402.0" layoutY="92.0" prefHeight="30.0" prefWidth="75.0" text="01:30 AM" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="273.0" layoutY="16.0" prefHeight="30.0" prefWidth="75.0" text="Tehran" textFill="WHITE">
+      <Label fx:id="origin" alignment="CENTER" layoutX="273.0" layoutY="16.0" prefHeight="30.0" prefWidth="75.0" text="Tehran" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="273.0" layoutY="92.0" prefHeight="30.0" prefWidth="75.0" text="Istanbul" textFill="WHITE">
+      <Label fx:id="destination" alignment="CENTER" layoutX="273.0" layoutY="92.0" prefHeight="30.0" prefWidth="75.0" text="Istanbul" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

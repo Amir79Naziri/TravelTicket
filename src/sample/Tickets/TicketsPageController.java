@@ -14,12 +14,17 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.FileHandler;
+import model.Ticket;
+import model.TicketStorage;
 import model.User;
 import sample.Profile.ProfileController;
 import sample.Search.SearchController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,11 +41,11 @@ public class TicketsPageController implements Initializable
     }
 
     public void setSearchDetails(String originLocation,String destinationLocation,String choosedDate,String trainOrAirplane,User currentUser){
-        this.originLocation=originLocation;
-        this.destinationLocation=destinationLocation;
-        this.choosedDate=choosedDate;
-        this.trainOrAirplane=trainOrAirplane;
-        this.currentUser=currentUser;
+        this.originLocation = originLocation;
+        this.destinationLocation = destinationLocation;
+        this.choosedDate = choosedDate;
+        this.trainOrAirplane = trainOrAirplane;
+        this.currentUser = currentUser;
     }
 
     @FXML
@@ -66,17 +71,6 @@ public class TicketsPageController implements Initializable
 
 
     static Parent rootHome, rootProfile;
-
-
-    private final Pane pane1 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
-    private final Pane pane2 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
-    private final Pane pane3 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
-    private final Pane pane4 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
-    private final Pane pane5 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
-    private final Pane pane6 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
-    private final Pane pane7 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
-    private final Pane pane8 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
-
 
 
     @FXML
@@ -161,7 +155,34 @@ public class TicketsPageController implements Initializable
         timeOrder.setItems(choices);
 
         tickets = FXCollections.observableArrayList();
-        tickets.addAll(pane1, pane2, pane3, pane4, pane5, pane6, pane7, pane8);
+
+        TicketStorage ticketStorage = (TicketStorage) FileHandler.load("Files/ticketStorage.ser");
+        for(Map.Entry<Integer, Ticket> set : ticketStorage.getTickets().entrySet())
+        {
+            Ticket temp = set.getValue();
+
+            Pane pane = null;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("Ticket.fxml"));
+            try
+            {
+                pane = loader.load();
+            }
+            catch (IOException e)
+            {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+            }
+
+            TicketController ticketController = loader.getController();
+            ticketController.setEveryThing(temp, currentUser);
+
+
+
+            //private final Pane pane1 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
+            tickets.add(pane);
+        }
+
+
         list.setItems(tickets);
 
         airlinesList = FXCollections.observableArrayList();
