@@ -12,6 +12,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -27,7 +28,7 @@
 <!--        fx:controller="sample.Profile.ProfileView"-->
 <!--        prefHeight="400.0" prefWidth="600.0">-->
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@profileTheme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Profile.ProfileController">
+<StackPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@profileTheme.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="sample.Profile.ProfileController">
     <children>
         <BorderPane prefHeight="200.0" prefWidth="200.0">
             <top>
@@ -35,9 +36,9 @@
                     <children>
                         <Line endX="200.0" endY="30.0" startY="30.0" stroke="#c5a030" />
                         <Line endX="800.0" endY="30.0" startX="610.0" startY="30.0" stroke="#c5a030" />
-                        <JFXButton layoutX="219.0" layoutY="13.0" prefHeight="32.0" prefWidth="85.0" style="-fx-background-radius: 0px; -fx-border-radius: 0px;" />
+                        <JFXButton fx:id="homeButton" layoutX="219.0" layoutY="13.0" onAction="#goToHome" prefHeight="32.0" prefWidth="85.0" style="-fx-background-radius: 0px; -fx-border-radius: 0px;" />
                         <FontAwesomeIconView glyphName="HOME" layoutX="250.0" layoutY="37.0" size="25" />
-                        <JFXButton layoutX="492.0" layoutY="15.0" prefHeight="32.0" prefWidth="85.0" style="-fx-background-radius: 0px; -fx-border-radius: 0px;" />
+                        <JFXButton fx:id="logoutButton" layoutX="492.0" layoutY="15.0" onAction="#goToLogout" prefHeight="32.0" prefWidth="85.0" style="-fx-background-radius: 0px; -fx-border-radius: 0px;" />
                         <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="523.0" layoutY="39.0" size="25" />
                         <Line endX="460.0" endY="30.0" startX="330.0" startY="30.0" stroke="#c5a030" />
                     </children>
@@ -96,7 +97,7 @@
                               <Label layoutX="192.0" layoutY="199.0" text="XXXX XXXX XXXX 1234" textFill="#b2b2b2" />
                               <Label layoutX="532.0" layoutY="40.0" text="TRANSACTIONS" textFill="#b2b2b2" />
                               <Line endX="500.0" endY="450.0" startX="500.0" startY="40.0" stroke="#b2b2b2" />
-                              <JFXButton layoutX="62.0" layoutY="405.0" text="Payment">
+                              <JFXButton fx:id="paymentButton" layoutX="62.0" layoutY="405.0" onAction="#goToBank" text="Payment">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="TAGS" />
                                  </graphic>
@@ -175,9 +176,15 @@
                                         <Line endX="790.0" endY="140.0" startX="420.0" startY="140.0" stroke="#4d4d4d" />
                                         <Line endX="790.0" endY="170.0" startX="790.0" startY="110.0" stroke="#4d4d4d" />
                                         <ImageView fitHeight="97.0" fitWidth="121.0" layoutX="111.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-                                        <JFXButton layoutX="553.0" layoutY="43.0" text="Upload Avatar" />
+                                        <JFXButton layoutX="553.0" layoutY="43.0" text="Upload Avatar">
+                                 <effect>
+                                    <Reflection bottomOpacity="0.53" />
+                                 </effect></JFXButton>
                                         <JFXButton layoutX="543.0" layoutY="94.0" text="Change Password" />
-                                        <FontAwesomeIconView glyphName="USER_CIRCLE" layoutX="165.0" layoutY="96.0" size="60" />
+                                        <FontAwesomeIconView glyphName="USER_CIRCLE" layoutX="165.0" layoutY="96.0" size="60">
+                                 <effect>
+                                    <Reflection fraction="0.51" topOpacity="0.39" />
+                                 </effect></FontAwesomeIconView>
                                         <JFXTextField layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
                                     </children>
                                 </AnchorPane>

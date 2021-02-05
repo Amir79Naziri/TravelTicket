@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="150.0" layoutY="125.0" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #2A2E37;">
+         <children>
+            <JFXSpinner layoutX="161.0" layoutY="94.0" prefHeight="180.0" prefWidth="180.0" startingAngle="180.0">
+               <effect>
+                  <Reflection fraction="1.0" topOpacity="0.27">
+                     <input>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                           </color>
+                        </InnerShadow>
+                     </input>
+                  </Reflection>
+               </effect>
+            </JFXSpinner>
+            <JFXSpinner layoutX="186.0" layoutY="119.0" prefHeight="130.0" prefWidth="130.0" startingAngle="0.0">
+               <effect>
+                  <InnerShadow choke="1.0" radius="68.5" width="255.0">
+                     <color>
+                        <Color red="0.772549033164978" green="0.6274510025978088" blue="0.1882352977991104" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </JFXSpinner>
+            <ImageView fitHeight="115.0" fitWidth="115.0" layoutX="193.0" layoutY="127.0">
+               <image>
+                  <Image url="@Pictures/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <InnerShadow choke="0.33" height="125.86" radius="59.45" width="113.94">
+               <color>
+                  <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="WAIT" />
+         </cursor>
+      </AnchorPane>
+   </children>
+</AnchorPane>
