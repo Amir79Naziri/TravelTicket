@@ -53,7 +53,7 @@ public class ClientHandler implements Runnable
                 String[] split = request.split (" ");
                 if (split[0].equals ("Login"))
                 {
-                    if (split[1].toCharArray ()[0] == '0')
+                    if (split[1].toCharArray ()[0] == '+')
                         user = userStorage.getUser (split[1], split[2], 1);
                     else
                         user = userStorage.getUser (split[1], split[2], 2);
@@ -62,15 +62,15 @@ public class ClientHandler implements Runnable
                 } else // sign up
                 {
                     User user1;
-                    if (split[1].toCharArray ()[0] == '0')
+                    if (split[1].toCharArray ()[0] == '+')
                         user1 = userStorage.getUser (split[1], split[2], 1);
                     else
                         user1 = userStorage.getUser (split[1], split[2], 2);
-                    if (user1 == null)
+                    if (user1 != null)
                         user = new NullUser ();
                     else
                     {
-                        if (split[1].toCharArray ()[0] == '0')
+                        if (split[1].toCharArray ()[0] == '+')
                             user = new User (split[1],split[2], 1);
                         else
                             user = new User (split[1],split[2], 2);
@@ -175,7 +175,6 @@ public class ClientHandler implements Runnable
         {
             case 8083 : return " (Load Server) ";
             case 4787 : return " (Save Server) ";
-            case 6050 : return " (List Server) ";
         }
         return "";
     }

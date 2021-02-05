@@ -69,7 +69,6 @@ public class Server
         {
             case 8083 : return " (Load Server) ";
             case 4787 : return " (Save Server) ";
-            case 6050 : return " (List Server) ";
         }
         return "";
     }
