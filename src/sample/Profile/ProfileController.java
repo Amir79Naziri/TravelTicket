@@ -71,13 +71,9 @@ public class ProfileController implements Initializable {
 
     @FXML
     void goToHome()throws IOException{
-        try {
-            homeRoot = FXMLLoader.load(getClass().getResource("/sample/Search/Search.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         Stage stage;
         stage = (Stage) homeButton.getScene().getWindow();
+        homeRoot = FXMLLoader.load(getClass().getResource("/sample/Search/Search.fxml"));
 
         Scene scene = new Scene(homeRoot);
         stage.setScene(scene);

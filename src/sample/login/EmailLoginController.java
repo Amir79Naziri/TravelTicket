@@ -1,6 +1,7 @@
 package sample.login;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.io.IOException;
 import model.connections.userInformationClient.Client;
 
 import java.net.URL;
@@ -16,6 +22,11 @@ import java.util.ResourceBundle;
 
 public class EmailLoginController extends Controller
 {
+    @FXML
+    private BorderPane mainPane;
+    static Parent profileRoot;
+
+
     @FXML
     private JFXTextField email;
 
@@ -50,6 +61,27 @@ public class EmailLoginController extends Controller
             if (validEmail && validPassword)
             {
                 // TODO : login here
+                try {
+                    profileRoot = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
+                mainPane.getChildren().add(load);
+
+                PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                pause.setOnFinished(f -> {
+                    Stage stage;
+                    stage = (Stage) loginButton.getScene().getWindow();
+                    Scene scene = new Scene(profileRoot);
+                    stage.setScene(scene);
+                    stage.show();
+                });
+                pause.play();
+
+
+
+                System.out.println ("log in");
                 Client client = connect ();
                 try {
                     Thread.sleep (3000);
