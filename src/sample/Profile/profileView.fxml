@@ -71,12 +71,12 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="361.0" layoutY="224.0" text="0.00" textFill="WHITE">
+                              <Label fx:id="balance" layoutX="361.0" layoutY="224.0" text="0.00" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="361.0" layoutY="251.0" text="0.00" textFill="WHITE">
+                              <Label fx:id="available" layoutX="361.0" layoutY="251.0" text="0.00" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -98,12 +98,12 @@
                               <Label layoutX="192.0" layoutY="199.0" text="XXXX XXXX XXXX 1234" textFill="#b2b2b2" />
                               <Label layoutX="532.0" layoutY="40.0" text="TRANSACTIONS" textFill="#b2b2b2" />
                               <Line endX="500.0" endY="450.0" startX="500.0" startY="40.0" stroke="#b2b2b2" />
-                              <JFXButton fx:id="paymentButton" layoutX="62.0" layoutY="405.0" onAction="#goToBank" text="Payment">
+                              <JFXButton fx:id="pay" layoutX="62.0" layoutY="405.0" onAction="#goToBank" text="Payment">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="TAGS" />
                                  </graphic>
                               </JFXButton>
-                              <JFXTextField layoutX="325.0" layoutY="405.0" promptText="0.00" style="-fx-pref-width: 120;" />
+                              <JFXTextField fx:id="amount" layoutX="325.0" layoutY="405.0" promptText="0.00" style="-fx-pref-width: 120;" />
                               <Line endX="50.0" endY="360.0" startX="10.0" startY="360.0" stroke="#b2b2b2" />
                               <Label layoutX="55.0" layoutY="352.0" text="Charge Account" textFill="#b2b2b2" />
                               <Line endX="450.0" endY="360.0" startX="145.0" startY="360.0" stroke="#b2b2b2" />
@@ -133,14 +133,14 @@
                                     </InnerShadow>
                                  </effect>
                               </JFXListView>
-                              <JFXDatePicker defaultColor="#2a2e37" layoutX="557.0" layoutY="59.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;">
+                              <JFXDatePicker fx:id="datePicker" defaultColor="#2a2e37" layoutX="557.0" layoutY="59.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;">
                                  <effect>
                                     <InnerShadow />
                                  </effect>
                               </JFXDatePicker>
                               <Label layoutX="14.0" layoutY="14.0" text="Filter your travel history by date" textFill="#b2b2b2" />
                               <Line endX="100.0" layoutX="115.0" layoutY="38.0" startX="-100.0" stroke="#b2b2b2" />
-                              <JFXButton layoutX="489.0" layoutY="60.0" text="Search" />
+                              <JFXButton fx:id="searchButton" layoutX="489.0" layoutY="60.0" onAction="#searchTickets" text="Search" />
                            </children></AnchorPane>
                             </content>
                             <graphic>
@@ -156,7 +156,7 @@
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
                                         <JFXTextField fx:id="nameField" disable="true" layoutX="110.0" layoutY="191.0" />
-                                        <JFXTextField fx:id="lastNameField" layoutX="110.0" layoutY="279.0" />
+                                        <JFXTextField fx:id="lastNameField" disable="true" layoutX="110.0" layoutY="279.0" />
                                         <Label layoutX="110.0" layoutY="173.0" text="First Name" textFill="#b2b2b2" />
                                         <Label layoutX="111.0" layoutY="261.0" text="Last Name" textFill="#b2b2b2" />
                                         <JFXTextField fx:id="securityNumberField" disable="true" layoutX="110.0" layoutY="360.0" />

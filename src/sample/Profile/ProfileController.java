@@ -1,6 +1,7 @@
 package sample.Profile;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.PauseTransition;
@@ -12,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -19,16 +21,20 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.User;
 import sample.Search.SearchController;
 
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownServiceException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProfileController implements Initializable {
+    private User currentUser;
     private ObservableList<Pane> pastTickets;
     @FXML
     private ListView<Pane> ticketHistoryList;
@@ -37,8 +43,6 @@ public class ProfileController implements Initializable {
     protected AnchorPane load;
     @FXML
     private BorderPane borderPane;
-    @FXML
-    private JFXButton paymentButton;
     @FXML
     private JFXButton homeButton;
     @FXML
@@ -86,6 +90,26 @@ public class ProfileController implements Initializable {
     @FXML
     private JFXButton cancelButton;
     //
+
+
+    //Travel History fields
+    @FXML
+    private JFXDatePicker datePicker;
+    @FXML
+    private JFXButton searchButton;
+    //
+
+    //Wallet fields
+    @FXML
+    private Label balance;
+    @FXML
+    private Label available;
+    @FXML
+    private JFXTextField amount;
+    @FXML
+    private JFXButton pay;
+    //
+
 
     static Parent homeRoot, loginRoot, bankRoot, changePassRoot;
 
@@ -145,8 +169,32 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    void goToBank(ActionEvent event) throws IOException, InterruptedException
-    {
+    void searchTickets(){
+        LocalDate date = datePicker.getValue();
+        if (date != null) {
+            //TODO search tickets for the date
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FXML
+    void goToBank(ActionEvent event) throws IOException, InterruptedException {
+        String price = amount.getText();
+
+
         try {
             bankRoot = FXMLLoader.load(getClass().getResource("/sample/Bank/BankPage.fxml"));
         } catch (IOException e) {
@@ -157,10 +205,10 @@ public class ProfileController implements Initializable {
         ticketHistoryList.setOpacity(0.5);
 
 
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(f -> {
             Stage stage;
-            stage = (Stage) paymentButton.getScene().getWindow();
+            stage = (Stage) pay.getScene().getWindow();
             Scene scene = new Scene(bankRoot);
             stage.setScene(scene);
             stage.show();
@@ -208,10 +256,14 @@ public class ProfileController implements Initializable {
 
     }
 
+    public void serCurrentUser(User user) {
+        this.currentUser = user;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        pastTickets = FXCollections.observableArrayList();
-//        pastTickets.addAll(pane1, pane2, pane3);
-//        ticketHistoryList.setItems(pastTickets);
+        pastTickets = FXCollections.observableArrayList();
+        pastTickets.addAll(pane1, pane2, pane3);
+        ticketHistoryList.setItems(pastTickets);
     }
 }
