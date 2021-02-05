@@ -1,10 +1,9 @@
 package model;
 
 
-import model.connections.usersInformationServer.serverStorage.UsersStorage;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * this class is Ticket's Storage
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 public class TicketStorage implements Serializable
 {
 
-    private ArrayList<Ticket> tickets;
+    private HashMap<Integer, Ticket> tickets;
 
 
     /**
@@ -20,7 +19,7 @@ public class TicketStorage implements Serializable
      */
     public TicketStorage ()
     {
-        tickets = new ArrayList<> ();
+        tickets = new HashMap<> ();
     }
 
 
@@ -28,84 +27,39 @@ public class TicketStorage implements Serializable
      * add ticket
      * @param ticket ticket
      */
-    public synchronized void addTicket (Ticket ticket)
+    public synchronized void addTicket (int id, Ticket ticket)
     {
         if (ticket == null)
             return;
-        tickets.add (ticket);
+        tickets.put (id, ticket);
     }
 
-    /**
-     * update Ticket
-     * @param ticket ticket
-     * @return result
-     */
-    public synchronized boolean update (Ticket ticket)
+    public synchronized void removeTicket (int id)
     {
-
-        for (Ticket ticket1 : tickets)
-        {
-            if (ticket1.equals (ticket))
-            {
-//                ticket1.update (ticket);
-                return true;
-            }
-        }
-        return false;
+        tickets.remove (id);
+        FileHandler.save (this, "Files/ticketStorage.ser");
     }
 
+
+
     /**
-     * get user
-     * @param index index of Ticket
+     * get tickets
      * @return Ticket
      */
-    public synchronized Ticket getTicket (int index)
+    public synchronized HashMap<Integer, Ticket> getTickets ()
     {
-        try {
-            return tickets.get (index);
-        } catch (IndexOutOfBoundsException e)
-        {
-            return null;
-        }
+        return tickets;
     }
 
-//    /**
-//     * saves ticketStorage
-//     */
-//    private synchronized void saveUserStorage ()
-//    {
-//        try (ObjectOutputStream out = new ObjectOutputStream (
-//                new FileOutputStream (
-//                        new File ("Files/ticketsData.ser")))){
-//
-//            out.writeObject (this);
-//        } catch (IOException e)
-//        {
-//            System.out.println ("some thing went wrong in save");
-//            e.printStackTrace ();
-//        }
-//    }
-//
-//    /**
-//     * load ticketStorage
-//     */
-//    private synchronized void loadUserStorage ()
-//    {
-//        try (ObjectInputStream in = new ObjectInputStream (
-//                new FileInputStream (
-//                        new File ("Files/usersData.ser")))){
-//            Object o = in.readObject ();
-//            this.usersStorage =  (UsersStorage) o;
-//
-//        } catch (FileNotFoundException e)
-//        {
-//            this.usersStorage = new UsersStorage ();
-//        }
-//        catch (IOException | ClassNotFoundException e)
-//        {
-//            System.out.println ("some thing was wrong in load");
-//        }
-//    }
+    /**
+     * get ticket
+     * @return Ticket
+     */
+    public synchronized Ticket getTicket(int id)
+    {
+        return tickets.get (id);
+    }
+
 
 
 }

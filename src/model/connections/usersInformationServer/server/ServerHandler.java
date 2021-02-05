@@ -2,9 +2,8 @@ package model.connections.usersInformationServer.server;
 
 
 
+import model.FileHandler;
 import model.connections.usersInformationServer.serverStorage.UsersStorage;
-
-import java.io.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -24,7 +23,7 @@ public class ServerHandler
      */
     public ServerHandler ()
     {
-        loadUserStorage ();
+        usersStorage = (UsersStorage) FileHandler.load ("Files/usersData.ser");
         finishProcess = new FinishProcess ();
         saveServer = new SaveServer (usersStorage);
         loadServer = new LoadServer (usersStorage);
@@ -36,7 +35,7 @@ public class ServerHandler
                     try {
                         Thread.sleep (1000 * 60 * 5);
                         System.out.println ("Auto Saved");
-                        saveUserStorage ();
+                        FileHandler.save (usersStorage, "Files/usersData.ser");
                     } catch (InterruptedException e)
                     {
                         e.printStackTrace ();
@@ -80,43 +79,6 @@ public class ServerHandler
         return finishProcess;
     }
 
-    /**
-     * saves data of users
-     */
-    private synchronized void saveUserStorage ()
-    {
-        try (ObjectOutputStream out = new ObjectOutputStream (
-                new FileOutputStream (
-                        new File ("Files/usersData.ser")))){
-
-            out.writeObject (usersStorage);
-        } catch (IOException e)
-        {
-            System.out.println ("some thing went wrong in save");
-            e.printStackTrace ();
-        }
-    }
-
-    /**
-     * load data of Users
-     */
-    private synchronized void loadUserStorage ()
-    {
-        try (ObjectInputStream in = new ObjectInputStream (
-                new FileInputStream (
-                        new File ("Files/usersData.ser")))){
-            Object o = in.readObject ();
-            this.usersStorage =  (UsersStorage) o;
-
-        } catch (FileNotFoundException e)
-        {
-            this.usersStorage = new UsersStorage ();
-        }
-        catch (IOException | ClassNotFoundException e)
-        {
-            System.out.println ("some thing was wrong in load");
-        }
-    }
 
 
 
@@ -128,7 +90,7 @@ public class ServerHandler
         @Override
         public void run () {
             System.out.println ("Auto Saved");
-            saveUserStorage ();
+            FileHandler.save (usersStorage, "Files/usersData.ser");
         }
     }
 }

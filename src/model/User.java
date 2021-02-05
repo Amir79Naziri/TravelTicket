@@ -2,11 +2,12 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class User implements Serializable
 {
-    private ArrayList<Ticket> tickets;
+    private HashMap<Integer, Ticket> tickets;
     private String firstName;
     private String lastName;
     private String email;
@@ -19,7 +20,7 @@ public class User implements Serializable
 
     public User (String field, String password, int type)
     {
-        this.tickets = new ArrayList<> ();
+        this.tickets = new HashMap<> ();
         this.firstName = "";
         this.lastName = "";
         if (type == 1)
@@ -43,7 +44,7 @@ public class User implements Serializable
         this.firstName = Objects.requireNonNull (firstName, "");;
     }
 
-    private void setTickets (ArrayList<Ticket> tickets) {
+    private void setTickets (HashMap<Integer, Ticket> tickets) {
         this.tickets = tickets;
     }
 
@@ -59,18 +60,16 @@ public class User implements Serializable
         this.phoneNumber = Objects.requireNonNull (phoneNumber, "");;
     }
 
-    public void addTicket (Ticket ticket) {
+    public void addTicket (int id, Ticket ticket) {
         if (ticket != null)
-            this.tickets.add (ticket);
+            this.tickets.put (id, ticket);
     }
 
-    public Ticket removeTicket (int index) {
-        return this.tickets.remove (index);
+    public void removeTicket (int id) {
+        this.tickets.remove (id);
     }
 
-    public boolean removeTicket (Ticket ticket) {
-        return this.tickets.remove (ticket);
-    }
+
 
     public void setBankAccountNumber (String bankAccountNumber) {
         this.bankAccountNumber = Objects.requireNonNull (bankAccountNumber, "");
@@ -101,8 +100,8 @@ public class User implements Serializable
         this.socialSecurityNumber = Objects.requireNonNull (socialSecurityNumber, "");
     }
 
-    public ArrayList<Ticket> getTickets () {
-        return new ArrayList<> (tickets);
+    public HashMap<Integer, Ticket> getTickets () {
+        return new HashMap<> (tickets);
     }
 
     public String getEmail () {
