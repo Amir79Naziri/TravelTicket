@@ -3,57 +3,60 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 
 <AnchorPane fx:id="mainPane" prefHeight="606.0" prefWidth="807.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Search.SearchController">
    <children>
       <AnchorPane layoutX="-16.0" layoutY="104.0" prefHeight="535.0" prefWidth="800.0" stylesheets="@cssForMenue.css">
          <children>
-            <JFXDatePicker defaultColor="#c5a030" layoutX="306.0" layoutY="233.0" prefHeight="34.0" prefWidth="190.0" promptText="Date of trip" style="-fx-background-color: #673AB7;" />
-            <ImageView fx:id="outPlane" fitHeight="96.0" fitWidth="96.0" layoutX="172.0" layoutY="30.0" opacity="0.3">
+            <ImageView fx:id="outPlane" fitHeight="96.0" fitWidth="96.0" layoutX="230.0" layoutY="84.0" opacity="0.3">
                <image>
                   <Image url="@Pictures/departures.png" />
                </image>
+               <effect>
+                  <DropShadow height="65.0" radius="27.0" width="45.0">
+                     <color>
+                        <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </ImageView>
-            <ImageView fx:id="inPlane" fitHeight="88.0" fitWidth="96.0" layoutX="555.0" layoutY="34.0" opacity="0.3">
+            <ImageView fx:id="inPlane" fitHeight="88.0" fitWidth="96.0" layoutX="476.0" layoutY="88.0" opacity="0.3">
                <image>
                   <Image url="@Pictures/landing.png" />
                </image>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="55.0" radius="24.5" width="45.0">
+                     <color>
+                        <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                     </color></DropShadow>
+               </effect>
             </ImageView>
-            <Line endX="131.0" endY="-33.399993896484375" layoutX="269.0" layoutY="243.0" startX="131.0" startY="-198.1999969482422" stroke="#b2b2b2" />
-            <Line endX="510.5999755859375" layoutX="283.0" layoutY="30.0" startX="-233.39999389648438" stroke="#c5a030" />
-            <JFXCheckBox fx:id="TrainCheckBox" checkedColor="#c5a030" contentDisplay="RIGHT" layoutX="260.0" layoutY="1.0" onAction="#trainCheckBoxHandler" prefHeight="10.0" prefWidth="57.0" text="Train" textFill="#b2b2b2">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="25.0">
-                     <image>
-                        <Image url="@Pictures/icons8-train-100.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXCheckBox>
-            <JFXCheckBox fx:id="AirplaneCheckBox" checkedColor="#c5a030" contentDisplay="RIGHT" layoutX="449.0" layoutY="1.0" onAction="#airplaneCheckBoxHandler" prefHeight="18.0" prefWidth="96.0" selected="true" text="Airplane" textFill="#b2b2b2">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="22.0">
-                     <image>
-                        <Image url="@Pictures/icons8-airplane-mode-on-100.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXCheckBox>
-            <Line endX="510.5999755859375" layoutX="262.0" layoutY="220.0" startX="-233.39999389648438" stroke="#b2b2b2" />
-            <Line endX="131.0" endY="-152.8000030517578" layoutX="269.0" layoutY="172.0" startX="131.0" startY="-186.20001220703125" stroke="#c5a030" />
-            <ImageView fitHeight="244.0" fitWidth="315.0" layoutX="244.0" layoutY="284.0">
+            <Line endX="400.0" endY="260.0" startX="400.0" startY="80.0" stroke="#b2b2b2" />
+            <JFXCheckBox fx:id="AirplaneCheckBox" checkedColor="#673ab7" contentDisplay="RIGHT" layoutX="502.0" layoutY="9.0" onAction="#airplaneCheckBoxHandler" prefHeight="18.0" prefWidth="96.0" selected="true" textFill="#b2b2b2" unCheckedColor="#b2b2b2" />
+            <Line endX="515.0" endY="260.0" startX="280.0" startY="260.0" stroke="#b2b2b2" />
+            <Line endX="131.0" endY="-134.40000915527344" layoutX="269.0" layoutY="172.0" startX="131.0" startY="-186.20001220703125" stroke="#c5a030">
+               <effect>
+                  <DropShadow />
+               </effect></Line>
+            <ImageView fitHeight="244.0" fitWidth="315.0" layoutX="244.0" layoutY="284.0" visible="false">
                <image>
                   <Image url="@Pictures/TextLogo.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="searchButton" layoutX="348.0" layoutY="284.0" onAction="#searchButtonHandler" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #673AB7; -fx-background-radius: 10px;" text="Search" textFill="#b2b2b2">
+            <JFXButton fx:id="searchButton" layoutX="348.0" layoutY="315.0" onAction="#searchButtonHandler" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #673AB7; -fx-background-radius: 10px;" text="Search" textFill="#b2b2b2">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="34.0" opacity="0.43">
                      <image>
@@ -62,61 +65,138 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Pane fx:id="inTrain" layoutX="515.0" layoutY="44.0" prefHeight="88.0" prefWidth="135.0" visible="false">
+            <Pane fx:id="inTrain" layoutX="451.0" layoutY="88.0" prefHeight="88.0" prefWidth="135.0" visible="false">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="13.0" layoutY="25.0" opacity="0.36">
                      <image>
                         <Image url="@Pictures/loc.png" />
                      </image>
+                     <effect>
+                        <InnerShadow height="5.0" radius="2.0" width="5.0">
+                           <color>
+                              <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
                   </ImageView>
                   <ImageView fitHeight="96.0" fitWidth="106.0" layoutX="39.0" layoutY="2.0">
                      <image>
                         <Image url="@Pictures/iconfinder_train_bus_transport_transit_tramway_tram_transportation_4047320.png" />
                      </image>
+                     <effect>
+                        <DropShadow height="20.0" radius="7.0" width="10.0">
+                           <color>
+                              <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
                </children>
             </Pane>
-            <Pane fx:id="outTrain" layoutX="112.0" layoutY="34.0" prefHeight="88.0" prefWidth="166.0" visible="false">
+            <Pane fx:id="outTrain" layoutX="169.0" layoutY="78.0" prefHeight="88.0" prefWidth="166.0" visible="false">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="118.0" layoutY="37.0" opacity="0.36">
                      <image>
                         <Image url="@Pictures/loc.png" />
                      </image>
+                     <effect>
+                        <InnerShadow height="5.0" radius="2.0" width="5.0">
+                           <color>
+                              <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
                   </ImageView>
                   <ImageView fitHeight="96.0" fitWidth="106.0" layoutX="38.0" layoutY="14.0">
                      <image>
                         <Image url="@Pictures/iconfinder_train_bus_transport_transit_tramway_tram_transportation_4047320.png" />
                      </image>
+                     <effect>
+                        <DropShadow height="20.0" radius="7.0" width="10.0">
+                           <color>
+                              <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </Pane>
             <Pane layoutX="28.0" layoutY="88.0" prefHeight="34.0" prefWidth="106.0" />
             <Pane layoutX="106.0" layoutY="340.0" prefHeight="34.0" prefWidth="106.0" />
-            <ChoiceBox fx:id="Origin" layoutX="145.0" layoutY="164.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;" />
-            <ChoiceBox fx:id="Destination" layoutX="515.0" layoutY="164.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;" />
-            <Label fx:id="OriginLABEL" layoutX="188.0" layoutY="146.0" text="      Origin   " textFill="WHITE" />
-            <Label fx:id="DestinationLABEL" layoutX="560.0" layoutY="146.0" text="Destination" textFill="WHITE" />
+            <ChoiceBox fx:id="Origin" layoutX="204.0" layoutY="219.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;">
+               <effect>
+                  <InnerShadow />
+               </effect></ChoiceBox>
+            <ChoiceBox fx:id="Destination" layoutX="440.0" layoutY="219.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;">
+               <effect>
+                  <InnerShadow />
+               </effect></ChoiceBox>
+            <Label fx:id="OriginLABEL" layoutX="204.0" layoutY="201.0" text="Origin" textFill="#b2b2b2" />
+            <Label fx:id="DestinationLABEL" layoutX="529.0" layoutY="201.0" text="Destination" textFill="#b2b2b2" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="302.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Profile/pictures/Logo.png" />
+               </image>
+               <effect>
+                  <DropShadow height="37.08" radius="18.785" spread="0.09" width="40.06">
+                     <color>
+                        <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </ImageView>
+            <JFXDatePicker defaultColor="#2a2e37" layoutX="326.0" layoutY="268.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;" stylesheets="@../Profile/profileTheme.css">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </JFXDatePicker>
+            <Circle fill="#2a2e37" layoutX="354.0" layoutY="20.0" radius="35.0" stroke="#2a2e37" strokeType="INSIDE">
+               <effect>
+                  <InnerShadow height="10.0" radius="4.5" width="10.0">
+                     <color>
+                        <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Circle>
+            <FontAwesomeIconView glyphName="TRAIN" layoutX="336.0" layoutY="34.0" size="40">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                     </color>
+                  </DropShadow>
+               </effect></FontAwesomeIconView>
+            <JFXCheckBox fx:id="TrainCheckBox" checkedColor="#673ab7" contentDisplay="RIGHT" layoutX="279.0" layoutY="11.0" onAction="#trainCheckBoxHandler" prefHeight="10.0" prefWidth="57.0" textFill="#b2b2b2" unCheckedColor="#b2b2b2" />
+            <Circle fill="#2a2e37" layoutX="446.0" layoutY="20.0" radius="35.0" stroke="#2a2e37" strokeType="INSIDE">
+               <effect>
+                  <InnerShadow height="10.0" radius="4.5" width="10.0">
+                     <color>
+                        <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Circle>
+            <FontAwesomeIconView glyphName="PLANE" layoutX="428.0" layoutY="34.0" size="40">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </FontAwesomeIconView>
+            <Line endX="475.0" endY="260.0" layoutX="3.0" layoutY="-194.0" startX="320.0" startY="260.0" stroke="#b2b2b2" />
          </children>
       </AnchorPane>
       <Label />
       <Line endX="430.199951171875" layoutX="261.0" layoutY="85.0" startX="-182.60000610351562" stroke="#c5a030" />
-      <JFXButton fx:id="home" layoutX="391.0" layoutY="34.0" onAction="#goToHome" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Home" textFill="#d7cdcd">
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Pictures/hme.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="account" layoutX="94.0" layoutY="34.0" onAction="#goToAccount" prefHeight="40.0" prefWidth="285.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Account" textFill="#d7cdcd">
-         <graphic>
-            <ImageView fitHeight="32.0" fitWidth="32.0">
-               <image>
-                  <Image url="@Pictures/man-user.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
+      <JFXButton fx:id="home" layoutX="391.0" layoutY="34.0" onAction="#goToHome" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" textFill="#d7cdcd" />
+      <JFXButton fx:id="account" layoutX="94.0" layoutY="34.0" onAction="#goToAccount" prefHeight="40.0" prefWidth="285.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" textFill="#d7cdcd" />
+      <FontAwesomeIconView glyphName="HOME" layoutX="515.0" layoutY="63.0" size="30" />
+      <FontAwesomeIconView glyphName="USER" layoutX="226.0" layoutY="64.0" size="30" text="" />
    </children>
 </AnchorPane>
