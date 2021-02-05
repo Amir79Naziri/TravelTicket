@@ -1,6 +1,7 @@
 package sample.login;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,12 +9,26 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.io.IOException;
+
+import model.User;
+import model.connections.userInformationClient.Client;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EmailLoginController extends Controller
 {
+    @FXML
+    private BorderPane mainPane;
+    static Parent profileRoot;
+
+
     @FXML
     private JFXTextField email;
 
@@ -47,8 +62,43 @@ public class EmailLoginController extends Controller
 
             if (validEmail && validPassword)
             {
-                // TODO : login here
-                System.out.println ("log in");
+
+
+                try {
+                    profileRoot = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
+                mainPane.getChildren().add(load);
+                Client client = connect ();
+
+
+                PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                pause.setOnFinished(f -> {
+                    User user = serverResponse (client);
+
+                    if (user != null)
+                    {
+                        System.out.println (user.getPhoneNumber () + user.getEmail ());
+                        // TODO : go to home page
+
+                        Stage stage;
+                        stage = (Stage) loginButton.getScene().getWindow();
+                        Scene scene = new Scene(profileRoot);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    else
+                    {
+                        mainPane.getChildren ().remove (load);
+                    }
+
+                });
+                pause.play();
+
+
+
             }
         }
         else if (event.getSource () == enterWithPhoneNumberLink)
@@ -82,5 +132,13 @@ public class EmailLoginController extends Controller
     public void initialize (URL location, ResourceBundle resources) {
         super.initialize (location, resources);
         invalidEmailWarnLabel.setVisible (false);
+    }
+
+    private Client connect ()
+    {
+        Client client = new Client ("127.0.0.1",email.getText ()
+                , password.getText (),"Login");
+        new Thread (client).start ();
+        return client;
     }
 }

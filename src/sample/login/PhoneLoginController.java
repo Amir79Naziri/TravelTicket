@@ -2,6 +2,7 @@ package sample.login;
 
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,14 +12,25 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.NullUser;
+import model.User;
+import model.connections.userInformationClient.Client;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class PhoneLoginController extends Controller
         implements Initializable {
+
+    @FXML
+    private BorderPane mainPane;
+    static Parent profileRoot;
 
     @FXML
     private JFXTextField phoneNumber;
@@ -57,8 +69,40 @@ public class PhoneLoginController extends Controller
 
             if (validPhone && validPassword)
             {
-                // TODO : login here
-                System.out.println ("log in");
+
+
+                AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
+                mainPane.getChildren().add(load);
+                Client client = connect ();
+
+
+                PauseTransition pause = new PauseTransition(Duration.seconds(2));
+
+                pause.setOnFinished(f -> {
+                    User user = serverResponse (client);
+
+                    if (user != null)
+                    {
+                        System.out.println (user.getPhoneNumber () + user.getEmail ());
+                        // TODO : go to home page
+                        Stage stage;
+                        stage = (Stage) loginButton.getScene().getWindow();
+                        Scene scene = new Scene(profileRoot);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    else
+                    {
+                        mainPane.getChildren ().remove (load);
+                    }
+
+                });
+                pause.play();
+
+
+
+
+
             }
         }
         else if (event.getSource () == enterWithEmailLink)
@@ -117,5 +161,20 @@ public class PhoneLoginController extends Controller
     public void initialize (URL location, ResourceBundle resources) {
         super.initialize (location, resources);
         invalidPhoneNumberWarnLabel.setVisible (false);
+        try {
+            profileRoot = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    private Client connect ()
+    {
+        Client client = new Client ("127.0.0.1",phoneNumberCode.getText () +
+                phoneNumber.getText (), password.getText (),"Login");
+        new Thread (client).start ();
+        return client;
+    }
+
+
 }

@@ -162,15 +162,15 @@ public class User implements Serializable
         User user = (User) o;
         return (Objects.equals (getEmail (), user.getEmail ()) ||
                 Objects.equals (getPhoneNumber (), user.getPhoneNumber ())) &&
-                Objects.equals (password, user.password);
+                Objects.equals (getPassword (), user.getPassword ());
     }
 
-    @Override
-    public int hashCode () {
-        if (phoneNumber.equals (""))
-            return Objects.hash (getEmail (), password);
-        else
-            return Objects.hash (getPhoneNumber (), password);
 
+    public boolean fieldEquals (Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return (Objects.equals (getEmail (), user.getEmail ()) ||
+                Objects.equals (getPhoneNumber (), user.getPhoneNumber ()));
     }
 }

@@ -2,12 +2,14 @@ package model.connections.usersInformationServer.serverStorage;
 
 
 import model.User;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * this class is Users Storage
  */
-public class UsersStorage
+public class UsersStorage implements Serializable
 {
 
     private ArrayList<User> users;
@@ -43,7 +45,7 @@ public class UsersStorage
 
         for (User user1 : users)
         {
-            if (user1.equals (user))
+            if (user1.fieldEquals (user))
             {
                 user1.update (user);
                 return true;
@@ -70,6 +72,19 @@ public class UsersStorage
             }
         }
         return null;
+    }
+
+    public synchronized boolean hasFieldUsed (String field, int type)
+    {
+        User user1 = new User (field,"1",type);
+        for (User user : users)
+        {
+            if (user.fieldEquals (user1))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 
