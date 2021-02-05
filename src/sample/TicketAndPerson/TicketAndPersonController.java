@@ -108,7 +108,7 @@ private ArrayList<Object> inputAndOutputArray;
         //currentUser=User(inputAndOutputArray[0]);
         //currentTicket=Ticket(inputAndOutputArray[1]);
 
-
+/*
         name.setText(currentUser.getFirstName());
         lastname.setText(currentUser.getLastName());
         SocialNumber.setText(currentUser.getSocialSecurityNumber());
@@ -125,6 +125,8 @@ private ArrayList<Object> inputAndOutputArray;
         price.setText(currentTicket.getSold()+" ");
 
         companyIcon.setImage(new Image("/sample/TicketAndPerson/Pictures/"+currentTicket.getAirLineName().split(" ")[0]+".png"));
+        */
+
 
     }
 }

@@ -92,6 +92,7 @@ public class SearchController implements Initializable {
 
     @FXML
     void searchButtonHandler() throws IOException {
+        /*
         originLocation = Origin.getValue();
         destinationLocation = Destination.getValue();
         choosedDate = datePicker.getValue().toString();
@@ -104,6 +105,8 @@ public class SearchController implements Initializable {
         inputAndOutputArray.add(destinationLocation);
         inputAndOutputArray.add(choosedDate);
         inputAndOutputArray.add(trainOrAirplane);
+
+         */
         //TODO :send inputAndOutputArray to tickets page
 
 
