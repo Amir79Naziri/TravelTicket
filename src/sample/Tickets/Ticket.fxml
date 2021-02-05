@@ -93,6 +93,11 @@
             <Image url="@Pictures/Purchase.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="logo" fitHeight="49.0" fitWidth="91.0" layoutX="135.0" layoutY="39.0">
+         <image>
+            <Image url="@Pictures/Turkish%20Airline.png" />
+         </image>
+      </ImageView>
    </children>
    <rotationAxis>
       <Point3D />

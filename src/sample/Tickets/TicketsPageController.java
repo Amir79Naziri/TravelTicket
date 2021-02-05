@@ -21,6 +21,7 @@ import model.User;
 import sample.Profile.ProfileController;
 import sample.Search.SearchController;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -174,8 +175,11 @@ public class TicketsPageController implements Initializable
             }
 
             TicketController ticketController = loader.getController();
-            ticketController.setEveryThing(temp, currentUser);
-
+            try {
+                ticketController.setEveryThing(temp, currentUser);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
 
             //private final Pane pane1 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
@@ -186,9 +190,9 @@ public class TicketsPageController implements Initializable
         list.setItems(tickets);
 
         airlinesList = FXCollections.observableArrayList();
-        airlinesList.addAll("American Airline", "Chinese Airlines",
-                "Turkish Airline", "Qatar Airlines",
-                "Bangladesh Airline", "British Airlines","Pegasus Airlines");
+        airlinesList.addAll("American Airlines", "Chinese Airlines",
+                "Turkish Airlines", "Qatar Airlines",
+                "Bangladesh Airlines", "British Airlines","Pegasus Airlines");
         airlines.setItems(airlinesList);
     }
 }

@@ -2,8 +2,13 @@ package sample.Tickets;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Ticket;
 import model.User;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class TicketController
 {
@@ -31,8 +36,10 @@ public class TicketController
     @FXML
     private Label destination;
 
-    public void setEveryThing(Ticket ticket, User CurrentUser)
-    {
+    @FXML
+    private ImageView logo;
+
+    public void setEveryThing(Ticket ticket, User CurrentUser) throws FileNotFoundException {
         depDate.setText(ticket.getDepartureDate().toString());
 
         String dh = ticket.getDepartureHour() + "";
@@ -57,6 +64,9 @@ public class TicketController
         arrTime.setText(ah + ":" + am);
         origin.setText(ticket.getDepartureCity());
         destination.setText(ticket.getArrivalCity());
+        FileInputStream input = new FileInputStream( "src/sample/Tickets/Pictures/" + ticket.getAirLineName() + ".png" );
+        Image image = new Image(input);
+        logo.setImage(image);
     }
 
 }
