@@ -95,7 +95,7 @@ public class ClientHandler implements Runnable
                 // receive
                 in = new ObjectInputStream (socket.getInputStream ());
                 User user = (User) ((ObjectInputStream) in).readObject ();
-                boolean res = userStorage.update (user);
+                String res = userStorage.update (user);
 
                 System.out.println (port + getServerName (port)
                         + "<- data received from client " + id);
@@ -103,10 +103,8 @@ public class ClientHandler implements Runnable
                 // send
                 out = new DataOutputStream (socket.getOutputStream ());
 
-                if (res)
-                    ((DataOutputStream) out).writeUTF ("Successful");
-                else
-                    ((DataOutputStream) out).writeUTF ("Error");
+                ((DataOutputStream) out).writeUTF (res);
+
                 System.out.println (port + getServerName (port)
                         + "-> data sent to client " + id);
             }

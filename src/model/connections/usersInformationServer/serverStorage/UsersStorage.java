@@ -40,18 +40,74 @@ public class UsersStorage implements Serializable
      * @param user user
      * @return result
      */
-    public synchronized boolean update (User user)
+    public synchronized String update (User user)
     {
-
         for (User user1 : users)
         {
-            if (user1.fieldEquals (user))
+            if (user1.idEquals (user))
             {
-                user1.update (user);
-                return true;
+                boolean phoneNumber = true, email = true;
+
+                if (!(user1.getPhoneNumber ().equals (user.getPhoneNumber ())) &&
+                        !(user1.getEmail ().equals (user.getEmail ())))
+                {
+                    int counter = 0;
+                    for (User user2 : users)
+                    {
+                        if (user2.getPhoneNumber ().equals (user.getPhoneNumber ()))
+                        {
+                            phoneNumber = false;
+                            counter++;
+                        }
+
+                        if (user2.getEmail ().equals (user.getEmail ()))
+                        {
+                            email = false;
+                            counter++;
+                        }
+
+                        if (counter == 2)
+                            break;
+                    }
+                }
+                else if (!(user1.getPhoneNumber ().equals (user.getPhoneNumber ())))
+                {
+                    for (User user2 : users)
+                    {
+                        if (user2.getPhoneNumber ().equals (user.getPhoneNumber ()))
+                        {
+                            phoneNumber = false;
+                            break;
+                        }
+                    }
+                }
+                else if (!(user1.getEmail ().equals (user.getEmail ())))
+                {
+                    for (User user2 : users)
+                    {
+                        if (user2.getEmail ().equals (user.getEmail ()))
+                        {
+                            email = false;
+                            break;
+                        }
+
+                    }
+                }
+                String res;
+                if (!phoneNumber && !email)
+                    res =  "Error_1";
+                else if (!phoneNumber)
+                    res = "Error_2";
+                else if (!email)
+                    res = "Error_3";
+                else
+                    res = "Successful";
+                user1.update (user, res);
+                return res;
+
             }
         }
-        return false;
+        return "Error_4";
     }
 
     /**
