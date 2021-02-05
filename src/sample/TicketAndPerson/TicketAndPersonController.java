@@ -44,8 +44,7 @@ public class TicketAndPersonController implements Initializable {
     @FXML
     private ImageView companyIcon;
 
-    @FXML
-    private ArrayList<Object> inputAndOutputArray;
+
 
 
     @FXML
