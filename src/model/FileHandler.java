@@ -32,6 +32,10 @@ public class FileHandler
             return (Serializable) in.readObject ();
 
         }
+        catch (FileNotFoundException e)
+        {
+            return null;
+        }
         catch (IOException | ClassNotFoundException e)
         {
             System.out.println ("some thing was wrong in load");

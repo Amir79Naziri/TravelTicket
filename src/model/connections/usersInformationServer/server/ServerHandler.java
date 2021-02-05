@@ -24,6 +24,8 @@ public class ServerHandler
     public ServerHandler ()
     {
         usersStorage = (UsersStorage) FileHandler.load ("Files/usersData.ser");
+        if (usersStorage == null)
+            usersStorage = new UsersStorage ();
         finishProcess = new FinishProcess ();
         saveServer = new SaveServer (usersStorage);
         loadServer = new LoadServer (usersStorage);
