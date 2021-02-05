@@ -8,16 +8,15 @@ public class Ticket implements Serializable
 {
     private String departureCity, arrivalCity, airLineName;
     private int departureHour, departureMinute, arrivalHour, arrivalMinute;
-    private int departureYear, departureMonth, departureDay;
-    private int arrivalYear,arrivalMonth, arrivalDay;
-    private int capacity, sold, code;
-    private List<User> passengers;
+    private LocalDate departureDate, arrivalDate;
+    private int code, price;
+    private User passengers;
 
     public Ticket(String departureCity, String arrivalCity, String airLineName,
             int departureHour, int departureMinute, int arrivalHour, int arrivalMinute,
                           int departureYear, int departureMonth, int departureDay,
                           int arrivalYear, int arrivalMonth, int arrivalDay,
-                          int capacity, int code)
+                          int code, int price)
     {
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
@@ -26,16 +25,11 @@ public class Ticket implements Serializable
         this.departureMinute = departureMinute;
         this.arrivalHour = arrivalHour;
         this.arrivalMinute = arrivalMinute;
-        this.departureYear = departureYear;
-        this.departureMonth = departureMonth;
-        this.departureDay = departureDay;
-        this.arrivalYear = arrivalYear;
-        this.arrivalMonth = arrivalMonth;
-        this.arrivalDay = arrivalDay;
-        this.capacity = capacity;
-        this.sold = 0;
+        this.departureDate = LocalDate.of(departureYear, departureMonth, departureDay);
+        this.arrivalDate = LocalDate.of(arrivalYear, arrivalMonth, arrivalDay);
         this.code = code;
-        passengers = Collections.synchronizedList(new ArrayList<>());
+        this.price = price;
+        passengers = null;
     }
 
     public String getDepartureCity() {
@@ -78,6 +72,14 @@ public class Ticket implements Serializable
         this.departureMinute = departureMinute;
     }
 
+    public LocalDate getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public void setArrivalDate(LocalDate arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
     public int getArrivalHour() {
         return arrivalHour;
     }
@@ -94,76 +96,28 @@ public class Ticket implements Serializable
         this.arrivalMinute = arrivalMinute;
     }
 
-    public int getDepartureYear() {
-        return departureYear;
+    public LocalDate getDepartureDate() {
+        return departureDate;
     }
 
-    public void setDepartureYear(int departureYear) {
-        this.departureYear = departureYear;
+    public void setDepartureDate(LocalDate departureDate) {
+        this.departureDate = departureDate;
     }
 
-    public int getDepartureMonth() {
-        return departureMonth;
+    public int getPrice() {
+        return price;
     }
 
-    public void setDepartureMonth(int departureMonth) {
-        this.departureMonth = departureMonth;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public int getDepartureDay() {
-        return departureDay;
-    }
-
-    public void setDepartureDay(int departureDay) {
-        this.departureDay = departureDay;
-    }
-
-    public int getArrivalYear() {
-        return arrivalYear;
-    }
-
-    public void setArrivalYear(int arrivalYear) {
-        this.arrivalYear = arrivalYear;
-    }
-
-    public int getArrivalMonth() {
-        return arrivalMonth;
-    }
-
-    public void setArrivalMonth(int arrivalMonth) {
-        this.arrivalMonth = arrivalMonth;
-    }
-
-    public int getArrivalDay() {
-        return arrivalDay;
-    }
-
-    public void setArrivalDay(int arrivalDay) {
-        this.arrivalDay = arrivalDay;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public List<User> getPassengers() {
+    public User getPassengers() {
         return passengers;
     }
 
-    public void setPassengers(List<User> passengers) {
+    public void setPassengers(User passengers) {
         this.passengers = passengers;
-    }
-
-    public int getSold() {
-        return sold;
-    }
-
-    public void setSold(int sold) {
-        this.sold = sold;
     }
 
     public int getCode() {
@@ -176,10 +130,9 @@ public class Ticket implements Serializable
 
     public void sellTicket(User user)
     {
-        if(sold < capacity)
+        if(passengers == null)
         {
-            sold++;
-            passengers.add(user);
+            passengers = user;
             System.out.println("Buying Ticket was successful");
         }
         else
@@ -188,18 +141,13 @@ public class Ticket implements Serializable
 
     public void retrieveTicket(User user)
     {
-        Iterator<User> iterator = passengers.iterator();
-        while(iterator.hasNext())
+        if(passengers != null)
         {
-            User temp = iterator.next();
-            if(temp.equals(user))
-            {
-                sold--;
-                passengers.remove(temp);
-                System.out.println("Retrieving Ticket was successful");
-                return;
-            }
+            passengers = null;
+            System.out.println("Retrieving Ticket was successful");
+            return;
         }
+
         System.out.println("There isn't any Passenger with This information!!!");
     }
 
@@ -214,5 +162,19 @@ public class Ticket implements Serializable
     @Override
     public int hashCode() {
         return Objects.hash(code);
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "departureCity='" + departureCity + '\'' +
+                ", arrivalCity='" + arrivalCity + '\'' +
+                ", airLineName='" + airLineName + '\'' +
+                ", departureHour=" + departureHour +
+                ", departureMinute=" + departureMinute +
+                ", departureDate=" + departureDate +
+                ", code=" + code +
+                ", price=" + price +
+                '}';
     }
 }
