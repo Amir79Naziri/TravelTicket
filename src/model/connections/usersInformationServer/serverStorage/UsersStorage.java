@@ -45,7 +45,7 @@ public class UsersStorage implements Serializable
 
         for (User user1 : users)
         {
-            if (user1.equals (user))
+            if (user1.fieldEquals (user))
             {
                 user1.update (user);
                 return true;
@@ -72,6 +72,19 @@ public class UsersStorage implements Serializable
             }
         }
         return null;
+    }
+
+    public synchronized boolean hasFieldUsed (String field, int type)
+    {
+        User user1 = new User (field,"1",type);
+        for (User user : users)
+        {
+            if (user.fieldEquals (user1))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

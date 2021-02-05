@@ -87,13 +87,13 @@ public class ServerHandler
     {
         try (ObjectOutputStream out = new ObjectOutputStream (
                 new FileOutputStream (
-                        new File ("./model/connections/usersInformationServer/" +
-                                "/serverStorage/Files/usersData.ser")))){
+                        new File ("Files/usersData.ser")))){
 
             out.writeObject (usersStorage);
         } catch (IOException e)
         {
             System.out.println ("some thing went wrong in save");
+            e.printStackTrace ();
         }
     }
 
@@ -104,8 +104,7 @@ public class ServerHandler
     {
         try (ObjectInputStream in = new ObjectInputStream (
                 new FileInputStream (
-                        new File ("./model/connections/usersInformationServer/" +
-                                "/serverStorage/Files/usersData.ser")))){
+                        new File ("Files/usersData.ser")))){
             Object o = in.readObject ();
             this.usersStorage =  (UsersStorage) o;
 

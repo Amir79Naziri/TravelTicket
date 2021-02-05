@@ -50,7 +50,15 @@ public class EmailLoginController extends Controller
             if (validEmail && validPassword)
             {
                 // TODO : login here
-                System.out.println ("log in");
+                Client client = connect ();
+                try {
+                    Thread.sleep (3000);
+                } catch (InterruptedException e)
+                {
+                    e.printStackTrace ();
+                }
+                System.out.println (serverResponse (client));
+//                System.out.println ("log in");
             }
         }
         else if (event.getSource () == enterWithPhoneNumberLink)

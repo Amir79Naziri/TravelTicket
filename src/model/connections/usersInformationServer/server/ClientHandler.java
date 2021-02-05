@@ -61,12 +61,12 @@ public class ClientHandler implements Runnable
                         user = new NullUser ();
                 } else // sign up
                 {
-                    User user1;
+                    boolean res;
                     if (split[1].toCharArray ()[0] == '+')
-                        user1 = userStorage.getUser (split[1], split[2], 1);
+                        res = userStorage.hasFieldUsed (split[1], 1);
                     else
-                        user1 = userStorage.getUser (split[1], split[2], 2);
-                    if (user1 != null)
+                        res = userStorage.hasFieldUsed (split[1], 2);
+                    if (res)
                         user = new NullUser ();
                     else
                     {

@@ -56,7 +56,15 @@ public class EmailSignUpController extends Controller{
             if (validPassword && validEmail)
             {
                 // TODO : sign up
-                System.out.println ("sign up");
+                Client client = connect ();
+                try {
+                    Thread.sleep (3000);
+                } catch (InterruptedException e)
+                {
+                    e.printStackTrace ();
+                }
+                System.out.println (serverResponse (client, emailExistsWarnLabel));
+//                System.out.println ("sign up");
             }
         }
         else if (event.getSource () == backToLoginLink)

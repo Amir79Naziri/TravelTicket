@@ -62,7 +62,15 @@ public class PhoneSignUpController extends Controller{
             if (validPassword && validPhone)
             {
                 // TODO : sign up
-                System.out.println ("sign up");
+                Client client = connect ();
+                try {
+                    Thread.sleep (3000);
+                } catch (InterruptedException e)
+                {
+                    e.printStackTrace ();
+                }
+                System.out.println (serverResponse (client, phoneNumberExistsWarnLabel));
+//                System.out.println ("sign up");
             }
         }
         else if (event.getSource () == backToLoginLink)
