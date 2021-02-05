@@ -67,7 +67,10 @@ public class ClientHandler implements Runnable
                     else
                         res = userStorage.hasFieldUsed (split[1], 2);
                     if (res)
+                    {
                         user = new NullUser ();
+                        System.out.println ("res is pos");
+                    }
                     else
                     {
                         if (split[1].toCharArray ()[0] == '+')
@@ -75,6 +78,7 @@ public class ClientHandler implements Runnable
                         else
                             user = new User (split[1],split[2], 2);
                         userStorage.addUser (user);
+                        System.out.println ("res is neg");
                     }
                 }
 

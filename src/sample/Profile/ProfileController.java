@@ -1,6 +1,8 @@
 package sample.Profile;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
@@ -11,22 +13,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.User;
 import sample.Search.SearchController;
 
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownServiceException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProfileController implements Initializable {
+    private User currentUser;
     private ObservableList<Pane> pastTickets;
     @FXML
     private ListView<Pane> ticketHistoryList;
@@ -34,7 +42,7 @@ public class ProfileController implements Initializable {
     protected StackPane mainPane;
     protected AnchorPane load;
     @FXML
-    private JFXButton paymentButton;
+    private BorderPane borderPane;
     @FXML
     private JFXButton homeButton;
     @FXML
@@ -63,6 +71,46 @@ public class ProfileController implements Initializable {
     @FXML
     private JFXTextField phoneNumberField;
 
+    //Change Password Fields
+    @FXML
+    private AnchorPane changePasswordPane;
+
+    @FXML
+    private JFXPasswordField currPassField;
+
+    @FXML
+    private JFXPasswordField newPassField;
+
+    @FXML
+    private JFXPasswordField repeatPassField;
+
+    @FXML
+    private JFXButton changeButton;
+
+    @FXML
+    private JFXButton cancelButton;
+    //
+
+
+    //Travel History fields
+    @FXML
+    private JFXDatePicker datePicker;
+    @FXML
+    private JFXButton searchButton;
+    //
+
+    //Wallet fields
+    @FXML
+    private Label balance;
+    @FXML
+    private Label available;
+    @FXML
+    private JFXTextField amount;
+    @FXML
+    private JFXButton pay;
+    //
+
+
     static Parent homeRoot, loginRoot, bankRoot, changePassRoot;
 
     private final Pane pane1 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
@@ -76,40 +124,77 @@ public class ProfileController implements Initializable {
     void edit() {
         if (editButton.getText().equals("Edit")) {
             editButton.setText("Save");
-            nameField.setEditable(true);
-            lastNameField.setEditable(true);
-            securityNumberField.setEditable(true);
-            emailField.setEditable(true);
-            phoneNumberField.setEditable(true);
-            bankNumberField.setEditable(true);
+            nameField.setDisable(false);
+            lastNameField.setDisable(false);
+            securityNumberField.setDisable(false);
+            emailField.setDisable(false);
+            phoneNumberField.setDisable(false);
+            bankNumberField.setDisable(false);
         }
         else if (editButton.getText().equals("Save")) {
             editButton.setText("Edit");
-            nameField.setEditable(false);
-            lastNameField.setEditable(false);
-            securityNumberField.setEditable(false);
-            emailField.setEditable(false);
-            phoneNumberField.setEditable(false);
-            bankNumberField.setEditable(false);
+            nameField.setDisable(true);
+            lastNameField.setDisable(true);
+            securityNumberField.setDisable(true);
+            emailField.setDisable(true);
+            phoneNumberField.setDisable(true);
+            bankNumberField.setDisable(true);
             //TODO update the user
         }
     }
 
     @FXML
     void changePass() throws IOException {
-        load = FXMLLoader.load(getClass().getResource("/sample/Profile/changePassword.fxml"));
-        mainPane.getChildren().add(load);
-        try {
-            changePassRoot = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        borderPane.setOpacity(0.4);
+        changePasswordPane.setVisible(true);
+        editButton.setDisable(true);
+        changePassButton.setDisable(true);
     }
 
     @FXML
-    void goToBank(ActionEvent event) throws IOException, InterruptedException
-    {
+    void changePassword() {
+        //TODO update the user
+        borderPane.setOpacity(1);
+        changePasswordPane.setVisible(false);
+        editButton.setDisable(false);
+        changePassButton.setDisable(false);
+    }
+
+    @FXML
+    void cancel() {
+        borderPane.setOpacity(1);
+        changePasswordPane.setVisible(false);
+        editButton.setDisable(false);
+        changePassButton.setDisable(false);
+    }
+
+    @FXML
+    void searchTickets(){
+        LocalDate date = datePicker.getValue();
+        if (date != null) {
+            //TODO search tickets for the date
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FXML
+    void goToBank(ActionEvent event) throws IOException, InterruptedException {
+        String price = amount.getText();
+
+
         try {
             bankRoot = FXMLLoader.load(getClass().getResource("/sample/Bank/BankPage.fxml"));
         } catch (IOException e) {
@@ -120,10 +205,10 @@ public class ProfileController implements Initializable {
         ticketHistoryList.setOpacity(0.5);
 
 
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(f -> {
             Stage stage;
-            stage = (Stage) paymentButton.getScene().getWindow();
+            stage = (Stage) pay.getScene().getWindow();
             Scene scene = new Scene(bankRoot);
             stage.setScene(scene);
             stage.show();
@@ -169,6 +254,10 @@ public class ProfileController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void serCurrentUser(User user) {
+        this.currentUser = user;
     }
 
     @Override
