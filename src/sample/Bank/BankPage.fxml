@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Bank.BankPageController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Bank.BankPageController">
    <children>
       <AnchorPane layoutX="590.0" layoutY="100.0" prefHeight="500.0" prefWidth="210.0" style="-fx-background-color: RGB(164,164,164);">
          <children>
@@ -93,12 +93,12 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="97.0" layoutY="425.0" prefHeight="46.0" prefWidth="235.0" style="-fx-background-color: RGB(69,220,92); -fx-background-radius: 25px;" text="Pay" textFill="WHITE">
+            <JFXButton fx:id="payButton" buttonType="RAISED" layoutX="97.0" layoutY="425.0" onAction="#goToProfile" prefHeight="46.0" prefWidth="235.0" style="-fx-background-color: RGB(69,220,92); -fx-background-radius: 25px;" text="Pay" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="368.0" layoutY="425.0" prefHeight="46.0" prefWidth="136.0" style="-fx-background-color: RGB(253,215,128); -fx-background-radius: 25px;" text="Cancel" textFill="WHITE">
+            <JFXButton fx:id="cancelButton" buttonType="RAISED" layoutX="368.0" layoutY="425.0" onAction="#goToProfile" prefHeight="46.0" prefWidth="136.0" style="-fx-background-color: RGB(253,215,128); -fx-background-radius: 25px;" text="Cancel" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>

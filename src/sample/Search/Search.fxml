@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="606.0" prefWidth="807.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Search.SearchController">
+<AnchorPane fx:id="mainPane" prefHeight="606.0" prefWidth="807.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Search.SearchController">
    <children>
       <AnchorPane layoutX="-16.0" layoutY="104.0" prefHeight="535.0" prefWidth="800.0" stylesheets="@cssForMenue.css">
          <children>
