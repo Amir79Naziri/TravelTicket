@@ -117,8 +117,8 @@ public class TicketsPageController implements Initializable
 
         airlinesList = FXCollections.observableArrayList();
         airlinesList.addAll("American Airline", "Chinese Airlines",
-                "Turkish Airline", "Iran Airlines",
-                "Lufthansa Airline", "British Airlines");
+                "Turkish Airline", "Qatar Airlines",
+                "Bangladesh Airline", "British Airlines","Pegasus Airlines");
         airlines.setItems(airlinesList);
     }
 }

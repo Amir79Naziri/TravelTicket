@@ -2,6 +2,7 @@ package sample.Search;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,25 +12,32 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
-import javafx.scene.control.ChoiceBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
 public class SearchController implements Initializable {
-
+    private String originLocation;
+    private String destinationLocation;
+    private String choosedDate;
+    private String trainOrAirplane;
+    @FXML
+    private ArrayList<Object> inputAndOutputArray;
 
     @FXML
     private Pane inTrain;
+
+    @FXML
+    private DatePicker datePicker;
 
     @FXML
     private Pane outTrain;
@@ -81,8 +89,24 @@ public class SearchController implements Initializable {
         inTrain.setVisible(false);
         outTrain.setVisible(false);
     }
+
     @FXML
-        void searchButtonHandler()throws IOException{
+    void searchButtonHandler() throws IOException {
+        originLocation = Origin.getValue();
+        destinationLocation = Destination.getValue();
+        choosedDate = datePicker.getValue().toString();
+        if (TrainCheckBox.isSelected())
+            trainOrAirplane = "train";
+        else
+            trainOrAirplane = "airplain";
+
+        inputAndOutputArray.add(originLocation);
+        inputAndOutputArray.add(destinationLocation);
+        inputAndOutputArray.add(choosedDate);
+        inputAndOutputArray.add(trainOrAirplane);
+        //TODO :send inputAndOutputArray to tickets page
+
+
         Stage stage;
         Parent root;
 
@@ -94,22 +118,23 @@ public class SearchController implements Initializable {
         stage.show();
 
     }
-@FXML
-    void goToHome()throws IOException{
-    Stage stage;
-    Parent root;
-
-    stage = (Stage) home.getScene().getWindow();
-    root = FXMLLoader.load(getClass().getResource("/sample/Search/Search.fxml"));
-
-    Scene scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-
-}
 
     @FXML
-    void goToAccount()throws IOException{
+    void goToHome() throws IOException {
+        Stage stage;
+        Parent root;
+
+        stage = (Stage) home.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("/sample/Search/Search.fxml"));
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    void goToAccount() throws IOException {
         Stage stage;
         Parent root;
 
@@ -123,25 +148,38 @@ public class SearchController implements Initializable {
     }
 
 
-
-
     @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
+    public void initialize(URL location, ResourceBundle resources) {
+
+
+        //TODO: get inputAndOutputArray;
+        // inputAndOutputArray...
+
+
         OriginList = FXCollections.observableArrayList();
+
+
         OriginList.addAll("Tehran", "Shiraz",
                 "Mashhad", "Isfahan",
                 "Kish");
+        //OriginList add()  from list of tickets
+
+
         Origin.setItems(OriginList);
 
+
         DestinationList = FXCollections.observableArrayList();
+
+
         DestinationList.addAll("Tehran", "Shiraz",
                 "Mashhad", "Isfahan",
                 "Kish");
+
+        //DestinationList add()  from list of tickets
+
         Destination.setItems(DestinationList);
 
     }
-
 
 
 }

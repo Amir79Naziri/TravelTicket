@@ -148,7 +148,7 @@
                   </DropShadow>
                </effect>
             </ImageView>
-            <JFXDatePicker defaultColor="#2a2e37" layoutX="326.0" layoutY="268.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;" stylesheets="@../Profile/profileTheme.css">
+            <JFXDatePicker fx:id="datePicker" defaultColor="#2a2e37" layoutX="326.0" layoutY="268.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;" stylesheets="@../Profile/profileTheme.css">
                <effect>
                   <InnerShadow />
                </effect>
