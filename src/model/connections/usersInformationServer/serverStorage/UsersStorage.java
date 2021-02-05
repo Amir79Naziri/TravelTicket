@@ -2,12 +2,14 @@ package model.connections.usersInformationServer.serverStorage;
 
 
 import model.User;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * this class is Users Storage
  */
-public class UsersStorage
+public class UsersStorage implements Serializable
 {
 
     private ArrayList<User> users;

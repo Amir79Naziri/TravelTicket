@@ -161,16 +161,15 @@ public class User implements Serializable
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return (Objects.equals (getEmail (), user.getEmail ()) ||
-                Objects.equals (getPhoneNumber (), user.getPhoneNumber ())) &&
-                Objects.equals (password, user.password);
+                Objects.equals (getPhoneNumber (), user.getPhoneNumber ()));
     }
 
     @Override
     public int hashCode () {
         if (phoneNumber.equals (""))
-            return Objects.hash (getEmail (), password);
+            return Objects.hash (getEmail ());
         else
-            return Objects.hash (getPhoneNumber (), password);
+            return Objects.hash (getPhoneNumber ());
 
     }
 }
