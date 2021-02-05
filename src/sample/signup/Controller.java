@@ -6,6 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import model.NullUser;
+import model.User;
+import model.connections.userInformationClient.Client;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -98,5 +101,34 @@ public class Controller implements Initializable
         passwordMissMatchWarnLabel.setVisible (false);
         passwordComplexityWarnLabel.setVisible (false);
         connectionLostWarnLabel.setVisible (false);
+    }
+
+    protected User serverResponse(Client client, Label warnLabel)
+    {
+        User user = client.getLoginOrSignUpResult ();
+        if (user == null){
+            if (!connectionLostWarnLabel.isVisible ())
+                connectionLostWarnLabel.setVisible (true);
+            return null;
+        }
+        else
+        {
+            if (connectionLostWarnLabel.isVisible ())
+                connectionLostWarnLabel.setVisible (false);
+        }
+
+        if (user instanceof NullUser)
+        {
+            if (!warnLabel.isVisible ())
+                warnLabel.setVisible (true);
+            return null;
+        }
+        else
+        {
+            if (warnLabel.isVisible ())
+                warnLabel.setVisible (false);
+        }
+
+        return user;
     }
 }

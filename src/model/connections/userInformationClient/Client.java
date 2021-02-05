@@ -29,8 +29,6 @@ public class Client implements Runnable
      * creates a login or signUp process
      * @param ip ip
      * @param field username
-     *
-     *
      * @param password password
      * @param request request
      */

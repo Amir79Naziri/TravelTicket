@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.connections.userInformationClient.Client;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -82,5 +84,13 @@ public class EmailLoginController extends Controller
     public void initialize (URL location, ResourceBundle resources) {
         super.initialize (location, resources);
         invalidEmailWarnLabel.setVisible (false);
+    }
+
+    private Client connect ()
+    {
+        Client client = new Client ("127.0.0.1",email.getText ()
+                , password.getText (),"Login");
+        new Thread (client).start ();
+        return client;
     }
 }

@@ -9,6 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.NullUser;
+import model.User;
+import model.connections.userInformationClient.Client;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -87,5 +90,13 @@ public class EmailSignUpController extends Controller{
         super.initialize (location, resources);
         invalidEmailWarnLabel.setVisible (false);
         emailExistsWarnLabel.setVisible (false);
+    }
+
+    private Client connect ()
+    {
+        Client client = new Client ("127.0.0.1",email.getText ()
+                , password.getText (),"SignUp");
+        new Thread (client).start ();
+        return client;
     }
 }

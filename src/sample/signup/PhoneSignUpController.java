@@ -11,7 +11,11 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import model.NullUser;
+import model.User;
+import model.connections.userInformationClient.Client;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,6 +36,9 @@ public class PhoneSignUpController extends Controller{
 
     @FXML
     private Label phoneNumberExistsWarnLabel;
+
+    @FXML
+    private JFXTextField phoneNumberCode;
 
     @FXML
     protected void actionHandler(ActionEvent event) throws Exception {
@@ -112,5 +119,13 @@ public class PhoneSignUpController extends Controller{
         super.initialize (location, resources);
         invalidPhoneNumberWarnLabel.setVisible (false);
         phoneNumberExistsWarnLabel.setVisible (false);
+    }
+
+    private Client connect ()
+    {
+        Client client = new Client ("127.0.0.1",phoneNumberCode.getText () +
+                phoneNumber.getText (), password.getText (),"SignUp");
+        new Thread (client).start ();
+        return client;
     }
 }
