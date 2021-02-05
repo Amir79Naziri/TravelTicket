@@ -9,14 +9,14 @@ public class Ticket implements Serializable
     private int departureHour, departureMinute, arrivalHour, arrivalMinute;
     private int departureYear, departureMonth, departureDay;
     private int arrivalYear,arrivalMonth, arrivalDay;
-    private int capacity, sold;
+    private int capacity, sold, code;
     private List<User> passengers;
 
     public Ticket(String departureCity, String arrivalCity, String airLineName,
             int departureHour, int departureMinute, int arrivalHour, int arrivalMinute,
                           int departureYear, int departureMonth, int departureDay,
                           int arrivalYear, int arrivalMonth, int arrivalDay,
-                          int capacity)
+                          int capacity, int code)
     {
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
@@ -33,6 +33,7 @@ public class Ticket implements Serializable
         this.arrivalDay = arrivalDay;
         this.capacity = capacity;
         this.sold = 0;
+        this.code = code;
         passengers = Collections.synchronizedList(new ArrayList<>());
     }
 
@@ -164,6 +165,14 @@ public class Ticket implements Serializable
         this.sold = sold;
     }
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     public void sellTicket(User user)
     {
         if(sold < capacity)
@@ -198,11 +207,11 @@ public class Ticket implements Serializable
         if (this == o) return true;
         if (!(o instanceof Ticket)) return false;
         Ticket ticket = (Ticket) o;
-        return departureHour == ticket.departureHour && departureMinute == ticket.departureMinute && arrivalHour == ticket.arrivalHour && arrivalMinute == ticket.arrivalMinute && departureYear == ticket.departureYear && departureMonth == ticket.departureMonth && departureDay == ticket.departureDay && arrivalYear == ticket.arrivalYear && arrivalMonth == ticket.arrivalMonth && arrivalDay == ticket.arrivalDay && capacity == ticket.capacity && Objects.equals(departureCity, ticket.departureCity) && Objects.equals(arrivalCity, ticket.arrivalCity) && Objects.equals(airLineName, ticket.airLineName);
+        return code == ticket.code;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(departureCity, arrivalCity, airLineName, departureHour, departureMinute, arrivalHour, arrivalMinute, departureYear, departureMonth, departureDay, arrivalYear, arrivalMonth, arrivalDay, capacity);
+        return Objects.hash(code);
     }
 }

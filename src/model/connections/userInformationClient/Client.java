@@ -19,8 +19,8 @@ public class Client implements Runnable
     private int port;
     private String request;
     private User user;
-    private String username;
-    private char[] password;
+    private String field;
+    private String password;
     private String res = "Error";
     private boolean finished = false;
 
@@ -28,20 +28,20 @@ public class Client implements Runnable
     /**
      * creates a login or signUp process
      * @param ip ip
-     * @param username username
+     * @param field username
      *
      *
      * @param password password
      * @param request request
      */
-    public Client (String ip, String username, char[] password, String request)
+    public Client (String ip, String field, String password, String request)
     {
         if (request == null || request.equals ("Logout"))
             throw new InputMismatchException ("you should use this only for login or signUp");
         this.ip = ip;
         this.port = 8083;
         this.request = request;
-        this.username = username;
+        this.field = field;
         this.password = password;
     }
 
@@ -70,11 +70,8 @@ public class Client implements Runnable
         {
             if (port == 8083)
             {
-                StringBuilder pass = new StringBuilder ();
-                for (char c : password)
-                    pass.append (c);
-                // send
-                String data = request + " " + username + " " + pass.toString ();
+
+                String data = request + " " + field + " " + password;
                 out = new DataOutputStream (connection.getOutputStream ());
                 ((DataOutputStream) out).writeUTF (data);
                 out.flush ();
@@ -207,7 +204,6 @@ public class Client implements Runnable
         {
             case 8083 : return " (Load Server) ";
             case 4787 : return " (Save Server) ";
-            case 6050 : return " (List Server) ";
         }
         return "";
     }

@@ -1,7 +1,6 @@
 package sample.Tickets;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +14,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,21 +63,11 @@ public class TicketsPageController implements Initializable
     @FXML
     void GoHome(ActionEvent event) throws IOException, InterruptedException
     {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
-        mainPage.getChildren().add(load);
-        list.setOpacity(0.5);
-
-
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
-        pause.setOnFinished(f -> {
-            Stage stage;
-            stage = (Stage) HomeButton.getScene().getWindow();
-            Scene scene = new Scene(rootHome);
-            stage.setScene(scene);
-            stage.show();
-        });
-        pause.play();
-
+        Stage stage;
+        stage = (Stage) HomeButton.getScene().getWindow();
+        Scene scene = new Scene(rootHome);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
