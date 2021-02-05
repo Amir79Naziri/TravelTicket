@@ -15,7 +15,7 @@
          <children>
             <JFXSpinner layoutX="161.0" layoutY="94.0" prefHeight="180.0" prefWidth="180.0" startingAngle="180.0">
                <effect>
-                  <Reflection fraction="1.0" topOpacity="0.27">
+                  <Reflection fraction="0.27" topOpacity="0.96">
                      <input>
                         <InnerShadow>
                            <color>
