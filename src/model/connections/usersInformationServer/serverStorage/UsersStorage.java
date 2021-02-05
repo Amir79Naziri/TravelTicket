@@ -76,7 +76,7 @@ public class UsersStorage implements Serializable
 
     public synchronized boolean hasFieldUsed (String field, int type)
     {
-        User user1 = new User (field,"1",type);
+        User user1 = new User (field,"",type);
         for (User user : users)
         {
             if (user.fieldEquals (user1))
