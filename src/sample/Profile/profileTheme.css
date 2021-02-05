@@ -39,10 +39,9 @@
 {
     -fx-pref-width: 250;
     -fx-pref-height: 30;
-    -fx-text-fill: white;
     -fx-font-size : 11pt;
     -jfx-focus-color: -fx-deepPurple;
-    -fx-text-fill: derive(white, 20%);
+    -fx-text-fill: derive(white, 30%);
 }
 
 /*Login Screen Specific*/
