@@ -160,9 +160,17 @@ public class User implements Serializable
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return (Objects.equals (getEmail (), user.getEmail ()) ||
-                Objects.equals (getPhoneNumber (), user.getPhoneNumber ())) &&
-                Objects.equals (getPassword (), user.getPassword ());
+        boolean res1 = Objects.equals (getPassword (), user.getPassword ());
+        boolean res2 = Objects.equals (getPhoneNumber (), user.getPhoneNumber ());
+        boolean res3 = Objects.equals (getEmail (), user.getEmail ());
+
+        if (getPhoneNumber ().equals ("") && user.getPhoneNumber ().equals (""))
+            res2 = false;
+
+        if (getEmail ().equals ("") && user.getEmail ().equals (""))
+            res3 = false;
+
+        return (res1) && (res2 || res3);
     }
 
 
@@ -170,7 +178,17 @@ public class User implements Serializable
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return (Objects.equals (getEmail (), user.getEmail ()) ||
-                Objects.equals (getPhoneNumber (), user.getPhoneNumber ()));
+
+
+        boolean res2 = Objects.equals (getPhoneNumber (), user.getPhoneNumber ());
+        boolean res3 = Objects.equals (getEmail (), user.getEmail ());
+
+        if (getPhoneNumber ().equals ("") && user.getPhoneNumber ().equals (""))
+            res2 = false;
+
+        if (getEmail ().equals ("") && user.getEmail ().equals (""))
+            res3 = false;
+
+        return (res2 || res3);
     }
 }
