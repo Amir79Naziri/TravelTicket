@@ -1,6 +1,7 @@
 package sample.Profile;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -33,6 +35,8 @@ public class ProfileController implements Initializable {
     @FXML
     protected StackPane mainPane;
     protected AnchorPane load;
+    @FXML
+    private BorderPane borderPane;
     @FXML
     private JFXButton paymentButton;
     @FXML
@@ -63,6 +67,26 @@ public class ProfileController implements Initializable {
     @FXML
     private JFXTextField phoneNumberField;
 
+    //Change Password Fields
+    @FXML
+    private AnchorPane changePasswordPane;
+
+    @FXML
+    private JFXPasswordField currPassField;
+
+    @FXML
+    private JFXPasswordField newPassField;
+
+    @FXML
+    private JFXPasswordField repeatPassField;
+
+    @FXML
+    private JFXButton changeButton;
+
+    @FXML
+    private JFXButton cancelButton;
+    //
+
     static Parent homeRoot, loginRoot, bankRoot, changePassRoot;
 
     private final Pane pane1 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
@@ -76,35 +100,48 @@ public class ProfileController implements Initializable {
     void edit() {
         if (editButton.getText().equals("Edit")) {
             editButton.setText("Save");
-            nameField.setEditable(true);
-            lastNameField.setEditable(true);
-            securityNumberField.setEditable(true);
-            emailField.setEditable(true);
-            phoneNumberField.setEditable(true);
-            bankNumberField.setEditable(true);
+            nameField.setDisable(false);
+            lastNameField.setDisable(false);
+            securityNumberField.setDisable(false);
+            emailField.setDisable(false);
+            phoneNumberField.setDisable(false);
+            bankNumberField.setDisable(false);
         }
         else if (editButton.getText().equals("Save")) {
             editButton.setText("Edit");
-            nameField.setEditable(false);
-            lastNameField.setEditable(false);
-            securityNumberField.setEditable(false);
-            emailField.setEditable(false);
-            phoneNumberField.setEditable(false);
-            bankNumberField.setEditable(false);
+            nameField.setDisable(true);
+            lastNameField.setDisable(true);
+            securityNumberField.setDisable(true);
+            emailField.setDisable(true);
+            phoneNumberField.setDisable(true);
+            bankNumberField.setDisable(true);
             //TODO update the user
         }
     }
 
     @FXML
     void changePass() throws IOException {
-        load = FXMLLoader.load(getClass().getResource("/sample/Profile/changePassword.fxml"));
-        mainPane.getChildren().add(load);
-        try {
-            changePassRoot = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        borderPane.setOpacity(0.4);
+        changePasswordPane.setVisible(true);
+        editButton.setDisable(true);
+        changePassButton.setDisable(true);
+    }
 
+    @FXML
+    void changePassword() {
+        //TODO update the user
+        borderPane.setOpacity(1);
+        changePasswordPane.setVisible(false);
+        editButton.setDisable(false);
+        changePassButton.setDisable(false);
+    }
+
+    @FXML
+    void cancel() {
+        borderPane.setOpacity(1);
+        changePasswordPane.setVisible(false);
+        editButton.setDisable(false);
+        changePassButton.setDisable(false);
     }
 
     @FXML
@@ -173,8 +210,8 @@ public class ProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        pastTickets = FXCollections.observableArrayList();
-        pastTickets.addAll(pane1, pane2, pane3);
-        ticketHistoryList.setItems(pastTickets);
+//        pastTickets = FXCollections.observableArrayList();
+//        pastTickets.addAll(pane1, pane2, pane3);
+//        ticketHistoryList.setItems(pastTickets);
     }
 }

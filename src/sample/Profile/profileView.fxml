@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
@@ -30,7 +31,7 @@
 
 <StackPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@profileTheme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Profile.ProfileController">
     <children>
-        <BorderPane prefHeight="200.0" prefWidth="200.0">
+        <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0">
             <top>
                 <AnchorPane prefHeight="61.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                     <children>
@@ -154,17 +155,17 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <JFXTextField fx:id="nameField" editable="false" layoutX="110.0" layoutY="191.0" />
-                                        <JFXTextField fx:id="lastNameField" editable="false" layoutX="110.0" layoutY="279.0" />
+                                        <JFXTextField fx:id="nameField" disable="true" layoutX="110.0" layoutY="191.0" />
+                                        <JFXTextField fx:id="lastNameField" layoutX="110.0" layoutY="279.0" />
                                         <Label layoutX="110.0" layoutY="173.0" text="First Name" textFill="#b2b2b2" />
                                         <Label layoutX="111.0" layoutY="261.0" text="Last Name" textFill="#b2b2b2" />
-                                        <JFXTextField fx:id="securityNumberField" editable="false" layoutX="110.0" layoutY="360.0" />
+                                        <JFXTextField fx:id="securityNumberField" disable="true" layoutX="110.0" layoutY="360.0" />
                                         <Label layoutX="110.0" layoutY="343.0" text="Social Security Number" textFill="#b2b2b2" />
-                                        <JFXTextField fx:id="emailField" editable="false" layoutX="442.0" layoutY="191.0" />
-                                        <JFXTextField editable="false" layoutX="442.0" layoutY="279.0" style="-fx-pref-width: 25; -fx-text-fill: #B2B2B2;" text="+98" />
+                                        <JFXTextField fx:id="emailField" disable="true" layoutX="442.0" layoutY="191.0" />
+                                        <JFXTextField disable="true" editable="false" layoutX="442.0" layoutY="279.0" style="-fx-pref-width: 25; -fx-text-fill: #B2B2B2;" text="+98" />
                                         <Label layoutX="442.0" layoutY="173.0" text="Email" textFill="#b2b2b2" />
                                         <Label layoutX="442.0" layoutY="263.0" text="Phone Number" textFill="#b2b2b2" />
-                                        <JFXTextField fx:id="bankNumberField" editable="false" layoutX="442.0" layoutY="360.0" />
+                                        <JFXTextField fx:id="bankNumberField" disable="true" layoutX="442.0" layoutY="360.0" />
                                         <Label layoutX="442.0" layoutY="343.0" text="Bank Account Number" textFill="#b2b2b2" />
                                         <Line endX="400.0" endY="430.0" startX="400.0" startY="140.0" stroke="#4d4d4d" />
                                         <JFXButton fx:id="editButton" layoutX="358.0" layoutY="435.0" onAction="#edit" prefWidth="80.0" text="Edit" />
@@ -185,7 +186,7 @@
                                  <effect>
                                     <Reflection fraction="0.51" topOpacity="0.39" />
                                  </effect></FontAwesomeIconView>
-                                        <JFXTextField fx:id="phoneNumberField" editable="false" layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
+                                        <JFXTextField fx:id="phoneNumberField" disable="true" layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
                                     </children>
                                 </AnchorPane>
                             </content>
@@ -204,5 +205,29 @@
                 </JFXTabPane>
             </center>
         </BorderPane>
+      <AnchorPane fx:id="changePasswordPane" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #2A2E37;" visible="false">
+         <effect>
+            <InnerShadow height="100.0" radius="49.5" width="100.0">
+               <color>
+                  <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <children>
+            <Label layoutX="125.0" layoutY="51.0" text="Current Password" textFill="#b2b2b2" />
+            <Label layoutX="125.0" layoutY="125.0" text="New Password" textFill="#b2b2b2" />
+            <Label layoutX="125.0" layoutY="193.0" text="Repeat Password" textFill="#b2b2b2" />
+            <JFXButton fx:id="changeButton" layoutX="188.0" layoutY="273.0" onAction="#changePassword" stylesheets="@profileTheme.css" text="Change Password" />
+            <JFXButton fx:id="cancelButton" layoutX="375.0" layoutY="273.0" onAction="#cancel" stylesheets="@profileTheme.css" text="Cancel" />
+            <FontAwesomeIconView fill="#b2b2b2" glyphName="KEY" layoutX="97.0" layoutY="163.0" size="15" />
+            <FontAwesomeIconView fill="#b2b2b2" glyphName="KEY" layoutX="97.0" layoutY="231.0" size="15" />
+            <JFXPasswordField fx:id="newPassField" layoutX="125.0" layoutY="142.0" stylesheets="@profileTheme.css" />
+            <JFXPasswordField fx:id="repeatPassField" layoutX="125.0" layoutY="210.0" stylesheets="@profileTheme.css" />
+            <JFXPasswordField fx:id="currPassField" layoutX="125.0" layoutY="69.0" stylesheets="@profileTheme.css" />
+         </children>
+         <StackPane.margin>
+            <Insets bottom="130.0" left="150.0" right="150.0" top="130.0" />
+         </StackPane.margin>
+      </AnchorPane>
     </children>
 </StackPane>
