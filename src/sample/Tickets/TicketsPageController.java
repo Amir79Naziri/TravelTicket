@@ -77,12 +77,6 @@ public class TicketsPageController implements Initializable
     @FXML
     void GoHome(ActionEvent event) throws IOException, InterruptedException
     {
-//        Stage stage;
-//        stage = (Stage) HomeButton.getScene().getWindow();
-//        Scene scene = new Scene(rootHome);
-//        stage.setScene(scene);
-//        stage.show();
-
         Stage stage;
         stage = (Stage) HomeButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -100,20 +94,11 @@ public class TicketsPageController implements Initializable
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     @FXML
     void GoProfile(ActionEvent event)
     {
-//        Stage stage;
-//        stage = (Stage) HomeButton.getScene().getWindow();
-//        Scene scene = new Scene(rootProfile);
-//        stage.setScene(scene);
-//        stage.show();
-
-
         Stage stage;
         stage = (Stage) HomeButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();

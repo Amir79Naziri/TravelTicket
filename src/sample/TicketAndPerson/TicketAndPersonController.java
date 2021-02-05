@@ -156,36 +156,40 @@ public class TicketAndPersonController implements Initializable {
 
     }
 
-    public void setCurrentTicketAndUser(Ticket ticket, User user) {
+    public void setCurrentTicketAndUser(Ticket ticket, User user)
+    {
         this.currentUser = user;
         this.currentTicket = ticket;
-    }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+        //TODO: uncomment these lines after initializing user
 
-        name.setText(currentUser.getFirstName());
-        lastname.setText(currentUser.getLastName());
-        SocialNumber.setText(currentUser.getSocialSecurityNumber());
-        email.setText(currentUser.getEmail());
-        phoneNumber.setText(currentUser.getPhoneNumber());
+//        name.setText(currentUser.getFirstName());
+//        lastname.setText(currentUser.getLastName());
+//        SocialNumber.setText(currentUser.getSocialSecurityNumber());
+//        email.setText(currentUser.getEmail());
+//        phoneNumber.setText(currentUser.getPhoneNumber());
         ///
         DestDate.setText(currentTicket.getArrivalDate().getYear() + "/" + currentTicket.getArrivalDate().getMonth() + "/" + currentTicket.getArrivalDate().getDayOfMonth());
         OriginDate.setText(currentTicket.getDepartureDate().getYear() + "/" + currentTicket.getDepartureDate().getMonth() + "/" + currentTicket.getDepartureDate().getDayOfMonth());
         DestTime.setText(currentTicket.getArrivalHour() + ":" + currentTicket.getArrivalMinute());
         OriginTime.setText(currentTicket.getDepartureHour() + ":" + currentTicket.getDepartureMinute());
-
         ////
         DestLocation.setText(currentTicket.getArrivalCity());
         OriginTime.setText(currentTicket.getDepartureCity());
 
-        price.setText(currentTicket.getPrice() + " ");
+        price.setText(currentTicket.getPrice() + "$");
+
         try {
             companyIcon.setImage(new Image("/sample/TicketAndPerson/Pictures/" + currentTicket.getAirLineName().split(" ")[0] + ".png"));
 
         } catch (NullPointerException e) {
             System.err.println(e);
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
 
     }
 }
