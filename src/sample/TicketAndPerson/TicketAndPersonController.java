@@ -170,8 +170,8 @@ public class TicketAndPersonController implements Initializable {
         email.setText(currentUser.getEmail());
         phoneNumber.setText(currentUser.getPhoneNumber());
         ///
-        DestDate.setText(currentTicket.getArrivalYear() + "/" + currentTicket.getArrivalMonth() + "/" + currentTicket.getArrivalDay());
-        OriginDate.setText(currentTicket.getDepartureYear() + "/" + currentTicket.getDepartureYear() + "/" + currentTicket.getDepartureDay());
+        DestDate.setText(currentTicket.getArrivalDate().getYear() + "/" + currentTicket.getArrivalDate().getMonth() + "/" + currentTicket.getArrivalDate().getDayOfMonth());
+        OriginDate.setText(currentTicket.getDepartureDate().getYear() + "/" + currentTicket.getDepartureDate().getMonth() + "/" + currentTicket.getDepartureDate().getDayOfMonth());
         DestTime.setText(currentTicket.getArrivalHour() + ":" + currentTicket.getArrivalMinute());
         OriginTime.setText(currentTicket.getDepartureHour() + ":" + currentTicket.getDepartureMinute());
 
@@ -179,7 +179,7 @@ public class TicketAndPersonController implements Initializable {
         DestLocation.setText(currentTicket.getArrivalCity());
         OriginTime.setText(currentTicket.getDepartureCity());
 
-        price.setText(currentTicket.getSold() + " ");
+        price.setText(currentTicket.getPrice() + " ");
         try {
             companyIcon.setImage(new Image("/sample/TicketAndPerson/Pictures/" + currentTicket.getAirLineName().split(" ")[0] + ".png"));
 
