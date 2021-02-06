@@ -132,9 +132,9 @@ public class ProfileController implements Initializable {
 
     static Parent homeRoot, loginRoot, bankRoot;
 
-    private final Pane pane1 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
-    private final Pane pane2 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
-    private final Pane pane3 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
+//    private final Pane pane1 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
+//    private final Pane pane2 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
+//    private final Pane pane3 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
 
     public ProfileController() throws IOException {
         currentUser = new User("", "", -1);
@@ -216,13 +216,12 @@ public class ProfileController implements Initializable {
 
     @FXML
     void changePassword() {
-        //todo uncomment
-//        if (currentUser.changePassword(newPassField.getText(), currPassField.getText())) {
-//            invalidPassword.setVisible(false);
-//            connect(currentUser);
-//        }
-//        else
-//            invalidPassword.setVisible(true);
+        if (currentUser.changePassword(newPassField.getText(), currPassField.getText())) {
+            invalidPassword.setVisible(false);
+            connect(currentUser);
+        }
+        else
+            invalidPassword.setVisible(true);
 
         borderPane.setOpacity(1);
         changePasswordPane.setVisible(false);
@@ -301,16 +300,16 @@ public class ProfileController implements Initializable {
             double finalPaymentValue = paymentValue;
             pause.setOnFinished(f -> {
                 Stage stage;
-                stage = (Stage) homeButton.getScene().getWindow();
+                stage = (Stage) pay.getScene().getWindow();
 
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/sample/Search/Search.fxml"));
+                loader.setLocation(getClass().getResource("/sample/Bank/BankPage.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {
                     Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
                 }
-
+                System.out.println(finalPaymentValue);
                 BankPageController bankPageController = loader.getController();
                 bankPageController.setPrice(currentUser, finalPaymentValue, "wallet");
 
@@ -408,6 +407,7 @@ public class ProfileController implements Initializable {
             Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
         }
 
+        //todo uncomment
 //        HistoryTicketController historyTicketController = loader.getController();
 //        historyTicketController.setEveryThing(temp, currentUser);
         pastTickets.add(pane);

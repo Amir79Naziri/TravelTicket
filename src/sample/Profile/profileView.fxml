@@ -174,8 +174,8 @@
                                         <Label layoutX="442.0" layoutY="343.0" text="Bank Account Number" textFill="#b2b2b2" />
                                         <Line endX="400.0" endY="430.0" startX="400.0" startY="140.0" stroke="#4d4d4d" />
                                         <JFXButton fx:id="editButton" layoutX="358.0" layoutY="435.0" onAction="#edit" prefWidth="80.0" text="Edit" />
-                                        <JFXCheckBox checkedColor="#333333" layoutX="692.0" layoutY="197.0" selected="true" />
-                                        <JFXCheckBox checkedColor="#333333" layoutX="692.0" layoutY="285.0" selected="true" />
+                                        <JFXCheckBox fx:id="verifyEmail" checkedColor="#333333" layoutX="692.0" layoutY="197.0" selected="true" />
+                                        <JFXCheckBox fx:id="verifyPhone" checkedColor="#333333" layoutX="692.0" layoutY="285.0" selected="true" />
                                         <Line endX="380.0" endY="140.0" startX="10.0" startY="140.0" stroke="#4d4d4d" />
                                         <Line endX="430.0" endY="430.0" startX="370.0" startY="430.0" stroke="#4d4d4d" />
                                         <Line endX="10.0" endY="170.0" startX="10.0" startY="110.0" stroke="#4d4d4d" />
@@ -192,7 +192,7 @@
                                     <Reflection fraction="0.51" topOpacity="0.39" />
                                  </effect></FontAwesomeIconView>
                                         <JFXTextField fx:id="phoneNumberField" disable="true" layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
-                              <Label fx:id="invalidEmail" layoutX="442.0" layoutY="222.0" text="Invalid email" textFill="#fd0f0f">
+                              <Label fx:id="invalidEmail" layoutX="442.0" layoutY="222.0" text="Invalid email" textFill="#fd0f0f" visible="false">
                                  <graphic>
                                     <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
                                  </graphic>
@@ -229,6 +229,11 @@
             </InnerShadow>
          </effect>
          <children>
+            <Label fx:id="invalidPassword" layoutX="123.0" layoutY="100.0" text="Invalid password" textFill="#fd0f0f" visible="false">
+               <graphic>
+                  <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+               </graphic>
+            </Label>
             <Label layoutX="125.0" layoutY="51.0" text="Current Password" textFill="#b2b2b2" />
             <Label layoutX="125.0" layoutY="125.0" text="New Password" textFill="#b2b2b2" />
             <Label layoutX="125.0" layoutY="193.0" text="Repeat Password" textFill="#b2b2b2" />

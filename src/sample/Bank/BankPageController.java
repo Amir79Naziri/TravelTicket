@@ -3,13 +3,13 @@ package sample.Bank;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.PauseTransition;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -17,7 +17,6 @@ import model.Ticket;
 import model.User;
 import sample.Profile.ProfileController;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,7 +30,16 @@ public class BankPageController implements Initializable {
     private Ticket currentTicket;
     private User currentUser;
     private String purpose = "none";
-    private double price;
+    private double price = 0.0;
+
+    @FXML
+    private AnchorPane mainPane;
+    @FXML
+    private JFXButton payButton;
+    @FXML
+    private JFXButton cancelButton;
+    @FXML
+    private Label costLabel;
 
     public void setCurrentTicketAndUser(User user,Ticket ticket, String purpose) {
         this.currentUser = user;
@@ -46,15 +54,6 @@ public class BankPageController implements Initializable {
         costLabel.setText(String.valueOf(price));
         this.purpose = purpose;
     }
-
-    @FXML
-    private AnchorPane mainPane;
-    @FXML
-    private JFXButton payButton;
-    @FXML
-    private JFXButton cancelButton;
-    @FXML
-    private Label costLabel;
 
     @FXML
     void goToProfile(ActionEvent event) throws IOException, InterruptedException
@@ -81,13 +80,14 @@ public class BankPageController implements Initializable {
 
             ProfileController profileController = loader.getController();
             if (purpose.equals("wallet")) {
-                //todo update user wallet
-
+                if (event.getSource() != cancelButton) {
+                    currentUser.getWallet().charge(this.price);
+                }
             }
             else {
                 if (event.getSource() != cancelButton) {
                    //todo currentUser.addTicket(currentTicketID, currentTicket);
-                    // todo remove ticket
+                    // todo remove ticket from the tickets file
                 }
             }
             profileController.serCurrentUser(this.currentUser);
