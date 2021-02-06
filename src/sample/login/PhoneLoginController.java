@@ -28,9 +28,6 @@ import java.util.ResourceBundle;
 public class PhoneLoginController extends Controller
         implements Initializable {
 
-    @FXML
-    private BorderPane mainPane;
-    static Parent profileRoot;
 
     @FXML
     private JFXTextField phoneNumber;
@@ -163,11 +160,7 @@ public class PhoneLoginController extends Controller
     public void initialize (URL location, ResourceBundle resources) {
         super.initialize (location, resources);
         invalidPhoneNumberWarnLabel.setVisible (false);
-        try {
-            profileRoot = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     private Client connect ()

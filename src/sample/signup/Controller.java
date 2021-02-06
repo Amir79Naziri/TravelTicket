@@ -22,7 +22,8 @@ public class Controller implements Initializable
 {
     @FXML
     protected BorderPane mainPane;
-    static Parent profileRoot;
+
+    protected static Parent profileRoot;
 
     @FXML
     protected JFXPasswordField password;

@@ -24,9 +24,7 @@ import java.util.ResourceBundle;
 
 public class EmailLoginController extends Controller
 {
-    @FXML
-    private BorderPane mainPane;
-    static Parent profileRoot;
+
 
 
     @FXML
@@ -64,11 +62,7 @@ public class EmailLoginController extends Controller
             {
 
 
-                try {
-                    profileRoot = FXMLLoader.load(getClass().getResource("/sample/Profile/profileView.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
                 AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
                 mainPane.getChildren().add(load);
                 Client client = connect ();
