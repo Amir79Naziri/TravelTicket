@@ -28,6 +28,12 @@
                   <Image url="@pictures/logo_2.png" />
                </image>
             </ImageView>
+            <Label layoutX="6.0" layoutY="573.0" text="Dilligent Developers " textFill="#2a2e37">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView fill="#2a2e37" glyphName="TRADEMARK" layoutX="118.0" layoutY="575.0" size="10" />
             </children></AnchorPane>
     </left>
     <center>
