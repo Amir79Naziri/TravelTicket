@@ -21,7 +21,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.FileHandler;
 import model.Ticket;
+import model.TicketStorage;
 import model.User;
 import model.connections.userInformationClient.Client;
 import sample.Bank.BankPageController;
@@ -141,7 +143,7 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    void edit() throws InterruptedException {
+    void edit() throws InterruptedException, IOException {
         if (editButton.getText().equals("Edit")) {
             editButton.setText("Save");
 
@@ -156,6 +158,9 @@ public class ProfileController implements Initializable {
             bankNumberField.setDisable(false);
         }
         else if (editButton.getText().equals("Save")) {
+            AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
+            mainPane.getChildren().add(load);
+
             editButton.setText("Edit");
             nameField.setDisable(true);
             lastNameField.setDisable(true);
@@ -203,7 +208,14 @@ public class ProfileController implements Initializable {
             currentUser.setBankAccountNumber (tempUser.getBankAccountNumber ());
             currentUser.setSocialSecurityNumber (tempUser.getSocialSecurityNumber ());
             updateAccountFields();
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+            pause.setOnFinished(f -> {
+                mainPane.getChildren ().remove (load);
+            });
+            pause.play();
         }
+
     }
 
     @FXML
@@ -217,8 +229,6 @@ public class ProfileController implements Initializable {
     @FXML
     void changePassword() {
         if (currentUser.changePassword(newPassField.getText(), currPassField.getText())) {
-            System.out.println(currPassField.getText());
-            System.out.println(newPassField.getText());
             invalidPassword.setVisible(false);
             connect(currentUser);
             borderPane.setOpacity(1);
@@ -227,7 +237,6 @@ public class ProfileController implements Initializable {
             changePassButton.setDisable(false);
         }
         else {
-            System.out.println(currPassField.getText() + "****");
             invalidPassword.setVisible(true);
         }
 
