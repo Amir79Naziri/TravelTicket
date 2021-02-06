@@ -66,6 +66,7 @@ public class historyTicketController
         FileHandler.save(ticketStorage, "Files/ticketStorage.ser");
 
         currentUser.removeTicket(currentTicket.getId());
+        currentUser.getWallet().charge(currentTicket.getPrice());
         connect(currentUser);
         Stage stage;
         stage = (Stage) mainPane.getScene().getWindow();

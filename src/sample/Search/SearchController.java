@@ -1,6 +1,7 @@
 package sample.Search;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,9 +10,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import model.FileHandler;
+import model.TicketStorage;
 import model.User;
 import sample.Profile.ProfileController;
 import sample.Tickets.TicketsPageController;
@@ -33,6 +38,9 @@ public class SearchController implements Initializable {
     public void setCurrentUser(User user) {
         this.currentUser = user;
     }
+
+    @FXML
+    private AnchorPane mainPane;
 
     @FXML
     private Pane inTrain;
@@ -95,10 +103,8 @@ public class SearchController implements Initializable {
     }
 
     @FXML
-    void searchButtonHandler() throws IOException {
-
-
-
+    void searchButtonHandler() throws IOException
+    {
         boolean situation = true;
         if (Destination.getValue() == null) {
             destinationFault.setVisible(true);
@@ -122,11 +128,7 @@ public class SearchController implements Initializable {
         destinationLocation = Destination.getValue();
         choosedDate = datePicker.getValue();
 
-
-
         try {
-
-
             if (datePicker.getValue() == null) {
                 dateFault.setVisible(true);
 
@@ -142,7 +144,6 @@ public class SearchController implements Initializable {
             situation = false;
         }
 
-
         if (situation) {
 
             if (TrainCheckBox.isSelected())
@@ -150,26 +151,32 @@ public class SearchController implements Initializable {
             else
                 trainOrAirplane = "airplain";
 
-            Stage stage;
-            stage = (Stage) searchButton.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/Tickets/TicketsPage.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
-            }
+            AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
+            mainPane.getChildren().add(load);
 
-            TicketsPageController ticketsPageController = loader.getController();
-            ticketsPageController.setSearchDetails(originLocation, destinationLocation, choosedDate, trainOrAirplane, currentUser);
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+            pause.setOnFinished(f -> {
+                Stage stage;
+                stage = (Stage) searchButton.getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/sample/Tickets/TicketsPage.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+                }
 
-            Parent root = loader.getRoot();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                TicketsPageController ticketsPageController = loader.getController();
+                ticketsPageController.setSearchDetails(originLocation, destinationLocation, choosedDate, trainOrAirplane, currentUser);
+
+                Parent root = loader.getRoot();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            });
+            pause.play();
+
         }
-
-
     }
 
     @FXML
@@ -214,7 +221,6 @@ public class SearchController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
 
 
     @Override

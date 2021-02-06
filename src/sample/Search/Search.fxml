@@ -193,9 +193,9 @@
                </effect>
             </FontAwesomeIconView>
             <Line endX="475.0" endY="260.0" layoutX="3.0" layoutY="-194.0" startX="320.0" startY="260.0" stroke="#c5a030" />
-            <Label fx:id="originFault" layoutX="231.0" layoutY="238.0" text="*Empty" textFill="#d72727" visible="false" />
-            <Label fx:id="destinationFault" layoutX="525.0" layoutY="233.0" prefHeight="28.0" prefWidth="96.0" text="* Empty" textFill="#d53030" visible="false" />
-            <Label fx:id="dateFault" layoutX="383.0" layoutY="299.0" prefHeight="18.0" prefWidth="70.0" text="*Empty" textFill="#f03535" visible="false" />
+            <Label fx:id="originFault" layoutX="231.0" layoutY="238.0" text="invalid origin" textFill="#d72727" visible="false" />
+            <Label fx:id="destinationFault" layoutX="515.0" layoutY="233.0" prefHeight="28.0" prefWidth="106.0" text="invalid destination" textFill="#d53030" visible="false" />
+            <Label fx:id="dateFault" layoutX="383.0" layoutY="299.0" prefHeight="18.0" prefWidth="70.0" text="invalid date" textFill="#f03535" visible="false" />
          </children>
       </AnchorPane>
       <Label />

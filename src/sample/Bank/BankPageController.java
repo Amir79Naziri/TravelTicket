@@ -48,7 +48,7 @@ public class BankPageController implements Initializable {
     public void setCurrentTicketAndUser(User user,Ticket ticket, String purpose) {
         this.currentUser = user;
         this.currentTicket = ticket;
-        costLabel.setText(String.valueOf(ticket.getPrice()));
+        costLabel.setText(String.valueOf(ticket.getPrice()) + "$");
         this.purpose = purpose;
     }
 
