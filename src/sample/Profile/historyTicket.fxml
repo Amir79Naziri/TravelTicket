@@ -11,41 +11,41 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="144.0" prefWidth="565.0" style="-fx-background-color: #2A2E37;" stylesheets="@profileTheme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="144.0" prefWidth="565.0" style="-fx-background-color: #2A2E37;" stylesheets="@profileTheme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Profile.historyTicketController">
     <children>
         <Line endX="5.199981689453125" endY="15.5" layoutX="480.0" layoutY="64.0" startX="-32.0" startY="15.500015258789062" stroke="#c5a030" />
-        <Label alignment="CENTER" layoutX="382.0" layoutY="32.0" prefHeight="35.0" prefWidth="78.0" text="2021/2/1" textFill="WHITE">
+        <Label fx:id="arrDate" alignment="CENTER" layoutX="382.0" layoutY="32.0" prefHeight="35.0" prefWidth="78.0" text="2021/2/1" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="282.0" layoutY="32.0" prefHeight="35.0" prefWidth="68.0" text="11:30 PM" textFill="WHITE">
+        <Label fx:id="arrTime" alignment="CENTER" layoutX="282.0" layoutY="32.0" prefHeight="35.0" prefWidth="68.0" text="11:30 PM" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
         <Line endX="-401.0" endY="125.00001525878906" layoutX="489.0" layoutY="12.0" startX="-401.0" startY="-4.200000762939453" stroke="#c5a030" />
-        <Label alignment="CENTER" layoutX="376.0" layoutY="96.0" prefHeight="35.0" prefWidth="90.0" text="2021/2/2" textFill="WHITE">
+        <Label fx:id="depDate" alignment="CENTER" layoutX="376.0" layoutY="96.0" prefHeight="35.0" prefWidth="90.0" text="2021/2/2" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="274.0" layoutY="100.0" prefHeight="27.0" prefWidth="78.0" text="01:30 AM" textFill="WHITE">
+        <Label fx:id="depTime" alignment="CENTER" layoutX="274.0" layoutY="100.0" prefHeight="27.0" prefWidth="78.0" text="01:30 AM" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="189.0" layoutY="32.0" prefHeight="35.0" prefWidth="78.0" text="Tehran" textFill="WHITE">
+        <Label fx:id="origin" alignment="CENTER" layoutX="189.0" layoutY="32.0" prefHeight="35.0" prefWidth="78.0" text="Tehran" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="181.0" layoutY="96.0" prefHeight="35.0" prefWidth="96.0" text="Istanbul" textFill="WHITE">
+        <Label fx:id="destination" alignment="CENTER" layoutX="181.0" layoutY="96.0" prefHeight="35.0" prefWidth="96.0" text="Istanbul" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <ImageView fitHeight="66.0" fitWidth="104.0" layoutX="81.0" layoutY="48.0">
+        <ImageView fx:id="logo" fitHeight="66.0" fitWidth="104.0" layoutX="81.0" layoutY="48.0">
             <image>
                 <Image url="@pictures/turkish-airlines-logos-png-1.png" />
             </image>
@@ -78,7 +78,7 @@
         </ImageView>
         <Line endX="41.79998779296875" endY="16.900009155273438" layoutX="255.0" layoutY="64.0" startX="-9.600006103515625" startY="16.900009155273438" stroke="#c5a030" />
         <Line endX="-11.4000244140625" endY="16.9000244140625" layoutX="224.0" layoutY="64.0" startX="-47.4000244140625" startY="16.9000244140625" stroke="#c5a030" />
-      <JFXButton layoutX="8.0" layoutY="60.0" text="RETRIEVE" />
+      <JFXButton fx:id="retrieveBTN" layoutX="8.0" layoutY="60.0" onAction="#retrieve" text="RETRIEVE" />
     </children>
     <rotationAxis>
         <Point3D />
