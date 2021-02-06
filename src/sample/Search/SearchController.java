@@ -17,6 +17,7 @@ import sample.Profile.ProfileController;
 import sample.Tickets.TicketsPageController;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +26,7 @@ import java.util.logging.Logger;
 public class SearchController implements Initializable {
     private String originLocation;
     private String destinationLocation;
-    private String choosedDate;
+    private LocalDate choosedDate;
     private String trainOrAirplane;
     private User currentUser;
 
@@ -95,11 +96,7 @@ public class SearchController implements Initializable {
 
         originLocation = Origin.getValue();
         destinationLocation = Destination.getValue();
-try {
-    choosedDate = datePicker.getValue().toString();
-}catch(NullPointerException e ){
-    choosedDate="1000/1/1";
-}
+        choosedDate = datePicker.getValue();
 
         if (TrainCheckBox.isSelected())
             trainOrAirplane = "train";
