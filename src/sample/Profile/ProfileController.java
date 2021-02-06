@@ -1,9 +1,6 @@
 package sample.Profile;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,6 +45,13 @@ public class ProfileController implements Initializable {
     private ObservableList<Pane> pastTickets = FXCollections.observableArrayList();;
     @FXML
     private ListView<Pane> ticketHistoryList;
+
+    @FXML
+    private JFXCheckBox verifyEmail;
+
+    @FXML
+    private JFXCheckBox verifyPhone;
+
     @FXML
     protected StackPane mainPane;
     protected AnchorPane load;
@@ -392,6 +396,16 @@ public class ProfileController implements Initializable {
     }
 
     private void updateAccountFields() {
+        if (currentUser.getEmail ().equals (""))
+            verifyEmail.setSelected (false);
+        else
+            verifyEmail.setSelected (true);
+
+        if (currentUser.getPhoneNumber ().equals (""))
+            verifyPhone.setSelected (false);
+        else
+            verifyPhone.setSelected (true);
+
         nameField.setText(currentUser.getFirstName());
         lastNameField.setText(currentUser.getLastName());
         securityNumberField.setText(currentUser.getSocialSecurityNumber());
@@ -430,5 +444,9 @@ public class ProfileController implements Initializable {
 //        pastTickets = FXCollections.observableArrayList();
 //        pastTickets.addAll(pane1, pane2, pane3);
         ticketHistoryList.setItems(pastTickets);
+        verifyEmail.setSelected (false);
+        verifyPhone.setSelected (false);
+        verifyPhone.setDisable (true);
+        verifyEmail.setDisable (true);
     }
 }
