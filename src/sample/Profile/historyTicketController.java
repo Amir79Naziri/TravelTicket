@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Ticket;
+import model.User;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -14,6 +16,7 @@ public class historyTicketController
 {
 
     private Ticket currentTicket;
+    private User currentUser;
 
     @FXML
     private Label arrDate;
@@ -46,8 +49,9 @@ public class historyTicketController
         //TODO: remove this ticket from user's Tickets
     }
 
-    public void setEveryThing(Ticket ticket)
+    public void setEveryThing(Ticket ticket, User currentUser)
     {
+        this.currentUser = currentUser;
         this.currentTicket = ticket;
 
         depDate.setText(ticket.getDepartureDate().toString());
