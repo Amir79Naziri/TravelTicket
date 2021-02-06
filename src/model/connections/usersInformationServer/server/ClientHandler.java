@@ -54,7 +54,7 @@ public class ClientHandler implements Runnable
                 if (split[0].equals ("Login"))
                 {
                     if (split[1].toCharArray ()[0] == '+')
-                        user = userStorage.getUser (split[1], split[2], 1);
+                        user = userStorage.getUser (split[1].substring(3), split[2], 1);
                     else
                         user = userStorage.getUser (split[1], split[2], 2);
                     if (user == null)
@@ -63,7 +63,7 @@ public class ClientHandler implements Runnable
                 {
                     boolean res;
                     if (split[1].toCharArray ()[0] == '+')
-                        res = userStorage.hasFieldUsed (split[1], 1);
+                        res = userStorage.hasFieldUsed (split[1].substring(3), 1);
                     else
                         res = userStorage.hasFieldUsed (split[1], 2);
                     if (res)
@@ -74,7 +74,7 @@ public class ClientHandler implements Runnable
                     else
                     {
                         if (split[1].toCharArray ()[0] == '+')
-                            user = new User (split[1],split[2], 1);
+                            user = new User (split[1].substring(3),split[2], 1);
                         else
                             user = new User (split[1],split[2], 2);
                         userStorage.addUser (user);

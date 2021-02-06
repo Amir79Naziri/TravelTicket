@@ -39,7 +39,6 @@ import java.util.logging.Logger;
 
 public class ProfileController implements Initializable {
     private User currentUser;
-    private User tempUser;
     private ObservableList<Pane> pastTickets;
     @FXML
     private ListView<Pane> ticketHistoryList;
@@ -132,7 +131,6 @@ public class ProfileController implements Initializable {
 
     public ProfileController() throws IOException {
         currentUser = new User("", "", -1);
-        tempUser = new User("", "", -1);
     }
 
     @FXML
@@ -159,16 +157,18 @@ public class ProfileController implements Initializable {
             phoneNumberField.setDisable(true);
             bankNumberField.setDisable(true);
 
-            System.out.println(nameField.getText());
+//            System.out.println(nameField.getText());
+            User tempUser = new User("", "", 1);
 
+            tempUser.setId(currentUser.getId());
             tempUser.setFirstName(nameField.getText());
             tempUser.setLastName(lastNameField.getText());
             tempUser.setSocialSecurityNumber(securityNumberField.getText());
             tempUser.setEmail(emailField.getText());
             tempUser.setPhoneNumber(phoneNumberField.getText());
             tempUser.setBankAccountNumber(bankNumberField.getText());
-            Client client = connect();
-            Thread.sleep(5000);
+            Client client = connect(tempUser);
+            Thread.sleep(2000);
             String res = serverResponse(client);
 
             switch (res)
@@ -196,7 +196,6 @@ public class ProfileController implements Initializable {
             currentUser.setLastName (tempUser.getLastName ());
             currentUser.setBankAccountNumber (tempUser.getBankAccountNumber ());
             currentUser.setSocialSecurityNumber (tempUser.getSocialSecurityNumber ());
-
             updateAccountFields();
         }
     }
@@ -212,6 +211,8 @@ public class ProfileController implements Initializable {
     @FXML
     void changePassword() {
         currentUser.changePassword(newPassField.getText(), currPassField.getText());
+        connect(currentUser);
+
         borderPane.setOpacity(1);
         changePasswordPane.setVisible(false);
         editButton.setDisable(false);
@@ -234,9 +235,9 @@ public class ProfileController implements Initializable {
         }
     }
 
-    private Client connect ()
+    private Client connect (User user)
     {
-        Client client = new Client ("127.0.0.1","Logout", tempUser);
+        Client client = new Client ("127.0.0.1","Logout", user);
         new Thread (client).start ();
         return client;
     }
@@ -329,8 +330,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     void goToLogout()throws IOException{
-        tempUser = currentUser;
-        Client client = connect();
+        connect(currentUser);
         try {
             loginRoot = FXMLLoader.load(getClass().getResource("/sample/login/loginView.fxml"));
         } catch (IOException e) {

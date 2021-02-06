@@ -192,7 +192,7 @@
                                     <Reflection fraction="0.51" topOpacity="0.39" />
                                  </effect></FontAwesomeIconView>
                                         <JFXTextField fx:id="phoneNumberField" disable="true" layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
-                              <Label fx:id="invalidEmail" layoutX="442.0" layoutY="222.0" text="Invalid email" textFill="#fd0f0f" visible="false">
+                              <Label fx:id="invalidEmail" layoutX="442.0" layoutY="222.0" text="Invalid email" textFill="#fd0f0f">
                                  <graphic>
                                     <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
                                  </graphic>

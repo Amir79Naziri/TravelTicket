@@ -112,7 +112,7 @@ public class TicketAndPersonController implements Initializable {
 
         BankPageController bankPageController = loader.getController();
         //TODO
-        bankPageController.setCurrentTicketAndUser(currentUser,currentTicket);
+//        bankPageController.setCurrentTicketAndUser(currentUser,currentTicket);
 
         Parent root = loader.getRoot();
         Scene scene = new Scene(root);
