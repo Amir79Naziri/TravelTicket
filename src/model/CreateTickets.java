@@ -8,7 +8,7 @@ public class CreateTickets
     {
         TicketStorage ticketStorage = new TicketStorage();
         ticketStorage.getTickets().put(747, new Ticket("Tehran", "Mashhad", "Turkish Airlines", 2,
-                0, 3, 30, 2020, 12, 21,
+                0, 3, 30, 2020, 12, 20,
                 2020, 12, 21, 747, 500));
 
         ticketStorage.getTickets().put(748, new Ticket("Tehran", "Shiraz", "Qatar Airlines", 2,
@@ -84,7 +84,7 @@ public class CreateTickets
                 2020, 12, 21, 765, 3550));
 
         ticketStorage.getTickets().put(766, new Ticket("Tehran", "Mashhad", "Bangladesh Airlines", 2,
-                0, 3, 30, 2020, 12, 21,
+                0, 3, 30, 2020, 12, 22,
                 2020, 12, 21, 766, 1750));
 
         FileHandler.save(ticketStorage, "Files/ticketStorage.ser");
