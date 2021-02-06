@@ -56,7 +56,7 @@
                   <Image url="@Pictures/TextLogo.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="searchButton" layoutX="348.0" layoutY="315.0" onAction="#searchButtonHandler" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #673AB7; -fx-background-radius: 10px;" text="Search" textFill="#b2b2b2">
+            <JFXButton fx:id="searchButton" layoutX="346.0" layoutY="321.0" onAction="#searchButtonHandler" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #673AB7; -fx-background-radius: 10px;" text="Search" textFill="#b2b2b2">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="34.0" opacity="0.43">
                      <image>
@@ -151,7 +151,7 @@
 
             <JFXDatePicker fx:id="datePicker" defaultColor="#2a2e37" layoutX="326.0" layoutY="268.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;" stylesheets="@../Profile/profileTheme.css">
 
-            <!--JFXDatePicker defaultColor="#2a2e37" layoutX="326.0" layoutY="268.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;"-->
+               <!--JFXDatePicker defaultColor="#2a2e37" layoutX="326.0" layoutY="268.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;"-->
                <effect>
                   <InnerShadow />
                </effect>
@@ -193,13 +193,16 @@
                </effect>
             </FontAwesomeIconView>
             <Line endX="475.0" endY="260.0" layoutX="3.0" layoutY="-194.0" startX="320.0" startY="260.0" stroke="#c5a030" />
+            <Label fx:id="originFault" layoutX="231.0" layoutY="238.0" text="*Empty" textFill="#d72727" visible="false" />
+            <Label fx:id="destinationFault" layoutX="525.0" layoutY="233.0" prefHeight="28.0" prefWidth="96.0" text="* Empty" textFill="#d53030" visible="false" />
+            <Label fx:id="dateFault" layoutX="383.0" layoutY="299.0" prefHeight="18.0" prefWidth="70.0" text="*Empty" textFill="#f03535" visible="false" />
          </children>
       </AnchorPane>
       <Label />
       <Line endX="430.199951171875" layoutX="261.0" layoutY="85.0" startX="-182.60000610351562" stroke="#c5a030" />
-      <JFXButton fx:id="home" layoutX="391.0" layoutY="34.0" onAction="#goToHome" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" textFill="#d7cdcd" />
-      <JFXButton fx:id="account" layoutX="94.0" layoutY="34.0" onAction="#goToAccount" prefHeight="40.0" prefWidth="285.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" textFill="#d7cdcd" />
-      <FontAwesomeIconView glyphName="HOME" layoutX="515.0" layoutY="63.0" size="30" />
-      <FontAwesomeIconView glyphName="USER" layoutX="226.0" layoutY="64.0" size="30" text="" />
+      <JFXButton fx:id="home" layoutX="391.0" layoutY="34.0" onAction="#goToHome" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Home" textFill="#d7cdcd" />
+      <JFXButton fx:id="account" layoutX="94.0" layoutY="34.0" onAction="#goToAccount" prefHeight="40.0" prefWidth="285.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Profile" textFill="#d7cdcd" />
+      <FontAwesomeIconView glyphName="HOME" layoutX="480.0" layoutY="66.0" size="30" text="" />
+      <FontAwesomeIconView glyphName="USER" layoutX="185.0" layoutY="64.0" size="30" text="" />
    </children>
 </AnchorPane>

@@ -47,6 +47,9 @@ public class SearchController implements Initializable {
     private ImageView outPlane;
 
     @FXML
+    private Label originFault,destinationFault,dateFault;
+
+    @FXML
     private ImageView inPlane;
 
     @FXML
@@ -94,32 +97,77 @@ public class SearchController implements Initializable {
     @FXML
     void searchButtonHandler() throws IOException {
 
+
+
+        boolean situation = true;
+        if (Destination.getValue() == null) {
+            destinationFault.setVisible(true);
+
+            situation = false;
+        } else {
+            destinationLocation = Destination.getValue();
+            destinationFault.setVisible(false);
+        }
+
+        if (Origin.getValue() == null) {
+            originFault.setVisible(true);
+
+            situation = false;
+        } else {
+            originLocation = Origin.getValue();
+            originFault.setVisible(false);
+        }
+
         originLocation = Origin.getValue();
         destinationLocation = Destination.getValue();
         choosedDate = datePicker.getValue();
 
-        if (TrainCheckBox.isSelected())
-            trainOrAirplane = "train";
-        else
-            trainOrAirplane = "airplain";
 
-        Stage stage;
-        stage = (Stage) searchButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/sample/Tickets/TicketsPage.fxml"));
+
         try {
-            loader.load();
-        } catch (IOException e) {
-            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+
+
+            if (datePicker.getValue() == null) {
+                dateFault.setVisible(true);
+
+                situation = false;
+            } else {
+                choosedDate = datePicker.getValue();
+                dateFault.setVisible(false);
+            }
+
+        } catch (NullPointerException e) {
+            dateFault.setVisible(true);
+
+            situation = false;
         }
 
-        TicketsPageController ticketsPageController = loader.getController();
-        ticketsPageController.setSearchDetails(originLocation,destinationLocation,choosedDate,trainOrAirplane,currentUser);
 
-        Parent root = loader.getRoot();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if (situation) {
+
+            if (TrainCheckBox.isSelected())
+                trainOrAirplane = "train";
+            else
+                trainOrAirplane = "airplain";
+
+            Stage stage;
+            stage = (Stage) searchButton.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/Tickets/TicketsPage.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+            }
+
+            TicketsPageController ticketsPageController = loader.getController();
+            ticketsPageController.setSearchDetails(originLocation, destinationLocation, choosedDate, trainOrAirplane, currentUser);
+
+            Parent root = loader.getRoot();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
 
 
     }
