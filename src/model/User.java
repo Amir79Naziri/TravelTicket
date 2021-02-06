@@ -38,7 +38,7 @@ public class User implements Serializable
         this.socialSecurityNumber = "";
         this.bankAccountNumber = "";
         this.password = password;
-        this.wallet = null;
+        this.wallet = new Wallet(0.0);
     }
 
     public void setId (long id) {
@@ -96,11 +96,6 @@ public class User implements Serializable
 
     private void setWallet(Wallet wallet) {
         this.wallet = wallet;
-    }
-
-    public void createWallet (Wallet wallet) {
-        if (this.wallet == null)
-            this.wallet = wallet;
     }
 
     public void setSocialSecurityNumber (String socialSecurityNumber) {

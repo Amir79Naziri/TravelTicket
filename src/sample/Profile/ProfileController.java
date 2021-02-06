@@ -21,8 +21,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.Ticket;
 import model.User;
 import model.connections.userInformationClient.Client;
+import sample.Bank.BankPageController;
 import sample.Search.SearchController;
 
 
@@ -30,12 +32,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.UnknownServiceException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProfileController implements Initializable {
     private User currentUser;
+    private User tempUser;
     private ObservableList<Pane> pastTickets;
     @FXML
     private ListView<Pane> ticketHistoryList;
@@ -90,6 +94,12 @@ public class ProfileController implements Initializable {
 
     @FXML
     private JFXButton cancelButton;
+
+    @FXML
+    private Label invalidEmail;
+
+    @FXML
+    private Label invalidPhoneNumber;
     //
 
 
@@ -109,6 +119,8 @@ public class ProfileController implements Initializable {
     private JFXTextField amount;
     @FXML
     private JFXButton pay;
+    @FXML
+    private Label invalidAmount;
     //
 
 
@@ -119,12 +131,18 @@ public class ProfileController implements Initializable {
     private final Pane pane3 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
 
     public ProfileController() throws IOException {
+        currentUser = new User("", "", -1);
+        tempUser = new User("", "", -1);
     }
 
     @FXML
-    void edit() {
+    void edit() throws InterruptedException {
         if (editButton.getText().equals("Edit")) {
             editButton.setText("Save");
+
+            invalidEmail.setVisible(false);
+            invalidPhoneNumber.setVisible(false);
+
             nameField.setDisable(false);
             lastNameField.setDisable(false);
             securityNumberField.setDisable(false);
@@ -140,7 +158,46 @@ public class ProfileController implements Initializable {
             emailField.setDisable(true);
             phoneNumberField.setDisable(true);
             bankNumberField.setDisable(true);
-            //TODO update the user
+
+            System.out.println(nameField.getText());
+
+            tempUser.setFirstName(nameField.getText());
+            tempUser.setLastName(lastNameField.getText());
+            tempUser.setSocialSecurityNumber(securityNumberField.getText());
+            tempUser.setEmail(emailField.getText());
+            tempUser.setPhoneNumber(phoneNumberField.getText());
+            tempUser.setBankAccountNumber(bankNumberField.getText());
+            Client client = connect();
+            Thread.sleep(5000);
+            String res = serverResponse(client);
+
+            switch (res)
+            {
+                case "Error_1":
+                    invalidEmail.setVisible(true);
+                    invalidPhoneNumber.setVisible(true);
+                    break;
+                case "Error_2":
+                    invalidPhoneNumber.setVisible(true);
+                    currentUser.setEmail (tempUser.getEmail ());
+                    break;
+                case "Error_3":
+                    invalidEmail.setVisible(true);
+                    currentUser.setPhoneNumber (tempUser.getPhoneNumber ());
+                    break;
+                case "Error_4":
+                    System.err.println("Error_4");;
+                    break;
+                default:
+                    currentUser.setEmail (tempUser.getEmail ());
+                    currentUser.setPhoneNumber (tempUser.getPhoneNumber ());
+            }
+            currentUser.setFirstName (tempUser.getFirstName ());
+            currentUser.setLastName (tempUser.getLastName ());
+            currentUser.setBankAccountNumber (tempUser.getBankAccountNumber ());
+            currentUser.setSocialSecurityNumber (tempUser.getSocialSecurityNumber ());
+
+            updateAccountFields();
         }
     }
 
@@ -154,7 +211,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     void changePassword() {
-        //TODO update the user
+        currentUser.changePassword(newPassField.getText(), currPassField.getText());
         borderPane.setOpacity(1);
         changePasswordPane.setVisible(false);
         editButton.setDisable(false);
@@ -179,7 +236,7 @@ public class ProfileController implements Initializable {
 
     private Client connect ()
     {
-        Client client = new Client ("127.0.0.1","Logout",currentUser);
+        Client client = new Client ("127.0.0.1","Logout", tempUser);
         new Thread (client).start ();
         return client;
     }
@@ -205,28 +262,45 @@ public class ProfileController implements Initializable {
 
     @FXML
     void goToBank(ActionEvent event) throws IOException, InterruptedException {
+        invalidAmount.setVisible(false);
         String price = amount.getText();
+        double paymentValue = 0.0;
+        if (!price.equals("") && !price.equals("0")) {
+            paymentValue = Double.parseDouble(price);
+
+            AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
+            mainPane.getChildren().add(load);
+            ticketHistoryList.setOpacity(0.5);
 
 
-        try {
-            bankRoot = FXMLLoader.load(getClass().getResource("/sample/Bank/BankPage.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            double finalPaymentValue = paymentValue;
+            pause.setOnFinished(f -> {
+                Stage stage;
+                stage = (Stage) homeButton.getScene().getWindow();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/sample/Search/Search.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+                }
+
+                BankPageController bankPageController = loader.getController();
+                bankPageController.setPrice(currentUser, finalPaymentValue, "wallet");
+
+                bankRoot = loader.getRoot();
+                Scene scene = new Scene(bankRoot);
+                stage.setScene(scene);
+                stage.show();
+            });
+            pause.play();
+
         }
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
-        mainPane.getChildren().add(load);
-        ticketHistoryList.setOpacity(0.5);
-
-
-        PauseTransition pause = new PauseTransition(Duration.seconds(2));
-        pause.setOnFinished(f -> {
-            Stage stage;
-            stage = (Stage) pay.getScene().getWindow();
-            Scene scene = new Scene(bankRoot);
-            stage.setScene(scene);
-            stage.show();
-        });
-        pause.play();
+        else {
+            invalidAmount.setVisible(true);
+        }
 
     }
 
@@ -244,7 +318,7 @@ public class ProfileController implements Initializable {
         }
 
         SearchController searchController = loader.getController();
-        //searchController.test("Hello");
+        searchController.setCurrentUser(currentUser);
 
         homeRoot = loader.getRoot();
         Scene scene = new Scene(homeRoot);
@@ -255,6 +329,8 @@ public class ProfileController implements Initializable {
 
     @FXML
     void goToLogout()throws IOException{
+        tempUser = currentUser;
+        Client client = connect();
         try {
             loginRoot = FXMLLoader.load(getClass().getResource("/sample/login/loginView.fxml"));
         } catch (IOException e) {
@@ -271,6 +347,26 @@ public class ProfileController implements Initializable {
 
     public void serCurrentUser(User user) {
         this.currentUser = user;
+        updateAccountFields();
+
+        //todo updateTicketList();
+
+        //todo balance.setText(currentUser.);
+        //todo available.setText(currentUser.);
+
+    }
+
+    private void updateAccountFields() {
+        nameField.setText(currentUser.getFirstName());
+        lastNameField.setText(currentUser.getLastName());
+        securityNumberField.setText(currentUser.getSocialSecurityNumber());
+        emailField.setText(currentUser.getEmail());
+        phoneNumberField.setText(currentUser.getPhoneNumber());
+        bankNumberField.setText(currentUser.getBankAccountNumber());
+    }
+
+    private void updateTicketList(HashMap<Integer, Ticket> tickets) {
+        //todo
     }
 
     @Override

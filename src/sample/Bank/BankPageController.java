@@ -17,6 +17,7 @@ import model.Ticket;
 import model.User;
 import sample.Profile.ProfileController;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,10 +30,21 @@ public class BankPageController implements Initializable {
 
     private Ticket currentTicket;
     private User currentUser;
+    private String purpose = "none";
+    private double price;
 
-    public void setCurrentTicketAndUser(User user,Ticket ticket ) {
+    public void setCurrentTicketAndUser(User user,Ticket ticket, String purpose) {
         this.currentUser = user;
         this.currentTicket = ticket;
+        costLabel.setText(String.valueOf(ticket.getPrice()));
+        this.purpose = purpose;
+    }
+
+    public void setPrice(User user, double price, String purpose) {
+        this.currentUser = user;
+        this.price = price;
+        costLabel.setText(String.valueOf(price));
+        this.purpose = purpose;
     }
 
     @FXML
@@ -41,6 +53,8 @@ public class BankPageController implements Initializable {
     private JFXButton payButton;
     @FXML
     private JFXButton cancelButton;
+    @FXML
+    private Label costLabel;
 
     @FXML
     void goToProfile(ActionEvent event) throws IOException, InterruptedException
@@ -53,15 +67,8 @@ public class BankPageController implements Initializable {
             e.printStackTrace();
         }
 
-
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
         pause.setOnFinished(f -> {
-//            Stage stage;
-//            stage = (Stage) cancelButton.getScene().getWindow();
-//            Scene scene = new Scene(profileRoot);
-//            stage.setScene(scene);
-//            stage.show();
-
             Stage stage;
             stage = (Stage) mainPane.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
@@ -72,9 +79,18 @@ public class BankPageController implements Initializable {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
             }
 
-            ProfileController profileController=loader.getController();
-            // TODO
-            //  profileController.setUser(currentUser);
+            ProfileController profileController = loader.getController();
+            if (purpose.equals("wallet")) {
+                //todo update user wallet
+
+            }
+            else {
+                if (event.getSource() != cancelButton) {
+                   //todo currentUser.addTicket(currentTicketID, currentTicket);
+                    // todo remove ticket
+                }
+            }
+            profileController.serCurrentUser(this.currentUser);
 
             Parent root = loader.getRoot();
             Scene scene = new Scene(root);

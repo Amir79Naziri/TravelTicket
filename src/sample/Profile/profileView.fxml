@@ -110,6 +110,11 @@
                               <Label layoutX="325.0" layoutY="387.0" text="Amount" textFill="#b2b2b2" />
                               <Label layoutX="532.0" layoutY="79.0" text="You have not made a transaction yet" textFill="#b2b2b2" />
                               <FontAwesomeIconView glyphName="DOLLAR" layoutX="306.0" layoutY="428.0" size="20" />
+                              <Label fx:id="invalidAmount" layoutX="321.0" layoutY="441.0" text="Invalid amount" textFill="#fd0f0f" visible="false">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+                                 </graphic>
+                              </Label>
                            </children></AnchorPane>
                             </content>
                             <graphic>
@@ -187,6 +192,16 @@
                                     <Reflection fraction="0.51" topOpacity="0.39" />
                                  </effect></FontAwesomeIconView>
                                         <JFXTextField fx:id="phoneNumberField" disable="true" layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
+                              <Label fx:id="invalidEmail" layoutX="442.0" layoutY="222.0" text="Invalid email" textFill="#fd0f0f" visible="false">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+                                 </graphic>
+                              </Label>
+                              <Label fx:id="invalidPhoneNumber" layoutX="442.0" layoutY="310.0" text="Invalid phone number" textFill="#fd0f0f" visible="false">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+                                 </graphic>
+                              </Label>
                                     </children>
                                 </AnchorPane>
                             </content>

@@ -18,10 +18,14 @@ import javafx.util.Duration;
 import model.NullUser;
 import model.User;
 import model.connections.userInformationClient.Client;
+import sample.Profile.ProfileController;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class PhoneSignUpController extends Controller{
@@ -82,11 +86,21 @@ public class PhoneSignUpController extends Controller{
 
                     if (user != null)
                     {
-                        System.out.println (user.getPhoneNumber () + user.getEmail ());
-
                         Stage stage;
-                        stage = (Stage) signUpButton.getScene().getWindow();
-                        Scene scene = new Scene(profileRoot);
+                        stage = (Stage) mainPane.getScene().getWindow();
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("/sample/Profile/profileView.fxml"));
+                        try {
+                            loader.load();
+                        } catch (IOException e) {
+                            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+                        }
+
+                        ProfileController profileController = loader.getController();
+                        profileController.serCurrentUser(user);
+
+                        Parent root = loader.getRoot();
+                        Scene scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
                     }
