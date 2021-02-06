@@ -26,6 +26,7 @@ import sample.Search.SearchController;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -56,6 +57,7 @@ public class TicketsPageController implements Initializable
     @FXML
     private ListView<Pane> list;
     private ObservableList<Pane> tickets = FXCollections.observableArrayList();
+    private ArrayList<Ticket> tikcetsList = new ArrayList<>();
 
     @FXML
     private ChoiceBox<String> airlines;
@@ -86,21 +88,27 @@ public class TicketsPageController implements Initializable
             Ticket temp = set.getValue();
             if(temp.getDepartureCity().equals(originLocation) && temp.getArrivalCity().equals(destinationLocation))
             {
-                Pane pane = null;
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("Ticket.fxml"));
-                try {
-                    pane = loader.load();
-                } catch (IOException e) {
-                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
-                }
-
-                TicketController ticketController = loader.getController();
-                ticketController.setEveryThing(temp, currentUser);
-                tickets.add(pane);
+                tikcetsList.add(temp);
+               addToPane(temp);
             }
         }
 
+    }
+
+    public void addToPane(Ticket temp)
+    {
+        Pane pane = null;
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Ticket.fxml"));
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        TicketController ticketController = loader.getController();
+        ticketController.setEveryThing(temp, currentUser);
+        tickets.add(pane);
     }
 
     @FXML
@@ -143,7 +151,6 @@ public class TicketsPageController implements Initializable
         // profileController.setUser(currentUser);
 
 
-
         Parent root = loader.getRoot();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -153,7 +160,29 @@ public class TicketsPageController implements Initializable
     @FXML
     void search(ActionEvent event)
     {
+        ArrayList<Ticket> ok = new ArrayList<>();
+        tickets.removeAll();
+        list.getItems().clear();
 
+        for(Ticket ticket : tikcetsList)
+        {
+            if(airlines.getValue() == null)
+            {
+                ok.add(ticket);
+            }
+            else
+            {
+                if(ticket.getAirLineName().equals(airlines.getValue()))
+                    ok.add(ticket);
+            }
+        }
+
+        if(timeOrder.getValue() != null)
+        {
+
+        }
+
+        list.refresh();
     }
 
     @Override
