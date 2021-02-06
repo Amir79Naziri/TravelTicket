@@ -8,7 +8,11 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 
-public class Main extends Application {
+/**
+ * Travel Ticket Project
+ */
+public class Main extends Application
+{
 
     @Override
     public void start(Stage primaryStage) throws Exception{
