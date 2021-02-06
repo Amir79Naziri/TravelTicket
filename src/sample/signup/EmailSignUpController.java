@@ -51,7 +51,8 @@ public class EmailSignUpController extends Controller{
             {
                 if (!invalidEmailWarnLabel.isVisible ())
                     invalidEmailWarnLabel.setVisible (true);
-
+                password.setText ("");
+                confirmPassword.setText ("");
                 validEmail = false;
             }
             else
@@ -61,7 +62,7 @@ public class EmailSignUpController extends Controller{
             }
             if (validPassword && validEmail)
             {
-                // TODO : sign up
+
                 AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
                 mainPane.getChildren().add(load);
                 Client client = connect ();
@@ -73,8 +74,7 @@ public class EmailSignUpController extends Controller{
                     User user = serverResponse (client, emailExistsWarnLabel);
 
                     if (user != null) {
-                        System.out.println (user.getPhoneNumber () + user.getEmail ());
-                        // TODO : go to home page
+
 
                         Stage stage;
                         stage = (Stage) signUpButton.getScene ().getWindow ();
@@ -85,6 +85,8 @@ public class EmailSignUpController extends Controller{
                     else
                     {
                         mainPane.getChildren ().remove (load);
+                        password.setText ("");
+                        confirmPassword.setText ("");
                     }
                 });
                 pause.play();

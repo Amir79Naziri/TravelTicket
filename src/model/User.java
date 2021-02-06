@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -16,10 +15,13 @@ public class User implements Serializable
     private String bankAccountNumber;
     private String password;
     private Wallet wallet;
+    private long id;
 
 
     public User (String field, String password, int type)
     {
+        id = System.currentTimeMillis ();
+
         this.tickets = new HashMap<> ();
         this.firstName = "";
         this.lastName = "";
@@ -38,6 +40,11 @@ public class User implements Serializable
         this.password = password;
         this.wallet = null;
     }
+
+    public void setId (long id) {
+        this.id = id;
+    }
+
 
 
     public void setFirstName (String firstName) {
@@ -138,20 +145,35 @@ public class User implements Serializable
         return password;
     }
 
-    public void update(User user)
+    public void update(User user, String condition)
     {
         if (user == null)
             return;
-
+        switch (condition)
+        {
+            case "Error_1":
+                break;
+            case "Error_2":
+                this.setEmail (user.getEmail ());
+                break;
+            case "Error_3":
+                this.setPhoneNumber (user.getPhoneNumber ());
+                break;
+            default:
+                this.setEmail (user.getEmail ());
+                this.setPhoneNumber (user.getPhoneNumber ());
+        }
         this.setFirstName (user.getFirstName ());
         this.setLastName (user.getLastName ());
         this.setBankAccountNumber (user.getBankAccountNumber ());
-        this.setEmail (user.getEmail ());
         this.setWallet (user.getWallet ());
-        this.setPhoneNumber (user.getPhoneNumber ());
         this.setPassword (user.getPassword ());
         this.setSocialSecurityNumber (user.getSocialSecurityNumber ());
         this.setTickets (user.getTickets ());
+    }
+
+    public long getId () {
+        return id;
     }
 
     @Override
@@ -189,5 +211,15 @@ public class User implements Serializable
             res3 = false;
 
         return (res2 || res3);
+    }
+
+    public boolean idEquals (Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+
+
+
+        return this.id == user.getId ();
     }
 }

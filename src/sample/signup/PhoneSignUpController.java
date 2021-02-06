@@ -57,7 +57,8 @@ public class PhoneSignUpController extends Controller{
             {
                 if (!invalidPhoneNumberWarnLabel.isVisible ())
                     invalidPhoneNumberWarnLabel.setVisible (true);
-
+                password.setText ("");
+                confirmPassword.setText ("");
                 validPhone = false;
             }
             else
@@ -67,7 +68,7 @@ public class PhoneSignUpController extends Controller{
 
             if (validPassword && validPhone)
             {
-                // TODO : sign up
+
                 AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
                 mainPane.getChildren().add(load);
                 Client client = connect ();
@@ -82,7 +83,7 @@ public class PhoneSignUpController extends Controller{
                     if (user != null)
                     {
                         System.out.println (user.getPhoneNumber () + user.getEmail ());
-                        // TODO : go to home page
+
                         Stage stage;
                         stage = (Stage) signUpButton.getScene().getWindow();
                         Scene scene = new Scene(profileRoot);
@@ -92,6 +93,8 @@ public class PhoneSignUpController extends Controller{
                     else
                     {
                         mainPane.getChildren ().remove (load);
+                        password.setText ("");
+                        confirmPassword.setText ("");
                     }
 
                 });

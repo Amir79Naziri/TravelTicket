@@ -22,6 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.User;
+import model.connections.userInformationClient.Client;
 import sample.Search.SearchController;
 
 
@@ -176,6 +177,18 @@ public class ProfileController implements Initializable {
         }
     }
 
+    private Client connect ()
+    {
+        Client client = new Client ("127.0.0.1","Logout",currentUser);
+        new Thread (client).start ();
+        return client;
+    }
+
+
+    private String serverResponse(Client client)
+    {
+        return client.getLogoutResult ();
+    }
 
 
 

@@ -49,6 +49,8 @@ public class Controller implements Initializable
         {
             if (!passwordComplexityWarnLabel.isVisible ())
                 passwordComplexityWarnLabel.setVisible (true);
+            password.setText ("");
+            confirmPassword.setText ("");
             PasswordComplexity = false;
         }
         else {
@@ -60,6 +62,8 @@ public class Controller implements Initializable
         {
             if (!passwordMissMatchWarnLabel.isVisible ())
                 passwordMissMatchWarnLabel.setVisible (true);
+            password.setText ("");
+            confirmPassword.setText ("");
             passwordMatch = false;
         }
         else

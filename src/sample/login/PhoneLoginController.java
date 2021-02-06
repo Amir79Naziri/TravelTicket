@@ -58,6 +58,7 @@ public class PhoneLoginController extends Controller
             {
                 if (!invalidPhoneNumberWarnLabel.isVisible ())
                     invalidPhoneNumberWarnLabel.setVisible (true);
+                password.setText ("");
 
                 validPhone = false;
             }
@@ -84,7 +85,7 @@ public class PhoneLoginController extends Controller
                     if (user != null)
                     {
                         System.out.println (user.getPhoneNumber () + user.getEmail ());
-                        // TODO : go to home page
+
                         Stage stage;
                         stage = (Stage) loginButton.getScene().getWindow();
                         Scene scene = new Scene(profileRoot);
@@ -94,6 +95,7 @@ public class PhoneLoginController extends Controller
                     else
                     {
                         mainPane.getChildren ().remove (load);
+                        password.setText ("");
                     }
 
                 });
