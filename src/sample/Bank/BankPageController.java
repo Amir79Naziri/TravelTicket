@@ -3,7 +3,6 @@ package sample.Bank;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.PauseTransition;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

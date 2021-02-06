@@ -54,7 +54,7 @@ public class TicketController
     @FXML
     private JFXButton purchaseBTN;
 
-    public void setEveryThing(Ticket ticket, User currentUser) throws FileNotFoundException
+    public void setEveryThing(Ticket ticket, User currentUser)
     {
 
         this.ticket = ticket;
@@ -84,9 +84,15 @@ public class TicketController
         arrTime.setText(ah + ":" + am);
         origin.setText(ticket.getDepartureCity());
         destination.setText(ticket.getArrivalCity());
-        FileInputStream input = new FileInputStream( "src/sample/Tickets/Pictures/" + ticket.getAirLineName() + ".png" );
-        Image image = new Image(input);
-        logo.setImage(image);
+        try {
+            FileInputStream input = new FileInputStream("src/sample/Tickets/Pictures/" + ticket.getAirLineName() + ".png");
+            Image image = new Image(input);
+            logo.setImage(image);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 

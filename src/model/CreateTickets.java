@@ -11,7 +11,7 @@ public class CreateTickets
                 0, 3, 30, 2020, 12, 21,
                 2020, 12, 21, 747, 500));
 
-        ticketStorage.getTickets().put(748, new Ticket("Tehran", "Shiraz", "American Airlines", 2,
+        ticketStorage.getTickets().put(748, new Ticket("Tehran", "Shiraz", "Qatar Airlines", 2,
                 0, 3, 30, 2020, 12, 21,
                 2020, 12, 21, 748, 1200));
 
@@ -51,7 +51,7 @@ public class CreateTickets
                 0, 3, 30, 2020, 12, 21,
                 2020, 12, 21, 757, 3500));
 
-        ticketStorage.getTickets().put(758, new Ticket("Shiraz", "Mashhad", "British Airlines", 2,
+        ticketStorage.getTickets().put(758, new Ticket("Shiraz", "Kish", "British Airlines", 2,
                 0, 3, 30, 2020, 12, 21,
                 2020, 12, 21, 758, 700));
 
@@ -67,9 +67,25 @@ public class CreateTickets
                 0, 3, 30, 2020, 12, 21,
                 2020, 12, 21, 761, 1900));
 
-        ticketStorage.getTickets().put(762, new Ticket("Tehran", "Kish", "Turkish Airlines", 2,
+        ticketStorage.getTickets().put(762, new Ticket("Tehran", "Mashhad", "Bangladesh Airlines", 2,
                 0, 3, 30, 2020, 12, 21,
                 2020, 12, 21, 762, 690));
+
+        ticketStorage.getTickets().put(763, new Ticket("Mashhad", "Kish", "Qatar Airlines", 2,
+                0, 3, 30, 2020, 12, 21,
+                2020, 12, 21, 763, 200));
+
+        ticketStorage.getTickets().put(764, new Ticket("Shiraz", "Isfahan", "Pegasus Airlines", 2,
+                0, 3, 30, 2020, 12, 21,
+                2020, 12, 21, 764, 550));
+
+        ticketStorage.getTickets().put(765, new Ticket("Isfahan", "shiraz", "British Airlines", 2,
+                0, 3, 30, 2020, 12, 21,
+                2020, 12, 21, 765, 3550));
+
+        ticketStorage.getTickets().put(766, new Ticket("Tehran", "Mashhad", "Bangladesh Airlines", 2,
+                0, 3, 30, 2020, 12, 21,
+                2020, 12, 21, 766, 1750));
 
         FileHandler.save(ticketStorage, "Files/ticketStorage.ser");
 
