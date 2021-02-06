@@ -16,7 +16,6 @@ import javafx.util.Duration;
 import model.Ticket;
 import model.User;
 import sample.Profile.ProfileController;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
