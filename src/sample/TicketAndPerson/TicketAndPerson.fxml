@@ -3,9 +3,11 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -159,7 +161,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <AnchorPane layoutX="16.0" layoutY="197.0" prefHeight="95.0" prefWidth="818.0">
+                <AnchorPane layoutX="16.0" layoutY="197.0" prefHeight="95.0" prefWidth="498.0">
                     <children>
                         <JFXButton fx:id="payOnline" layoutX="145.0" layoutY="41.0" onAction="#onlinePayment" prefHeight="27.0" prefWidth="141.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Online payment" textFill="#d7cdcd">
                             <graphic>
@@ -170,7 +172,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="payWithWallet" layoutY="41.0" prefHeight="43.0" prefWidth="138.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Pay with wallet" textFill="#d7cdcd">
+                        <JFXButton fx:id="payWithWallet" layoutY="41.0" onAction="#walletPayment" prefHeight="43.0" prefWidth="138.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Pay with wallet" textFill="#d7cdcd">
                             <graphic>
                                 <ImageView fitHeight="34.0" fitWidth="38.0">
                                     <image>
@@ -184,7 +186,7 @@
             </children>
         </AnchorPane>
         <Line endX="430.199951171875" layoutX="261.0" layoutY="85.0" startX="-182.60000610351562" stroke="#c5a030" />
-        <JFXButton fx:id="home" layoutX="396.0" layoutY="34.0" onAction="#goToHomePage" prefHeight="40.0" prefWidth="282.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" textFill="#d7cdcd">
+        <JFXButton fx:id="home" layoutX="396.0" layoutY="34.0" onAction="#goToHomePage" prefHeight="40.0" prefWidth="282.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Home" textFill="#d7cdcd">
             <graphic>
                 <ImageView fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" visible="false">
                     <image>
@@ -193,7 +195,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton fx:id="account" layoutX="94.0" layoutY="34.0" onAction="#goToAccountPage" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" textFill="#d7cdcd">
+        <JFXButton fx:id="account" layoutX="94.0" layoutY="34.0" onAction="#goToAccountPage" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #673AB7; -fx-background-radius: 5px;" text="Profile" textFill="#d7cdcd">
             <graphic>
                 <ImageView fitHeight="32.0" fitWidth="32.0" visible="false">
                     <image>
@@ -202,7 +204,33 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-      <FontAwesomeIconView glyphName="USER" layoutX="225.0" layoutY="68.0" size="40" />
-      <FontAwesomeIconView glyphName="HOME" layoutX="523.0" layoutY="68.0" size="40" />
+        <AnchorPane fx:id="successful" layoutX="166.0" layoutY="200.0" prefHeight="135.0" prefWidth="498.0" style="-fx-background-color: #2A2E37;" visible="false">
+            <effect>
+                <InnerShadow height="100.0" radius="49.5" width="100.0">
+                    <color>
+                        <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                    </color>
+                </InnerShadow>
+            </effect>
+            <children>
+                <JFXButton layoutX="404.0" layoutY="94.0" onAction="#okButtonHandler" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #673AB7;" text="OK" textFill="#cdbcbc" />
+                <Label layoutX="81.0" layoutY="34.0" prefHeight="67.0" prefWidth="368.0" style="-fx-font-size: 30;" text="Payment was successful" textFill="#5cb74a" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="notEnough" layoutX="166.0" layoutY="200.0" prefHeight="135.0" prefWidth="498.0" style="-fx-background-color: #2A2E37;" visible="false">
+            <effect>
+                <InnerShadow height="100.0" radius="49.5" width="100.0">
+                    <color>
+                        <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                    </color>
+                </InnerShadow>
+            </effect>
+            <children>
+                <JFXButton layoutX="405.0" layoutY="93.0" onAction="#okButtonHandler" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #673AB7;" text="OK" textFill="#d7bcbc" />
+                <Label layoutX="101.0" layoutY="34.0" prefHeight="67.0" prefWidth="303.0" style="-fx-font-size: 30;" text="Credit not enough!" textFill="#d74343" />
+            </children>
+        </AnchorPane>
+        <FontAwesomeIconView glyphName="USER" layoutX="195.0" layoutY="68.0" size="40" />
+        <FontAwesomeIconView glyphName="HOME" layoutX="476.0" layoutY="68.0" size="40" />
     </children>
 </AnchorPane>

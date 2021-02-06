@@ -15,10 +15,14 @@ import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import model.FileHandler;
 import model.Ticket;
+import model.TicketStorage;
 import model.User;
+import model.connections.userInformationClient.Client;
 import sample.Bank.BankPageController;
 import sample.Profile.ProfileController;
 import sample.Search.SearchController;
@@ -46,11 +50,8 @@ public class TicketAndPersonController implements Initializable {
     private ImageView companyIcon;
 
 
-
-
     @FXML
-    void goToHomePage() throws IOException
-    {
+    void goToHomePage() throws IOException {
 
         Stage stage;
         stage = (Stage) home.getScene().getWindow();
@@ -79,8 +80,47 @@ public class TicketAndPersonController implements Initializable {
     private JFXButton payOnline;
 
     @FXML
-    public void onlinePayment() throws IOException
-    {
+    private AnchorPane successful, notEnough;
+
+
+    public void okButtonHandler() throws IOException {
+        if (successful.isVisible()) {
+            goToAccountPage();
+        }
+
+        successful.setVisible(false);
+        notEnough.setVisible(false);
+    }
+
+    @FXML
+    public void walletPayment() throws IOException {
+        if (currentUser.getWallet().buyTicket(currentTicket.getPrice())) {
+            successful.setVisible(true);
+            //TODO : add ticket to users tickets and remove from general tickets list
+            currentUser.addTicket(currentTicket.getId(), currentTicket);
+            connect(currentUser);
+
+            TicketStorage ticketStorage = (TicketStorage) FileHandler.load("Files/ticketStorage.ser");
+            ticketStorage.getTickets().remove(currentTicket.getId());
+            FileHandler.save(ticketStorage, "Files/ticketStorage.ser");
+
+            /////////////////
+
+        } else {
+            notEnough.setVisible(true);
+        }
+    }
+
+    /////////////////
+    private Client connect(User user) {
+        Client client = new Client("127.0.0.1", "Logout", user);
+        new Thread(client).start();
+        return client;
+    }
+
+    ///////////////////
+    @FXML
+    public void onlinePayment() throws IOException {
         Stage stage;
         stage = (Stage) home.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -136,11 +176,9 @@ public class TicketAndPersonController implements Initializable {
 
     }
 
-    public void setCurrentTicketAndUser(Ticket ticket, User user)
-    {
+    public void setCurrentTicketAndUser(Ticket ticket, User user) {
         this.currentUser = user;
         this.currentTicket = ticket;
-//        System.out.println(currentUser.getFirstName());
 
 
         name.setText(currentUser.getFirstName());
@@ -154,16 +192,16 @@ public class TicketAndPersonController implements Initializable {
         String dm = ticket.getDepartureMinute() + "";
         String ah = ticket.getArrivalHour() + "";
         String am = ticket.getArrivalMinute() + "";
-        if( ticket.getDepartureHour() < 10 )
+        if (ticket.getDepartureHour() < 10)
             dh = "0" + ticket.getDepartureHour();
 
-        if( ticket.getDepartureMinute() < 10 )
+        if (ticket.getDepartureMinute() < 10)
             dm = "0" + ticket.getDepartureMinute();
 
-        if( ticket.getArrivalHour() < 10 )
+        if (ticket.getArrivalHour() < 10)
             ah = "0" + ticket.getArrivalHour();
 
-        if( ticket.getArrivalMinute() < 10 )
+        if (ticket.getArrivalMinute() < 10)
             am = "0" + ticket.getArrivalMinute();
 
 
@@ -186,8 +224,7 @@ public class TicketAndPersonController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
 }
