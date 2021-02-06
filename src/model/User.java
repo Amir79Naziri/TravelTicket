@@ -130,7 +130,7 @@ public class User implements Serializable
         return socialSecurityNumber;
     }
 
-    private Wallet getWallet()
+    public Wallet getWallet()
     {
         return wallet;
     }

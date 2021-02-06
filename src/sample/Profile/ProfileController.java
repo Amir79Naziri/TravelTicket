@@ -26,20 +26,24 @@ import model.User;
 import model.connections.userInformationClient.Client;
 import sample.Bank.BankPageController;
 import sample.Search.SearchController;
+import sample.Tickets.TicketController;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.net.UnknownServiceException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProfileController implements Initializable {
+    private ArrayList<Ticket> tikcetsList = new ArrayList<>();
     private User currentUser;
-    private ObservableList<Pane> pastTickets;
+    private ObservableList<Pane> pastTickets = FXCollections.observableArrayList();;
     @FXML
     private ListView<Pane> ticketHistoryList;
     @FXML
@@ -95,6 +99,9 @@ public class ProfileController implements Initializable {
     private JFXButton cancelButton;
 
     @FXML
+    private Label invalidPassword;
+
+    @FXML
     private Label invalidEmail;
 
     @FXML
@@ -123,7 +130,7 @@ public class ProfileController implements Initializable {
     //
 
 
-    static Parent homeRoot, loginRoot, bankRoot, changePassRoot;
+    static Parent homeRoot, loginRoot, bankRoot;
 
     private final Pane pane1 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
     private final Pane pane2 = FXMLLoader.load(getClass().getResource("historyTicket.fxml"));
@@ -157,7 +164,6 @@ public class ProfileController implements Initializable {
             phoneNumberField.setDisable(true);
             bankNumberField.setDisable(true);
 
-//            System.out.println(nameField.getText());
             User tempUser = new User("", "", 1);
 
             tempUser.setId(currentUser.getId());
@@ -210,8 +216,13 @@ public class ProfileController implements Initializable {
 
     @FXML
     void changePassword() {
-        currentUser.changePassword(newPassField.getText(), currPassField.getText());
-        connect(currentUser);
+        //todo uncomment
+//        if (currentUser.changePassword(newPassField.getText(), currPassField.getText())) {
+//            invalidPassword.setVisible(false);
+//            connect(currentUser);
+//        }
+//        else
+//            invalidPassword.setVisible(true);
 
         borderPane.setOpacity(1);
         changePasswordPane.setVisible(false);
@@ -231,7 +242,19 @@ public class ProfileController implements Initializable {
     void searchTickets(){
         LocalDate date = datePicker.getValue();
         if (date != null) {
-            //TODO search tickets for the date
+            ArrayList<Ticket> filteredTickets = new ArrayList<>();
+            pastTickets.removeAll();
+            ticketHistoryList.getItems().clear();
+
+            for(Ticket ticket : tikcetsList) {
+                if(ticket.getDepartureDate().equals(date))
+                    filteredTickets.add(ticket);
+            }
+
+            for(Ticket ticket : filteredTickets)
+                addToPane(ticket);
+
+            ticketHistoryList.refresh();
         }
     }
 
@@ -349,10 +372,10 @@ public class ProfileController implements Initializable {
         this.currentUser = user;
         updateAccountFields();
 
-        //todo updateTicketList();
+        updateTicketList(user.getTickets());
 
-        //todo balance.setText(currentUser.);
-        //todo available.setText(currentUser.);
+        balance.setText(String.valueOf(currentUser.getWallet().getValue()));
+        available.setText(String.valueOf(currentUser.getWallet().getValue()));
 
     }
 
@@ -366,13 +389,34 @@ public class ProfileController implements Initializable {
     }
 
     private void updateTicketList(HashMap<Integer, Ticket> tickets) {
-        //todo
+        for(Map.Entry<Integer, Ticket> set : tickets.entrySet())
+        {
+            Ticket temp = set.getValue();
+            tikcetsList.add(temp);
+            addToPane(temp);
+        }
+    }
+
+    public void addToPane(Ticket temp)
+    {
+        Pane pane = null;
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("historyTicket.fxml"));
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+//        HistoryTicketController historyTicketController = loader.getController();
+//        historyTicketController.setEveryThing(temp, currentUser);
+        pastTickets.add(pane);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        pastTickets = FXCollections.observableArrayList();
-        pastTickets.addAll(pane1, pane2, pane3);
+//        pastTickets = FXCollections.observableArrayList();
+//        pastTickets.addAll(pane1, pane2, pane3);
         ticketHistoryList.setItems(pastTickets);
     }
 }
