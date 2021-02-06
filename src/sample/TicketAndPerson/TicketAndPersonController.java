@@ -33,6 +33,7 @@ import java.util.logging.Logger;
 
 
 public class TicketAndPersonController implements Initializable {
+
     @FXML
     private JFXButton home;
 
@@ -175,7 +176,7 @@ public class TicketAndPersonController implements Initializable {
         OriginTime.setText(currentTicket.getDepartureHour() + ":" + currentTicket.getDepartureMinute());
 
         DestLocation.setText(currentTicket.getArrivalCity());
-        OriginTime.setText(currentTicket.getDepartureCity());
+        OriginLocation.setText(currentTicket.getDepartureCity());
 
         price.setText(currentTicket.getPrice() + "$");
 
