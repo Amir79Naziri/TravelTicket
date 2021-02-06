@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="144.0" prefWidth="565.0" style="-fx-background-color: #2A2E37;" stylesheets="@profileTheme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Profile.historyTicketController">
+<AnchorPane fx:id="mainPane" prefHeight="144.0" prefWidth="565.0" style="-fx-background-color: #2A2E37;" stylesheets="@profileTheme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Profile.historyTicketController">
     <children>
         <Line endX="5.199981689453125" endY="15.5" layoutX="480.0" layoutY="64.0" startX="-32.0" startY="15.500015258789062" stroke="#c5a030" />
         <Label fx:id="arrDate" alignment="CENTER" layoutX="382.0" layoutY="32.0" prefHeight="35.0" prefWidth="78.0" text="2021/2/1" textFill="WHITE">

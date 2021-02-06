@@ -86,7 +86,9 @@ public class BankPageController implements Initializable {
             }
             else {
                 if (event.getSource() != cancelButton) {
-                   //todo currentUser.addTicket(currentTicketID, currentTicket);
+                   currentUser.addTicket(currentTicket.getCode(), currentTicket);
+
+
                     // todo remove ticket from the tickets file
                 }
             }
