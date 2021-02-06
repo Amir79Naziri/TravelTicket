@@ -1,20 +1,24 @@
-package sample.login;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileInputStream;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
-        primaryStage.setTitle("Hello  World");
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/login/loginView.fxml"));
+        primaryStage.setTitle("Travel Ticket");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.setResizable (false);
         primaryStage.show();
+        primaryStage.getIcons().add(
+                new Image (new FileInputStream (new File ("Icon/logo.png"))));
     }
 
 
