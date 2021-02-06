@@ -407,9 +407,8 @@ public class ProfileController implements Initializable {
             Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
         }
 
-        //todo uncomment
-//        HistoryTicketController historyTicketController = loader.getController();
-//        historyTicketController.setEveryThing(temp, currentUser);
+        historyTicketController historyTicketController = loader.getController();
+        historyTicketController.setEveryThing(temp, currentUser);
         pastTickets.add(pane);
     }
 

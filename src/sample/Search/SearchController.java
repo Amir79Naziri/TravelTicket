@@ -158,9 +158,7 @@ public class SearchController implements Initializable {
         }
 
         ProfileController profileController=loader.getController();
-        //TODO
-        // profileController.setUser(currentUser);
-
+        profileController.serCurrentUser(currentUser);
 
 
         Parent root = loader.getRoot();

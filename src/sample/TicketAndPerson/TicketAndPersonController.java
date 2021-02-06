@@ -111,7 +111,7 @@ public class TicketAndPersonController implements Initializable {
         }
 
         BankPageController bankPageController = loader.getController();
-        //TODO
+        bankPageController.setCurrentTicketAndUser(currentUser, currentTicket, "ticket");
 //        bankPageController.setCurrentTicketAndUser(currentUser,currentTicket);
 
         Parent root = loader.getRoot();
@@ -145,8 +145,7 @@ public class TicketAndPersonController implements Initializable {
         }
 
         ProfileController profileController = loader.getController();
-        //TODO
-        // profileController.setUser(currentUser);
+        profileController.serCurrentUser(currentUser);
 
 
         Parent root = loader.getRoot();
@@ -160,20 +159,21 @@ public class TicketAndPersonController implements Initializable {
     {
         this.currentUser = user;
         this.currentTicket = ticket;
+//        System.out.println(currentUser.getFirstName());
 
-        //TODO: uncomment these lines after initializing user
 
-//        name.setText(currentUser.getFirstName());
-//        lastname.setText(currentUser.getLastName());
-//        SocialNumber.setText(currentUser.getSocialSecurityNumber());
-//        email.setText(currentUser.getEmail());
-//        phoneNumber.setText(currentUser.getPhoneNumber());
-        ///
+        name.setText(currentUser.getFirstName());
+        lastname.setText(currentUser.getLastName());
+        SocialNumber.setText(currentUser.getSocialSecurityNumber());
+        email.setText(currentUser.getEmail());
+        phoneNumber.setText(currentUser.getPhoneNumber());
+
+
         DestDate.setText(currentTicket.getArrivalDate().getYear() + "/" + currentTicket.getArrivalDate().getMonth() + "/" + currentTicket.getArrivalDate().getDayOfMonth());
         OriginDate.setText(currentTicket.getDepartureDate().getYear() + "/" + currentTicket.getDepartureDate().getMonth() + "/" + currentTicket.getDepartureDate().getDayOfMonth());
         DestTime.setText(currentTicket.getArrivalHour() + ":" + currentTicket.getArrivalMinute());
         OriginTime.setText(currentTicket.getDepartureHour() + ":" + currentTicket.getDepartureMinute());
-        ////
+
         DestLocation.setText(currentTicket.getArrivalCity());
         OriginTime.setText(currentTicket.getDepartureCity());
 

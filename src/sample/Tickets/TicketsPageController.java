@@ -153,8 +153,7 @@ public class TicketsPageController implements Initializable
         }
 
         ProfileController profileController=loader.getController();
-        //TODO
-        // profileController.setUser(currentUser);
+        profileController.serCurrentUser(currentUser);
 
 
         Parent root = loader.getRoot();
