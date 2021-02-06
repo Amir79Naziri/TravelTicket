@@ -48,6 +48,94 @@
             <center>
                 <JFXTabPane BorderPane.alignment="CENTER">
                     <tabs>
+                        <Tab style="-fx-pref-width: 264;" text="Account">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <JFXTextField fx:id="nameField" disable="true" layoutX="110.0" layoutY="191.0" />
+                                        <JFXTextField fx:id="lastNameField" disable="true" layoutX="110.0" layoutY="279.0" />
+                                        <Label layoutX="110.0" layoutY="173.0" text="First Name" textFill="#b2b2b2" />
+                                        <Label layoutX="111.0" layoutY="261.0" text="Last Name" textFill="#b2b2b2" />
+                                        <JFXTextField fx:id="securityNumberField" disable="true" layoutX="110.0" layoutY="360.0" />
+                                        <Label layoutX="110.0" layoutY="343.0" text="Social Security Number" textFill="#b2b2b2" />
+                                        <JFXTextField fx:id="emailField" disable="true" layoutX="442.0" layoutY="191.0" />
+                                        <JFXTextField disable="true" editable="false" layoutX="442.0" layoutY="279.0" style="-fx-pref-width: 25; -fx-text-fill: #B2B2B2;" text="+98" />
+                                        <Label layoutX="442.0" layoutY="173.0" text="Email" textFill="#b2b2b2" />
+                                        <Label layoutX="442.0" layoutY="263.0" text="Phone Number" textFill="#b2b2b2" />
+                                        <JFXTextField fx:id="bankNumberField" disable="true" layoutX="442.0" layoutY="360.0" />
+                                        <Label layoutX="442.0" layoutY="343.0" text="Bank Account Number" textFill="#b2b2b2" />
+                                        <Line endX="400.0" endY="430.0" startX="400.0" startY="140.0" stroke="#4d4d4d" />
+                                        <JFXButton fx:id="editButton" layoutX="358.0" layoutY="435.0" onAction="#edit" prefWidth="80.0" text="Edit" />
+                                        <JFXCheckBox fx:id="verifyEmail" checkedColor="#333333" layoutX="692.0" layoutY="197.0" selected="true" />
+                                        <JFXCheckBox fx:id="verifyPhone" checkedColor="#333333" layoutX="692.0" layoutY="285.0" selected="true" />
+                                        <Line endX="380.0" endY="140.0" startX="10.0" startY="140.0" stroke="#4d4d4d" />
+                                        <Line endX="430.0" endY="430.0" startX="370.0" startY="430.0" stroke="#4d4d4d" />
+                                        <Line endX="10.0" endY="170.0" startX="10.0" startY="110.0" stroke="#4d4d4d" />
+                                        <Line endX="790.0" endY="140.0" startX="420.0" startY="140.0" stroke="#4d4d4d" />
+                                        <Line endX="790.0" endY="170.0" startX="790.0" startY="110.0" stroke="#4d4d4d" />
+                                        <ImageView fitHeight="97.0" fitWidth="121.0" layoutX="111.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+                                        <JFXButton layoutX="553.0" layoutY="43.0" text="Upload Avatar">
+                                 <effect>
+                                    <Reflection bottomOpacity="0.53" />
+                                 </effect></JFXButton>
+                                        <JFXButton fx:id="changePassButton" layoutX="543.0" layoutY="94.0" onAction="#changePass" text="Change Password" />
+                                        <FontAwesomeIconView glyphName="USER_CIRCLE" layoutX="165.0" layoutY="96.0" size="60">
+                                 <effect>
+                                    <Reflection fraction="0.51" topOpacity="0.39" />
+                                 </effect></FontAwesomeIconView>
+                                        <JFXTextField fx:id="phoneNumberField" disable="true" layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
+                              <Label fx:id="invalidEmail" layoutX="442.0" layoutY="222.0" text="Invalid email" textFill="#fd0f0f" visible="false">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+                                 </graphic>
+                              </Label>
+                              <Label fx:id="invalidPhoneNumber" layoutX="442.0" layoutY="310.0" text="Invalid phone number" textFill="#fd0f0f" visible="false">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
+                                 </graphic>
+                              </Label>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                            <graphic>
+                                <Label>
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="USER" size="20" />
+                                    </graphic>
+                                </Label>
+                            </graphic>
+                        </Tab>
+                        <Tab text="Travel History">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXListView fx:id="ticketHistoryList" layoutX="86.0" layoutY="103.0" prefHeight="346.0" prefWidth="622.0" style="-fx-background-color: #2A2E37;">
+                                 <effect>
+                                    <InnerShadow>
+                                       <color>
+                                          <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </JFXListView>
+                              <JFXDatePicker fx:id="datePicker" defaultColor="#2a2e37" layoutX="557.0" layoutY="59.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;">
+                                 <effect>
+                                    <InnerShadow />
+                                 </effect>
+                              </JFXDatePicker>
+                              <Label layoutX="14.0" layoutY="14.0" text="Filter your travel history by date" textFill="#b2b2b2" />
+                              <Line endX="100.0" layoutX="115.0" layoutY="38.0" startX="-100.0" stroke="#b2b2b2" />
+                              <JFXButton fx:id="searchButton" layoutX="489.0" layoutY="60.0" onAction="#searchTickets" text="Search" />
+                           </children></AnchorPane>
+                            </content>
+                            <graphic>
+                                <Label>
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="LIST_OL" size="20" />
+                                    </graphic>
+                                </Label>
+                            </graphic>
+                        </Tab>
                         <Tab text="Wallet">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -121,94 +209,6 @@
                                 <Label>
                                     <graphic>
                                         <FontAwesomeIconView glyphName="CREDIT_CARD" size="20" />
-                                    </graphic>
-                                </Label>
-                            </graphic>
-                        </Tab>
-                        <Tab text="Travel History">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <JFXListView fx:id="ticketHistoryList" layoutX="86.0" layoutY="103.0" prefHeight="346.0" prefWidth="622.0" style="-fx-background-color: #2A2E37;">
-                                 <effect>
-                                    <InnerShadow>
-                                       <color>
-                                          <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </JFXListView>
-                              <JFXDatePicker fx:id="datePicker" defaultColor="#2a2e37" layoutX="557.0" layoutY="59.0" style="-fx-pref-width: 150; -fx-pref-height: 20; -fx-background-color: #673AB7;">
-                                 <effect>
-                                    <InnerShadow />
-                                 </effect>
-                              </JFXDatePicker>
-                              <Label layoutX="14.0" layoutY="14.0" text="Filter your travel history by date" textFill="#b2b2b2" />
-                              <Line endX="100.0" layoutX="115.0" layoutY="38.0" startX="-100.0" stroke="#b2b2b2" />
-                              <JFXButton fx:id="searchButton" layoutX="489.0" layoutY="60.0" onAction="#searchTickets" text="Search" />
-                           </children></AnchorPane>
-                            </content>
-                            <graphic>
-                                <Label>
-                                    <graphic>
-                                        <FontAwesomeIconView glyphName="LIST_OL" size="20" />
-                                    </graphic>
-                                </Label>
-                            </graphic>
-                        </Tab>
-                        <Tab style="-fx-pref-width: 264;" text="Account">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <JFXTextField fx:id="nameField" disable="true" layoutX="110.0" layoutY="191.0" />
-                                        <JFXTextField fx:id="lastNameField" disable="true" layoutX="110.0" layoutY="279.0" />
-                                        <Label layoutX="110.0" layoutY="173.0" text="First Name" textFill="#b2b2b2" />
-                                        <Label layoutX="111.0" layoutY="261.0" text="Last Name" textFill="#b2b2b2" />
-                                        <JFXTextField fx:id="securityNumberField" disable="true" layoutX="110.0" layoutY="360.0" />
-                                        <Label layoutX="110.0" layoutY="343.0" text="Social Security Number" textFill="#b2b2b2" />
-                                        <JFXTextField fx:id="emailField" disable="true" layoutX="442.0" layoutY="191.0" />
-                                        <JFXTextField disable="true" editable="false" layoutX="442.0" layoutY="279.0" style="-fx-pref-width: 25; -fx-text-fill: #B2B2B2;" text="+98" />
-                                        <Label layoutX="442.0" layoutY="173.0" text="Email" textFill="#b2b2b2" />
-                                        <Label layoutX="442.0" layoutY="263.0" text="Phone Number" textFill="#b2b2b2" />
-                                        <JFXTextField fx:id="bankNumberField" disable="true" layoutX="442.0" layoutY="360.0" />
-                                        <Label layoutX="442.0" layoutY="343.0" text="Bank Account Number" textFill="#b2b2b2" />
-                                        <Line endX="400.0" endY="430.0" startX="400.0" startY="140.0" stroke="#4d4d4d" />
-                                        <JFXButton fx:id="editButton" layoutX="358.0" layoutY="435.0" onAction="#edit" prefWidth="80.0" text="Edit" />
-                                        <JFXCheckBox fx:id="verifyEmail" checkedColor="#333333" layoutX="692.0" layoutY="197.0" selected="true" />
-                                        <JFXCheckBox fx:id="verifyPhone" checkedColor="#333333" layoutX="692.0" layoutY="285.0" selected="true" />
-                                        <Line endX="380.0" endY="140.0" startX="10.0" startY="140.0" stroke="#4d4d4d" />
-                                        <Line endX="430.0" endY="430.0" startX="370.0" startY="430.0" stroke="#4d4d4d" />
-                                        <Line endX="10.0" endY="170.0" startX="10.0" startY="110.0" stroke="#4d4d4d" />
-                                        <Line endX="790.0" endY="140.0" startX="420.0" startY="140.0" stroke="#4d4d4d" />
-                                        <Line endX="790.0" endY="170.0" startX="790.0" startY="110.0" stroke="#4d4d4d" />
-                                        <ImageView fitHeight="97.0" fitWidth="121.0" layoutX="111.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-                                        <JFXButton layoutX="553.0" layoutY="43.0" text="Upload Avatar">
-                                 <effect>
-                                    <Reflection bottomOpacity="0.53" />
-                                 </effect></JFXButton>
-                                        <JFXButton fx:id="changePassButton" layoutX="543.0" layoutY="94.0" onAction="#changePass" text="Change Password" />
-                                        <FontAwesomeIconView glyphName="USER_CIRCLE" layoutX="165.0" layoutY="96.0" size="60">
-                                 <effect>
-                                    <Reflection fraction="0.51" topOpacity="0.39" />
-                                 </effect></FontAwesomeIconView>
-                                        <JFXTextField fx:id="phoneNumberField" disable="true" layoutX="474.0" layoutY="279.0" style="-fx-pref-width: 220;" />
-                              <Label fx:id="invalidEmail" layoutX="442.0" layoutY="222.0" text="Invalid email" textFill="#fd0f0f" visible="false">
-                                 <graphic>
-                                    <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
-                                 </graphic>
-                              </Label>
-                              <Label fx:id="invalidPhoneNumber" layoutX="442.0" layoutY="310.0" text="Invalid phone number" textFill="#fd0f0f" visible="false">
-                                 <graphic>
-                                    <FontAwesomeIconView fill="#fd0f0f" glyphName="EXCLAMATION_CIRCLE" />
-                                 </graphic>
-                              </Label>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                            <graphic>
-                                <Label>
-                                    <graphic>
-                                        <FontAwesomeIconView glyphName="USER" size="20" />
                                     </graphic>
                                 </Label>
                             </graphic>
