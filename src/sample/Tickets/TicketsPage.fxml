@@ -13,20 +13,21 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Tickets.TicketsPageController">
     <children>
-        <JFXDatePicker defaultColor="#333333" layoutX="70.0" layoutY="107.0" prefHeight="10.0" prefWidth="150.0" style="-fx-background-color: #673ab7; -fx-pref-height: 20; -fx-pref-width: 150;">
+        <JFXDatePicker defaultColor="#333333" layoutX="12.0" layoutY="106.0" prefHeight="10.0" prefWidth="140.0" style="-fx-background-color: #673ab7; -fx-pref-height: 20; -fx-pref-width: 150;">
             <effect>
                 <InnerShadow />
             </effect></JFXDatePicker>
         <JFXBadge layoutX="137.0" layoutY="68.0" />
-        <JFXTimePicker defaultColor="#333333" layoutX="240.0" layoutY="107.0" prefHeight="10.0" prefWidth="150.0" style="-fx-background-color: #673AB7;">
+        <JFXTimePicker defaultColor="#333333" layoutX="182.0" layoutY="106.0" prefHeight="10.0" prefWidth="150.0" style="-fx-background-color: #673AB7;">
             <effect>
                 <InnerShadow />
             </effect></JFXTimePicker>
-        <ChoiceBox fx:id="timeOrder" layoutX="410.0" layoutY="107.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;">
+        <ChoiceBox fx:id="timeOrder" layoutX="352.0" layoutY="106.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;">
             <effect>
                 <InnerShadow />
             </effect>
@@ -34,7 +35,7 @@
             <URL value="@../Profile/profileTheme.css" />
             <URL value="@../Search/cssForMenue.css" />
          </stylesheets></ChoiceBox>
-        <Label layoutX="410.0" layoutY="84.0" prefHeight="22.0" prefWidth="53.0" text="Order" textFill="WHITE" />
+        <Label layoutX="352.0" layoutY="82.0" prefHeight="22.0" prefWidth="53.0" text="Order" textFill="WHITE" />
         <ImageView fitHeight="76.0" fitWidth="99.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@Pictures/TextLogo.png" />
@@ -61,8 +62,8 @@
             </image>
         </ImageView>
         <JFXListView fx:id="list" depth="1" layoutX="10.0" layoutY="151.0" prefHeight="450.0" prefWidth="780.0" style="-fx-background-color: #2A2E37;" />
-        <Label layoutX="580.0" layoutY="82.0" prefHeight="22.0" prefWidth="53.0" text="Airlines" textFill="WHITE" />
-        <ChoiceBox fx:id="airlines" layoutX="580.0" layoutY="107.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;">
+        <Label layoutX="522.0" layoutY="82.0" prefHeight="22.0" prefWidth="53.0" text="Airlines" textFill="WHITE" />
+        <ChoiceBox fx:id="airlines" layoutX="522.0" layoutY="106.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #673AB7;">
             <effect>
                 <InnerShadow />
             </effect>
@@ -75,6 +76,15 @@
                 <JFXSpinner layoutX="75.0" layoutY="75.0" />
             </children>
         </AnchorPane>
+      <JFXButton fx:id="searchbtn" buttonType="RAISED" layoutX="687.0" layoutY="108.0" onAction="#search" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #673AB7;" text="Search" textFill="WHITE">
+         <effect>
+            <InnerShadow radius="4.75" width="0.0">
+               <color>
+                  <Color red="0.40392157435417175" green="0.22745098173618317" blue="0.7176470756530762" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </JFXButton>
     </children>
     <stylesheets>
         <URL value="@../../../help.css" />

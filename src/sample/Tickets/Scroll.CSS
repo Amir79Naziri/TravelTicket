@@ -1,3 +1,4 @@
+
 .jfx-list-cell
 {
     -fx-background-color:  #2A2E37;
@@ -6,7 +7,7 @@
 
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-    -fx-background-color:  -fx-deepPurple;
+    -fx-background-color:  #673AB7;
     -fx-background-radius: 1em;
 }
 
@@ -30,4 +31,3 @@
     -fx-background-color: transparent;
     -fx-border-color: transparent;
 }
-

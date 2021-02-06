@@ -10,7 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -21,6 +23,7 @@ import model.User;
 import sample.Profile.ProfileController;
 import sample.Search.SearchController;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -40,14 +43,6 @@ public class TicketsPageController implements Initializable
     public TicketsPageController() throws IOException {
     }
 
-    public void setSearchDetails(String originLocation,String destinationLocation,String choosedDate,String trainOrAirplane,User currentUser){
-        this.originLocation = originLocation;
-        this.destinationLocation = destinationLocation;
-        this.choosedDate = choosedDate;
-        this.trainOrAirplane = trainOrAirplane;
-        this.currentUser = currentUser;
-    }
-
     @FXML
     private ChoiceBox<String> timeOrder;
     private ObservableList<String> choices;
@@ -60,7 +55,7 @@ public class TicketsPageController implements Initializable
 
     @FXML
     private ListView<Pane> list;
-    private ObservableList<Pane> tickets;
+    private ObservableList<Pane> tickets = FXCollections.observableArrayList();
 
     @FXML
     private ChoiceBox<String> airlines;
@@ -72,16 +67,45 @@ public class TicketsPageController implements Initializable
 
     static Parent rootHome, rootProfile;
 
+    @FXML
+    private JFXButton searchbtn;
+
+    public void setSearchDetails(String originLocation,String destinationLocation,String choosedDate,String trainOrAirplane,User currentUser)
+    {
+        this.originLocation = originLocation;
+        this.destinationLocation = destinationLocation;
+        this.choosedDate = choosedDate;
+        this.trainOrAirplane = trainOrAirplane;
+        this.currentUser = currentUser;
+
+        System.out.println(choosedDate);
+
+        TicketStorage ticketStorage = (TicketStorage) FileHandler.load("Files/ticketStorage.ser");
+        for(Map.Entry<Integer, Ticket> set : ticketStorage.getTickets().entrySet())
+        {
+            Ticket temp = set.getValue();
+            if(temp.getDepartureCity().equals(originLocation) && temp.getArrivalCity().equals(destinationLocation))
+            {
+                Pane pane = null;
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("Ticket.fxml"));
+                try {
+                    pane = loader.load();
+                } catch (IOException e) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+                }
+
+                TicketController ticketController = loader.getController();
+                ticketController.setEveryThing(temp, currentUser);
+                tickets.add(pane);
+            }
+        }
+
+    }
 
     @FXML
     void GoHome(ActionEvent event) throws IOException, InterruptedException
     {
-//        Stage stage;
-//        stage = (Stage) HomeButton.getScene().getWindow();
-//        Scene scene = new Scene(rootHome);
-//        stage.setScene(scene);
-//        stage.show();
-
         Stage stage;
         stage = (Stage) HomeButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -99,20 +123,11 @@ public class TicketsPageController implements Initializable
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     @FXML
     void GoProfile(ActionEvent event)
     {
-//        Stage stage;
-//        stage = (Stage) HomeButton.getScene().getWindow();
-//        Scene scene = new Scene(rootProfile);
-//        stage.setScene(scene);
-//        stage.show();
-
-
         Stage stage;
         stage = (Stage) HomeButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -135,6 +150,12 @@ public class TicketsPageController implements Initializable
         stage.show();
     }
 
+    @FXML
+    void search(ActionEvent event)
+    {
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
@@ -154,41 +175,14 @@ public class TicketsPageController implements Initializable
         choices.addAll("Time Ascending", "Time Descending");
         timeOrder.setItems(choices);
 
-        tickets = FXCollections.observableArrayList();
-
-        TicketStorage ticketStorage = (TicketStorage) FileHandler.load("Files/ticketStorage.ser");
-        for(Map.Entry<Integer, Ticket> set : ticketStorage.getTickets().entrySet())
-        {
-            Ticket temp = set.getValue();
-
-            Pane pane = null;
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Ticket.fxml"));
-            try
-            {
-                pane = loader.load();
-            }
-            catch (IOException e)
-            {
-                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
-            }
-
-            TicketController ticketController = loader.getController();
-            ticketController.setEveryThing(temp, currentUser);
-
-
-
-            //private final Pane pane1 = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
-            tickets.add(pane);
-        }
 
 
         list.setItems(tickets);
 
         airlinesList = FXCollections.observableArrayList();
-        airlinesList.addAll("American Airline", "Chinese Airlines",
-                "Turkish Airline", "Qatar Airlines",
-                "Bangladesh Airline", "British Airlines","Pegasus Airlines");
+        airlinesList.addAll("American Airlines", "Chinese Airlines",
+                "Turkish Airlines", "Qatar Airlines",
+                "Bangladesh Airlines", "British Airlines","Pegasus Airlines");
         airlines.setItems(airlinesList);
     }
 }

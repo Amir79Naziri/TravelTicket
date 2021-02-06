@@ -95,7 +95,12 @@ public class SearchController implements Initializable {
 
         originLocation = Origin.getValue();
         destinationLocation = Destination.getValue();
-        choosedDate = datePicker.getValue().toString();
+try {
+    choosedDate = datePicker.getValue().toString();
+}catch(NullPointerException e ){
+    choosedDate="1000/1/1";
+}
+
         if (TrainCheckBox.isSelected())
             trainOrAirplane = "train";
         else
