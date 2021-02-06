@@ -13,11 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.FileHandler;
 import model.Ticket;
+import model.TicketStorage;
 import model.User;
 import model.connections.userInformationClient.Client;
 import sample.Profile.ProfileController;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -89,10 +92,11 @@ public class BankPageController implements Initializable {
             else {
                 if (event.getSource() != cancelButton) {
                     currentUser.addTicket(currentTicket.getId(), currentTicket);
-
-
-                    // todo remove ticket from the tickets file
                     connect(currentUser);
+
+                    TicketStorage ticketStorage = (TicketStorage) FileHandler.load("Files/ticketStorage.ser");
+                    ticketStorage.getTickets().remove(currentTicket.getId());
+                    FileHandler.save(ticketStorage, "Files/ticketStorage.ser");
                 }
             }
             profileController.serCurrentUser(this.currentUser);
