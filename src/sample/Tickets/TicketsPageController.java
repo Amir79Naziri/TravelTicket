@@ -26,10 +26,8 @@ import sample.Search.SearchController;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,7 +35,7 @@ public class TicketsPageController implements Initializable
 {
     private String originLocation;
     private String destinationLocation;
-    private String choosedDate;
+    private LocalDate choosedDate;
     private String trainOrAirplane;
     private User   currentUser;
 
@@ -72,13 +70,16 @@ public class TicketsPageController implements Initializable
     @FXML
     private JFXButton searchbtn;
 
-    public void setSearchDetails(String originLocation,String destinationLocation,String choosedDate,String trainOrAirplane,User currentUser)
+    public void setSearchDetails(String originLocation, String destinationLocation, LocalDate choosedDate, String trainOrAirplane, User currentUser)
     {
         this.originLocation = originLocation;
         this.destinationLocation = destinationLocation;
         this.choosedDate = choosedDate;
         this.trainOrAirplane = trainOrAirplane;
         this.currentUser = currentUser;
+
+        LocalDate yesterday = choosedDate.minusDays(1);
+        LocalDate tomorrow = choosedDate.plusDays(1);
 
         System.out.println(choosedDate);
 
@@ -88,8 +89,13 @@ public class TicketsPageController implements Initializable
             Ticket temp = set.getValue();
             if(temp.getDepartureCity().equals(originLocation) && temp.getArrivalCity().equals(destinationLocation))
             {
-                tikcetsList.add(temp);
-               addToPane(temp);
+                if( temp.getDepartureDate().equals(yesterday) ||
+                        temp.getDepartureDate().equals(this.choosedDate) ||
+                            temp.getDepartureDate().equals(tomorrow) )
+                {
+                    tikcetsList.add(temp);
+                    addToPane(temp);
+                }
             }
         }
 
@@ -166,7 +172,7 @@ public class TicketsPageController implements Initializable
 
         for(Ticket ticket : tikcetsList)
         {
-            if(airlines.getValue() == null)
+            if(airlines.getValue().equals("ALL"))
             {
                 ok.add(ticket);
             }
@@ -177,10 +183,53 @@ public class TicketsPageController implements Initializable
             }
         }
 
-        for(Ticket ticket : ok)
-            addToPane(ticket);
+        if(timeOrder.getValue() != null)
+        {
+            for(int i = 0; i < ok.size(); i++)
+            {
+                for(int j = i+1; j < ok.size(); j++)
+                {
+                    int numI = 0, numJ = 0;
+                    if(ok.get(i).getDepartureDate().equals(choosedDate.minusDays(1)))
+                        numI -= 8000;
+                    if(ok.get(i).getDepartureDate().equals(choosedDate.plusDays(1)))
+                        numI += 8000;
 
-        list.refresh();
+                    if(ok.get(j).getDepartureDate().equals(choosedDate.minusDays(1)))
+                        numJ -= 8000;
+                    if(ok.get(j).getDepartureDate().equals(choosedDate.plusDays(1)))
+                        numJ += 8000;
+
+                    numI = numI + 60*(ok.get(i).getDepartureHour()) + (ok.get(i).getDepartureMinute());
+                    numJ = numJ + 60*(ok.get(j).getDepartureHour()) + (ok.get(j).getDepartureMinute());
+
+                    if(numJ < numI)
+                    {
+                        Collections.swap(ok, i, j);
+                    }
+                }
+            }
+        }
+
+        if(timeOrder.getValue() == null)
+        {
+            for (Ticket ticket : ok)
+                addToPane(ticket);
+            list.refresh();
+        }
+
+        else
+        {
+            if(timeOrder.getValue().equals("Time Ascending"))
+                for (Ticket ticket : ok)
+                    addToPane(ticket);
+                else
+                    for(int i = ok.size()-1; i >= 0; i--)
+                        addToPane(ok.get(i));
+
+                    list.refresh();
+        }
+
     }
 
     @Override
@@ -207,9 +256,10 @@ public class TicketsPageController implements Initializable
         list.setItems(tickets);
 
         airlinesList = FXCollections.observableArrayList();
-        airlinesList.addAll("American Airlines", "Chinese Airlines",
+        airlinesList.addAll("ALL", "American Airlines", "Chinese Airlines",
                 "Turkish Airlines", "Qatar Airlines",
                 "Bangladesh Airlines", "British Airlines","Pegasus Airlines");
         airlines.setItems(airlinesList);
+        airlines.setValue("ALL");
     }
 }

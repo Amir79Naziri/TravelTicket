@@ -7,8 +7,8 @@ public class CreateTickets
     public static void main(String[] args)
     {
         TicketStorage ticketStorage = new TicketStorage();
-        ticketStorage.getTickets().put(747, new Ticket("Tehran", "Mashhad", "Turkish Airlines", 2,
-                0, 3, 30, 2020, 12, 20,
+        ticketStorage.getTickets().put(747, new Ticket("Tehran", "Mashhad", "Turkish Airlines", 23,
+                0, 3, 30, 2021, 2, 6,
                 2020, 12, 21, 747, 500));
 
         ticketStorage.getTickets().put(748, new Ticket("Tehran", "Shiraz", "Qatar Airlines", 2,
@@ -67,8 +67,8 @@ public class CreateTickets
                 0, 3, 30, 2020, 12, 21,
                 2020, 12, 21, 761, 1900));
 
-        ticketStorage.getTickets().put(762, new Ticket("Tehran", "Mashhad", "Bangladesh Airlines", 2,
-                0, 3, 30, 2020, 12, 21,
+        ticketStorage.getTickets().put(762, new Ticket("Tehran", "Mashhad", "Bangladesh Airlines", 3,
+                0, 3, 30, 2021, 2, 5,
                 2020, 12, 21, 762, 690));
 
         ticketStorage.getTickets().put(763, new Ticket("Mashhad", "Kish", "Qatar Airlines", 2,
@@ -84,8 +84,16 @@ public class CreateTickets
                 2020, 12, 21, 765, 3550));
 
         ticketStorage.getTickets().put(766, new Ticket("Tehran", "Mashhad", "Bangladesh Airlines", 2,
-                0, 3, 30, 2020, 12, 22,
+                0, 3, 30, 2021, 2, 7,
                 2020, 12, 21, 766, 1750));
+
+        ticketStorage.getTickets().put(767, new Ticket("Tehran", "Mashhad", "American Airlines", 2,
+                0, 3, 30, 2021, 2, 8,
+                2020, 12, 21, 767, 1750));
+
+        ticketStorage.getTickets().put(768, new Ticket("Tehran", "Mashhad", "Qatar Airlines", 22,
+                0, 3, 30, 2021, 2, 6,
+                2020, 12, 21, 768, 500));
 
         FileHandler.save(ticketStorage, "Files/ticketStorage.ser");
 
