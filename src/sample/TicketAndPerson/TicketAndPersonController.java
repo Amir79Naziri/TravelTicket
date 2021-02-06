@@ -49,17 +49,8 @@ public class TicketAndPersonController implements Initializable {
 
 
     @FXML
-    void goToHomePage() throws IOException {
-
-//        Stage stage;
-//        Parent root;
-//
-//        stage = (Stage) home.getScene().getWindow();
-//        root = FXMLLoader.load(getClass().getResource("/sample/Search/Search.fxml"));
-//
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
+    void goToHomePage() throws IOException
+    {
 
         Stage stage;
         stage = (Stage) home.getScene().getWindow();
@@ -88,19 +79,8 @@ public class TicketAndPersonController implements Initializable {
     private JFXButton payOnline;
 
     @FXML
-    public void onlinePayment() throws IOException {
-
-
-//        Stage stage;
-//        Parent root;
-//
-//        stage = (Stage) payOnline.getScene().getWindow();
-//        root = FXMLLoader.load(getClass().getResource("/sample/Bank/BankPage.fxml"));
-//
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-
+    public void onlinePayment() throws IOException
+    {
         Stage stage;
         stage = (Stage) home.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -170,10 +150,27 @@ public class TicketAndPersonController implements Initializable {
         phoneNumber.setText(currentUser.getPhoneNumber());
 
 
+        String dh = ticket.getDepartureHour() + "";
+        String dm = ticket.getDepartureMinute() + "";
+        String ah = ticket.getArrivalHour() + "";
+        String am = ticket.getArrivalMinute() + "";
+        if( ticket.getDepartureHour() < 10 )
+            dh = "0" + ticket.getDepartureHour();
+
+        if( ticket.getDepartureMinute() < 10 )
+            dm = "0" + ticket.getDepartureMinute();
+
+        if( ticket.getArrivalHour() < 10 )
+            ah = "0" + ticket.getArrivalHour();
+
+        if( ticket.getArrivalMinute() < 10 )
+            am = "0" + ticket.getArrivalMinute();
+
+
         DestDate.setText(currentTicket.getArrivalDate().getYear() + "/" + currentTicket.getArrivalDate().getMonth() + "/" + currentTicket.getArrivalDate().getDayOfMonth());
         OriginDate.setText(currentTicket.getDepartureDate().getYear() + "/" + currentTicket.getDepartureDate().getMonth() + "/" + currentTicket.getDepartureDate().getDayOfMonth());
-        DestTime.setText(currentTicket.getArrivalHour() + ":" + currentTicket.getArrivalMinute());
-        OriginTime.setText(currentTicket.getDepartureHour() + ":" + currentTicket.getDepartureMinute());
+        DestTime.setText(ah + ":" + am);
+        OriginTime.setText(dh + ":" + dm);
 
         DestLocation.setText(currentTicket.getArrivalCity());
         OriginLocation.setText(currentTicket.getDepartureCity());

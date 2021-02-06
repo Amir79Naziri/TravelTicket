@@ -1,4 +1,4 @@
-package model.connections;
+package model;
 
 import model.FileHandler;
 import model.Ticket;
