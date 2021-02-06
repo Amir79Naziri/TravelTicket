@@ -13,7 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.FileHandler;
 import model.Ticket;
+import model.TicketStorage;
 import model.User;
 import model.connections.userInformationClient.Client;
 
@@ -56,11 +58,14 @@ public class historyTicketController
     private JFXButton retrieveBTN;
 
     @FXML
-    void retrieve(ActionEvent event) throws IOException {
-        //TODO: add ticket to remaining tickets
+    void retrieve(ActionEvent event) throws IOException
+    {
 
+        TicketStorage ticketStorage = (TicketStorage) FileHandler.load("Files/ticketStorage.ser");
+        ticketStorage.getTickets().put(currentTicket.getId(), currentTicket);
+        FileHandler.save(ticketStorage, "Files/ticketStorage.ser");
 
-        currentUser.removeTicket(currentTicket.getCode());
+        currentUser.removeTicket(currentTicket.getId());
         connect(currentUser);
         AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
         mainPane.getChildren().add(load);

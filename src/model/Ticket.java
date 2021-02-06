@@ -9,14 +9,14 @@ public class Ticket implements Serializable
     private String departureCity, arrivalCity, airLineName;
     private int departureHour, departureMinute, arrivalHour, arrivalMinute;
     private LocalDate departureDate, arrivalDate;
-    private int code, price;
+    private int id, price;
     private User passengers;
 
     public Ticket(String departureCity, String arrivalCity, String airLineName,
-            int departureHour, int departureMinute, int arrivalHour, int arrivalMinute,
-                          int departureYear, int departureMonth, int departureDay,
-                          int arrivalYear, int arrivalMonth, int arrivalDay,
-                          int code, int price)
+                  int departureHour, int departureMinute, int arrivalHour, int arrivalMinute,
+                  int departureYear, int departureMonth, int departureDay,
+                  int arrivalYear, int arrivalMonth, int arrivalDay,
+                  int id, int price)
     {
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
@@ -27,7 +27,7 @@ public class Ticket implements Serializable
         this.arrivalMinute = arrivalMinute;
         this.departureDate = LocalDate.of(departureYear, departureMonth, departureDay);
         this.arrivalDate = LocalDate.of(arrivalYear, arrivalMonth, arrivalDay);
-        this.code = code;
+        this.id = id;
         this.price = price;
         passengers = null;
     }
@@ -120,12 +120,12 @@ public class Ticket implements Serializable
         this.passengers = passengers;
     }
 
-    public int getCode() {
-        return code;
+    public int getId() {
+        return id;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void sellTicket(User user)
@@ -156,12 +156,12 @@ public class Ticket implements Serializable
         if (this == o) return true;
         if (!(o instanceof Ticket)) return false;
         Ticket ticket = (Ticket) o;
-        return code == ticket.code;
+        return id == ticket.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(code);
+        return Objects.hash(id);
     }
 
     @Override
@@ -173,7 +173,7 @@ public class Ticket implements Serializable
                 ", departureHour=" + departureHour +
                 ", departureMinute=" + departureMinute +
                 ", departureDate=" + departureDate +
-                ", code=" + code +
+                ", code=" + id +
                 ", price=" + price +
                 '}';
     }
