@@ -61,6 +61,7 @@ public class historyTicketController
 
 
         currentUser.removeTicket(currentTicket.getCode());
+        connect(currentUser);
         AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
         mainPane.getChildren().add(load);
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
@@ -125,5 +126,18 @@ public class historyTicketController
             e.printStackTrace();
         }
     }
+
+    private Client connect (User user)
+    {
+        Client client = new Client ("127.0.0.1","Logout", user);
+        new Thread (client).start ();
+        return client;
+    }
+
+
+    private String serverResponse(Client client) {
+        return client.getLogoutResult ();
+    }
+
 
 }

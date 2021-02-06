@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Ticket;
 import model.User;
+import model.connections.userInformationClient.Client;
 import sample.Profile.ProfileController;
 
 import java.io.IOException;
@@ -82,6 +83,7 @@ public class BankPageController implements Initializable {
             if (purpose.equals("wallet")) {
                 if (event.getSource() != cancelButton) {
                     currentUser.getWallet().charge(this.price);
+                    connect(currentUser);
                 }
             }
             else {
@@ -90,6 +92,7 @@ public class BankPageController implements Initializable {
 
 
                     // todo remove ticket from the tickets file
+                    connect(currentUser);
                 }
             }
             profileController.serCurrentUser(this.currentUser);
@@ -108,5 +111,19 @@ public class BankPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
+
+    private Client connect (User user)
+    {
+        Client client = new Client ("127.0.0.1","Logout", user);
+        new Thread (client).start ();
+        return client;
+    }
+
+
+    private String serverResponse(Client client)
+    {
+        return client.getLogoutResult ();
+    }
+
 
 }

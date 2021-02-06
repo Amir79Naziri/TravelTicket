@@ -133,22 +133,22 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <Label fx:id="costLabel" alignment="CENTER" layoutX="105.0" layoutY="380.0" prefHeight="28.0" prefWidth="100.0" text="0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
          </children>
       </AnchorPane>
-      <Label fx:id="costLabel" alignment="CENTER" prefHeight="28.0" prefWidth="100.0" text="0" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-         <opaqueInsets>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-      </Label>
       <AnchorPane prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: RGB(0,106,182);" />
       <ImageView fitHeight="88.0" fitWidth="247.0" layoutY="5.0">
          <image>
