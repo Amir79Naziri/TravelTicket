@@ -82,11 +82,13 @@ public class User implements Serializable
         this.bankAccountNumber = Objects.requireNonNull (bankAccountNumber, "");
     }
 
-    public void changePassword (String newPassword, String oldPassword) {
+    public boolean changePassword (String newPassword, String oldPassword) {
         if (oldPassword != null && oldPassword.equals (this.password))
         {
             this.password = Objects.requireNonNullElse (newPassword, "");
+            return true;
         }
+        return false;
     }
 
     private void setPassword(String password)
