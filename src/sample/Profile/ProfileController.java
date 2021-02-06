@@ -217,16 +217,20 @@ public class ProfileController implements Initializable {
     @FXML
     void changePassword() {
         if (currentUser.changePassword(newPassField.getText(), currPassField.getText())) {
+            System.out.println(currPassField.getText());
+            System.out.println(newPassField.getText());
             invalidPassword.setVisible(false);
             connect(currentUser);
+            borderPane.setOpacity(1);
+            changePasswordPane.setVisible(false);
+            editButton.setDisable(false);
+            changePassButton.setDisable(false);
         }
-        else
+        else {
+            System.out.println(currPassField.getText() + "****");
             invalidPassword.setVisible(true);
+        }
 
-        borderPane.setOpacity(1);
-        changePasswordPane.setVisible(false);
-        editButton.setDisable(false);
-        changePassButton.setDisable(false);
     }
 
     @FXML

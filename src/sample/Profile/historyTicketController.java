@@ -67,30 +67,23 @@ public class historyTicketController
 
         currentUser.removeTicket(currentTicket.getId());
         connect(currentUser);
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/sample/Loading/Loading.fxml"));
-        mainPane.getChildren().add(load);
-        PauseTransition pause = new PauseTransition(Duration.seconds(1));
-        pause.setOnFinished(f -> {
-            Stage stage;
-            stage = (Stage) mainPane.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/Profile/profileView.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
-            }
+        Stage stage;
+        stage = (Stage) mainPane.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/Profile/profileView.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, e);
+        }
 
-            ProfileController profileController = loader.getController();
-            profileController.serCurrentUser(currentUser);
+        ProfileController profileController = loader.getController();
+        profileController.serCurrentUser(currentUser);
 
-            Parent root = loader.getRoot();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        });
-        pause.play();
+        Parent root = loader.getRoot();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void setEveryThing(Ticket ticket, User currentUser)
