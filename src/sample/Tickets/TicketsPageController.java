@@ -177,10 +177,8 @@ public class TicketsPageController implements Initializable
             }
         }
 
-        if(timeOrder.getValue() != null)
-        {
-
-        }
+        for(Ticket ticket : ok)
+            addToPane(ticket);
 
         list.refresh();
     }
