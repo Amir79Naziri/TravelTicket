@@ -52,7 +52,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <ImageView fx:id="companyIcon" fitHeight="95.0" fitWidth="146.0" layoutX="134.0" layoutY="81.0">
+                <ImageView fx:id="companyIcon" fitHeight="66.0" fitWidth="124.0" layoutX="144.0" layoutY="97.0">
                     <image>
                         <Image url="@Pictures/turkish-airlines-logos-png-1.png" />
                     </image>
