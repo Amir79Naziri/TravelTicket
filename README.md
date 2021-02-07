@@ -5,7 +5,7 @@
 This project is a windows application for buying Airplane and Train tickets.
 So you can sign up and then you have access to you personal Wallet then you can charge your wallet and you can enjoy traveling.
 
-This project have developed by :\
+This project has developed by :\
 [1) Faraz Farangizadeh](https://github.com/farazff)\
 [2) Amir Sabbagh](https://github.com/amir-sbg)\
 [3) Amin Habibolah](https://github.com/aminhbl)\
@@ -19,12 +19,12 @@ we had daily scrum sessions, which we discussed about every problem that we face
 
 
 
-Of course, the program is not complete and we just developed the first sprint of the program so it is just a demo that  show's the main requirements of a ticket selling application. we developed a complete server for user information but there isn't any sever for tickets, In order that we have some sample tickets. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this Project!
+Of course, the program is not complete and we just developed the first sprint of the program so it is just a demo that show's the main requirements of a ticket selling application. We developed a complete server for user information but there isn't any sever for tickets, In order that, we have some sample tickets. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this Project!
 
 
 # Built With
 
-This section is list of any major Programming Languages, frameworks, Libraries and applications that we built project using them. 
+This section is list of any major Programming Languages, frameworks, Libraries and applications that we have built project using them. 
 * [JAVA](https://www.java.com/en/)
 * [JFoneix](http://www.jfoenix.com/)
 * [JavaFX](https://openjfx.io/)
