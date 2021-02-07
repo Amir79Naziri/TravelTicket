@@ -58,7 +58,7 @@ Here we have some Screen shots from the program in order to introduce our applic
 
 # Contact
 
-You can easily contact each of developers by the link given in the first part by their GITHUB account.
+Feel free to contact each of the developers by their GITHUB account.
 
 Project Link: [Travel Tikcet](https://github.com/Amir79Naziri/TravelTicket)
 
