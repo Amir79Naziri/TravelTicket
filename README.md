@@ -34,12 +34,22 @@ This section is list of any major Programming Languages, frameworks, Libraries a
 
 
 
-## Usage
+# Usage
 
 Here we have some Screen shots from the program in order to introduce our application.
 
-
-
+## Signup page
+![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Sign%20Up.PNG?raw=true)
+## Signin page
+![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Log%20In.PNG?raw=true)
+## Profile page
+![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Profile.PNG?raw=true)
+## Wallet page
+![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Wallet.PNG?raw=true)
+## Search page
+![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Search%20Page.PNG?raw=true)
+## Tickets page
+![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Tickets.PNG?raw=true)
 
 
 ## Contact
