@@ -22,7 +22,7 @@ we had daily scrum sessions, which we discussed about every problem that we face
 Of course, the program is not complete and we just developed the first sprint of the program so it is just a demo that  show's the main requirements of a ticket selling application. we developed a complete server for user information but there isn't any sever for tickets, In order that we have some sample tickets. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this Project!
 
 
-### Built With
+# Built With
 
 This section is list of any major Programming Languages, frameworks, Libraries and applications that we built project using them. 
 * [JAVA](https://www.java.com/en/)
@@ -43,16 +43,20 @@ Here we have some Screen shots from the program in order to introduce our applic
 ## Signin page
 ![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Log%20In.PNG?raw=true)
 ## Profile page
+### you can easily change your personal info in this page.
 ![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Profile.PNG?raw=true)
 ## Wallet page
+#### You can charge your wallet to pay the tickets price directly from wallet.
 ![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Wallet.PNG?raw=true)
 ## Search page
+### You can search tickets by the origin and destination city and the date.
 ![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Search%20Page.PNG?raw=true)
 ## Tickets page
+### In this page you can see the tickets that you are looking for and also you can order them by time or filter them by airline.
 ![alt text](https://github.com/Amir79Naziri/TravelTicket/blob/master/Screen%20Shots/Tickets.PNG?raw=true)
 
 
-## Contact
+# Contact
 
 You can easily contact each of developers by the link given in the first part by their GITHUB account.
 
